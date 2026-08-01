@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>バス時刻表</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; text-align: center; }
+    button { font-size: 18px; padding: 12px 24px; border-radius: 8px; cursor: pointer; background: #007bff; color: white; border: none; }
+    .bus-card { border: 1px solid #ccc; padding: 10px; margin: 10px 0; border-radius: 8px; text-align: left; }
+  </style>
+</head>
+<body>
+
+  <h2>三軒屋 $\rightarrow$ 次郎丸駅前</h2>
+  <button onclick="updateSchedule()">🔄 現在時刻から検索</button>
+
+  <div id="results" style="margin-top: 20px;"></div>
+
+  <script>
+    // GitHub上のbus.jsonを読み込んで近くの3件を表示
+    async function updateSchedule() {
+      const response = await fetch('./bus.json');
+      const busData = await response.json();
+
+      const now = new Date();
+      const currentTime = now.toTimeString().substring(0, 5); // "HH:MM"
+
+      // 現在時刻以降の直近3件を抽出
+      const upcoming = busData
+        .filter(bus => bus.departure >= currentTime)
+        .sort((a, b) => a.departure.localeCompare(b.departure))
+        .slice(0, 3);
+
+      const container = document.getElementById('results');
+      if (upcoming.length === 0) {
+        container.innerHTML = '<p>本日の該当便は終了しました。</p>';
+        return;
+      }
+
+      container.innerHTML = upcoming.map(bus => `
+        <div class="bus-card">
+          <strong>${bus.departure} 発</strong> $\rightarrow$ ${bus.arrival} 着<br>
+          ［${bus.route}］${bus.destination}
+        </div>
+      `).join('');
+    }
+
+    // ページ開いた時に自動実行
+    updateSchedule();
+  </script>
+</body>
+</html>
