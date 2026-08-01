@@ -12,7 +12,7 @@
     .btn { width: 100%; padding: 14px; font-size: 1rem; font-weight: bold; color: white; background: #007bff; border: none; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,123,255,0.2); transition: 0.2s; }
     .btn:active { transform: scale(0.98); }
     .results { margin-top: 20px; }
-    .card { background: white; padding: 16px; border-radius: 12px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); position: relative; border-left: 5px solid #007bff; }
+    .card { background: white; padding: 16px; border-radius: 12px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-left: 5px solid #007bff; }
     .card-header { display: flex; justify-content: space-between; align-items: baseline; }
     .time { font-size: 1.5rem; font-weight: bold; color: #111; }
     .arrow { color: #888; font-size: 0.9rem; }
@@ -66,7 +66,7 @@
               <div class="card-header">
                 <div>
                   <span class="time">${bus.departure}</span>
-                  <span class="arrow">➔ ${bus.arrival}着</span>
+                  <span class="arrow"> ➔ ${bus.arrival}着</span>
                 </div>
                 <span class="mins">あと ${diffMins} 分</span>
               </div>
