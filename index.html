@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- 💡 キャッシュを無効化して常に最新状態を読み込ませる設定 -->
+  <!-- 💡 キャッシュ無効化設定 -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
@@ -25,14 +25,19 @@
       letter-spacing: 0.5px;
     }
     
-    /* 💡 通常は非表示の区間タイトル */
+    /* 💡 バス停選択時のみ表示される区間（長方形枠付き・大きめ） */
     .sub-title {
-      font-size: 0.95rem;
+      font-size: 1.1rem;
+      font-weight: bold;
       text-align: center;
       color: #0052d4;
-      margin-bottom: 15px;
-      font-weight: bold;
-      display: none;
+      background: #ffffff;
+      border: 2px solid #00d2ff;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 15px 0;
+      box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+      display: none; /* 初期状態は隠す */
     }
 
     /* ⚡ サイバーチック・モード選択ナビゲーション ⚡ */
@@ -102,11 +107,11 @@
       transform: scale(1.2);
     }
 
-    /* ⚡ リアルタイム日時表示ボタン ⚡ */
+    /* ⚡ リアルタイム日時表示ボタン（「更新」文字を削除） ⚡ */
     .btn { 
       width: 100%; 
       padding: 16px; 
-      font-size: 1.1rem; 
+      font-size: 1.15rem; 
       font-weight: 800; 
       color: #ffffff; 
       background: linear-gradient(135deg, #00d2ff 0%, #0052d4 100%); 
@@ -116,7 +121,7 @@
       box-shadow: 0 0 15px rgba(0, 210, 255, 0.5); 
       transition: all 0.2s ease;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-      letter-spacing: 0.3px;
+      letter-spacing: 0.5px;
     }
     .btn:active { 
       transform: scale(0.97); 
@@ -153,7 +158,6 @@
 
   <div class="container">
     <div class="app-title">MY TRANSIT 🚌 🚇</div>
-    <div class="sub-title" id="route-title"></div>
 
     <div class="mode-select-container">
       <button class="mode-btn btn-bus" onclick="toggleBusPanel()">
@@ -164,6 +168,7 @@
       </button>
     </div>
 
+    <!-- 🎛 バス停ラジオボタン（トグル表示） -->
     <div class="bus-stop-panel" id="bus-panel">
       <label class="radio-label">
         <input type="radio" name="busStop" value="三軒屋" onchange="changeBusStop('三軒屋')"> 三軒屋
@@ -173,20 +178,27 @@
       </label>
     </div>
 
-    <button class="btn" id="update-btn" onclick="updateSchedule()">--月--日(--) --:--:-- 更新</button>
+    <!-- 💡 バス停選択時にだけ現れる長方形枠のタイトル -->
+    <div class="sub-title" id="route-title"></div>
+
+    <!-- ⚡ リアルタイム日時表示ボタン ⚡ -->
+    <button class="btn" id="update-btn" onclick="updateSchedule()">--月--日(--) --:--:--</button>
 
     <div id="results" class="results"></div>
   </div>
 
   <script>
+    let isStopSelected = false; // バス停が選択されたかどうかのフラグ
+
     function toggleBusPanel() {
       const panel = document.getElementById('bus-panel');
       panel.classList.toggle('active');
     }
 
     function changeBusStop(name) {
+      isStopSelected = true; // 選択されたので有効化
       const title = document.getElementById('route-title');
-      title.style.display = 'block';
+      title.style.display = 'block'; // 長方形枠タイトルを表示
 
       if (name === '三軒屋') {
         title.innerText = '三軒屋 ➔ 次郎丸';
@@ -196,6 +208,7 @@
       updateSchedule();
     }
 
+    // 💡 時計表示（「更新」文字を削除）
     function updateClock() {
       const now = new Date();
       const month = now.getMonth() + 1;
@@ -208,13 +221,19 @@
       const secs = String(now.getSeconds()).padStart(2, '0');
 
       const btn = document.getElementById('update-btn');
-      btn.innerText = `${month}月${date}日(${day}) ${hours}:${mins}:${secs} 更新`;
+      btn.innerText = `${month}月${date}日(${day}) ${hours}:${mins}:${secs}`;
     }
 
     async function updateSchedule() {
       updateClock();
+
+      // 💡 バス停がまだ選択されていない場合は時刻表を出さずに終了する
+      if (!isStopSelected) {
+        document.getElementById('results').innerHTML = '';
+        return;
+      }
+
       try {
-        // 💡 読み込み時にURLの末尾へ現在時刻（タイムスタンプ）を付けてキャッシュを強制回避
         const response = await fetch('./bus.json?v=' + Date.now());
         const busData = await response.json();
 
@@ -262,7 +281,8 @@
       }
     }
 
-    updateSchedule();
+    // 初期実行（時計のみ動かし、時刻表は出さない）
+    updateClock();
     setInterval(updateClock, 1000);
     setInterval(updateSchedule, 60000);
   </script>
