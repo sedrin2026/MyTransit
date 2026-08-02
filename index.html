@@ -138,6 +138,23 @@
       justify-content: space-around;
       align-items: center;
     }
+
+    /* 🚇 地下鉄駅選択パネル */
+    .subway-stop-panel {
+      display: none;
+      background: #ffffff;
+      padding: 12px 16px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border: 1px solid #ff5e00;
+    }
+    .subway-stop-panel.active {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
     .radio-label {
       font-size: 0.95rem;
       font-weight: bold;
@@ -147,8 +164,12 @@
       align-items: center;
       gap: 6px;
     }
-    .radio-label input[type="radio"] {
+    .bus-stop-panel input[type="radio"] {
       accent-color: #0052d4;
+      transform: scale(1.2);
+    }
+    .subway-stop-panel input[type="radio"] {
+      accent-color: #ff5e00;
       transform: scale(1.2);
     }
 
@@ -166,6 +187,11 @@
       margin: 15px 0;
       box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
       display: none;
+    }
+    .sub-title.subway-theme {
+      color: #ff5e00;
+      border: 2px solid #ffb700;
+      box-shadow: 0 0 10px rgba(255, 183, 0, 0.3);
     }
     
     .close-btn {
@@ -208,9 +234,12 @@
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
       letter-spacing: 0.5px;
     }
+    .btn.subway-theme {
+      background: linear-gradient(135deg, #ff5e00 0%, #ffb700 100%);
+      box-shadow: 0 0 15px rgba(255, 94, 0, 0.5);
+    }
     .btn:active { 
       transform: scale(0.97); 
-      box-shadow: 0 0 8px rgba(0, 210, 255, 0.7); 
     }
 
     .results { margin-top: 20px; }
@@ -222,14 +251,6 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.08); 
       border: 1px solid #eee;
     }
-    
-    .rank-0 { border-left: 6px solid #dc3545; }
-    .rank-1 { border-left: 6px solid #28a745; }
-    .rank-2 { border-left: 6px solid #007bff; }
-
-    .badge-0 { background: #f8d7da; color: #721c24; }
-    .badge-1 { background: #d4edda; color: #155724; }
-    .badge-2 { background: #cce5ff; color: #004085; }
 
     /* 💡 第①候補・第②候補・第③候補 バッジデザイン */
     .candidate-tag {
@@ -254,9 +275,13 @@
     .time { font-size: 1.5rem; font-weight: bold; color: #111; }
     .arrow { color: #888; font-size: 0.9rem; }
     .mins { font-size: 0.85rem; font-weight: bold; padding: 4px 8px; border-radius: 6px; }
+    
+    .badge-0 { background: #f8d7da; color: #721c24; }
+    .badge-1 { background: #d4edda; color: #155724; }
+    .badge-2 { background: #cce5ff; color: #004085; }
+
     .details { font-size: 0.85rem; color: #666; margin-top: 10px; }
     
-    /* 💡 系統番号バッジ：背景色を水色、文字色を白に変更 */
     .route-badge { 
       background: #00d2ff; 
       padding: 2px 6px; 
@@ -264,13 +289,21 @@
       font-weight: bold; 
       color: #ffffff; 
     }
-    .empty { text-align: center; color: #777; margin-top: 30px; font-size: 0.95rem; }
+    .subway-route-badge {
+      background: #ff5e00;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    .empty { text-align: center; color: #777; марgin-top: 30px; font-size: 0.95rem; }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <!-- 📱 アプリタイトルエリア（Googleカラー＆可愛らしい白縁取り ＋ サブタイトル） -->
+    <!-- 📱 アプリタイトルエリア -->
     <div class="app-header">
       <div class="app-title">
         <img src="illust1772_thumb.gif" alt="バス" class="header-icon">
@@ -281,31 +314,40 @@
         </span>
         <img src="illust3615_thumb.gif" alt="動物バス" class="header-icon">
       </div>
-      <!-- 💡 タイトル直下のサブタイトル -->
       <div class="app-subtitle">Transportation app</div>
     </div>
 
+    <!-- モード選択ボタン -->
     <div class="mode-select-container">
       <button class="mode-btn btn-bus" onclick="toggleBusPanel()">
         <span class="mode-icon">🚍</span> バス停から選択
       </button>
-      <!-- ⚡ 蛍光サイバーオレンジ仕様 ⚡ -->
       <button class="mode-btn btn-subway" onclick="toggleSubwayPanel()">
         <span class="mode-icon">🚇</span> 地下鉄から選択
       </button>
     </div>
 
-    <!-- 🎛 バス停ラジオボタン（トグル表示） -->
+    <!-- 🎛 バス停ラジオボタンパネル -->
     <div class="bus-stop-panel" id="bus-panel">
       <label class="radio-label">
-        <input type="radio" name="busStop" value="三軒屋" onchange="changeBusStop('三軒屋')"> 三軒屋
+        <input type="radio" name="transitStop" value="三軒屋" onchange="changeBusStop('三軒屋')"> 三軒屋
       </label>
       <label class="radio-label">
-        <input type="radio" name="busStop" value="次郎丸" onchange="changeBusStop('次郎丸')"> 次郎丸
+        <input type="radio" name="transitStop" value="次郎丸" onchange="changeBusStop('次郎丸')"> 次郎丸
       </label>
     </div>
 
-    <!-- 💡 長方形枠のタイトル ＋ 閉じるボタン -->
+    <!-- 🚇 地下鉄駅ラジオボタンパネル -->
+    <div class="subway-stop-panel" id="subway-panel">
+      <label class="radio-label">
+        <input type="radio" name="transitStop" value="次郎丸駅" onchange="changeSubwayStop('次郎丸駅')"> 次郎丸駅
+      </label>
+      <label class="radio-label">
+        <input type="radio" name="transitStop" value="橋本駅" onchange="changeSubwayStop('橋本駅')"> 橋本駅
+      </label>
+    </div>
+
+    <!-- 💡 区間タイトル ＋ 閉じるボタン -->
     <div class="sub-title" id="route-title">
       <span id="route-text"></span>
       <button class="close-btn" onclick="resetToInitialState()" title="閉じる">✕</button>
@@ -318,26 +360,37 @@
   </div>
 
   <script>
+    let currentMode = ''; // 'bus' または 'subway'
     let isStopSelected = false;
     let currentSelectedStop = '';
 
     function toggleBusPanel() {
-      const panel = document.getElementById('bus-panel');
-      panel.classList.toggle('active');
+      const busPanel = document.getElementById('bus-panel');
+      const subwayPanel = document.getElementById('subway-panel');
+      subwayPanel.classList.remove('active');
+      busPanel.classList.toggle('active');
     }
 
     function toggleSubwayPanel() {
-      // 地下鉄ボタンが押されたときの処理
+      const busPanel = document.getElementById('bus-panel');
+      const subwayPanel = document.getElementById('subway-panel');
+      busPanel.classList.remove('active');
+      subwayPanel.classList.toggle('active');
     }
 
     function changeBusStop(name) {
+      currentMode = 'bus';
       isStopSelected = true;
       currentSelectedStop = name;
+      
       const title = document.getElementById('route-title');
       const text = document.getElementById('route-text');
+      const btn = document.getElementById('update-btn');
+
+      title.className = 'sub-title';
+      btn.className = 'btn';
       title.style.display = 'block';
 
-      /* 💡 三軒屋選択時は「三軒屋 ➔ 次郎丸駅前」、次郎丸選択時は元の「次郎丸 ➔ 三軒屋」を表示 */
       if (name === '三軒屋') {
         text.innerText = '三軒屋 ➔ 次郎丸駅前';
       } else {
@@ -346,14 +399,37 @@
       updateSchedule();
     }
 
+    function changeSubwayStop(name) {
+      currentMode = 'subway';
+      isStopSelected = true;
+      currentSelectedStop = name;
+
+      const title = document.getElementById('route-title');
+      const text = document.getElementById('route-text');
+      const btn = document.getElementById('update-btn');
+
+      // 地下鉄用のオレンジテーマに切り替え
+      title.className = 'sub-title subway-theme';
+      btn.className = 'btn subway-theme';
+      title.style.display = 'block';
+
+      text.innerText = `${name} ➔ 七隈線`;
+      updateSchedule();
+    }
+
     function resetToInitialState() {
+      currentMode = '';
       isStopSelected = false;
       currentSelectedStop = '';
+      
       document.getElementById('route-title').style.display = 'none';
+      document.getElementById('bus-panel').classList.remove('active');
+      document.getElementById('subway-panel').classList.remove('active');
+      
+      const btn = document.getElementById('update-btn');
+      btn.className = 'btn';
 
-      const panel = document.getElementById('bus-panel');
-      panel.classList.remove('active');
-      const radios = document.getElementsByName('busStop');
+      const radios = document.getElementsByName('transitStop');
       radios.forEach(radio => radio.checked = false);
 
       document.getElementById('results').innerHTML = '';
@@ -381,36 +457,29 @@
       const day = date.getDate();
       const dayOfWeek = date.getDay();
 
-      // ハッピーマンデー計算補助（第N月曜日かチェック）
       const isNthMonday = (n) => dayOfWeek === 1 && Math.ceil(day / 7) === n;
-
-      // 春分・秋分の日計算（1980〜2099年対応の概算式）
       const getShunbun = (y) => Math.floor(20.8431 + 0.242194 * (y - 1980) - Math.floor((y - 1980) / 4));
       const getShuubun = (y) => Math.floor(23.2488 + 0.242194 * (y - 1980) - Math.floor((y - 1980) / 4));
 
-      // 固定祝日
-      if (month === 1 && day === 1) return true;  // 元日
-      if (month === 2 && day === 11) return true; // 建国記念の日
-      if (month === 2 && day === 23) return true; // 天皇誕生日
-      if (month === 4 && day === 29) return true; // 昭和の日
-      if (month === 5 && day === 3) return true;  // 憲法記念日
-      if (month === 5 && day === 4) return true;  // みどもの日
-      if (month === 5 && day === 5) return true;  // こどもの日
-      if (month === 8 && day === 11) return true; // 山の日
-      if (month === 11 && day === 3) return true; // 文化の日
-      if (month === 11 && day === 23) return true; // 勤労感謝の日
+      if (month === 1 && day === 1) return true;
+      if (month === 2 && day === 11) return true;
+      if (month === 2 && day === 23) return true;
+      if (month === 4 && day === 29) return true;
+      if (month === 5 && day === 3) return true;
+      if (month === 5 && day === 4) return true;
+      if (month === 5 && day === 5) return true;
+      if (month === 8 && day === 11) return true;
+      if (month === 11 && day === 3) return true;
+      if (month === 11 && day === 23) return true;
 
-      // ハッピーマンデー
-      if (month === 1 && isNthMonday(2)) return true;  // 成人の日
-      if (month === 7 && isNthMonday(3)) return true;  // 海の日
-      if (month === 9 && isNthMonday(3)) return true;  // 敬老の日
-      if (month === 10 && isNthMonday(2)) return true; // スポーツの日
+      if (month === 1 && isNthMonday(2)) return true;
+      if (month === 7 && isNthMonday(3)) return true;
+      if (month === 9 && isNthMonday(3)) return true;
+      if (month === 10 && isNthMonday(2)) return true;
 
-      // 天文学的祝日（春分・秋分）
       if (month === 3 && day === getShunbun(year)) return true;
       if (month === 9 && day === getShuubun(year)) return true;
 
-      // 振替休日判定（前日が日曜日かつ祝日の場合）
       const yesterday = new Date(date);
       yesterday.setDate(date.getDate() - 1);
       if (dayOfWeek === 1 && isJapaneseHoliday(yesterday)) return true;
@@ -418,10 +487,8 @@
       return false;
     }
 
-    /* 📅 曜日・祝日に合わせたJSONファイル選択 📅 */
-    function getScheduleJsonPath(now) {
-      const dayOfWeek = now.getDay(); // 0: 日曜日, 6: 土曜日
-
+    function getBusJsonPath(now) {
+      const dayOfWeek = now.getDay();
       if (dayOfWeek === 0 || isJapaneseHoliday(now)) {
         return './bus_holiday.json';
       } else if (dayOfWeek === 6) {
@@ -439,23 +506,32 @@
         return;
       }
 
+      const container = document.getElementById('results');
+
       try {
         const now = new Date();
-        const jsonPath = getScheduleJsonPath(now);
-        const response = await fetch(`${jsonPath}?v=${Date.now()}`, { cache: 'no-store' });
-        const busData = await response.json();
-
         const currentHours = String(now.getHours()).padStart(2, '0');
         const currentMins = String(now.getMinutes()).padStart(2, '0');
         const currentTimeStr = `${currentHours}:${currentMins}`;
         const currentTotalMins = now.getHours() * 60 + now.getMinutes();
 
-        const upcoming = busData
-          .filter(bus => bus.from === currentSelectedStop && bus.departure >= currentTimeStr)
+        let targetData = [];
+
+        if (currentMode === 'bus') {
+          const jsonPath = getBusJsonPath(now);
+          const response = await fetch(`${jsonPath}?v=${Date.now()}`, { cache: 'no-store' });
+          targetData = await response.json();
+        } else if (currentMode === 'subway') {
+          // 地下鉄は平日用 JSON を読み込み
+          const response = await fetch(`./subway_weekday.json?v=${Date.now()}`, { cache: 'no-store' });
+          targetData = await response.json();
+        }
+
+        // 共通のフィルタリング・並び替え処理（出発駅が一致し、現在時刻以降のもの）
+        const upcoming = targetData
+          .filter(item => item.from === currentSelectedStop && item.departure >= currentTimeStr)
           .sort((a, b) => a.departure.localeCompare(b.departure))
           .slice(0, 3);
-
-        const container = document.getElementById('results');
 
         if (upcoming.length === 0) {
           container.innerHTML = '<div class="empty">本日の該当便はすべて終了しました。</div>';
@@ -464,12 +540,11 @@
 
         const candidateNames = ['第①候補', '第②候補', '第③候補'];
 
-        container.innerHTML = upcoming.map((bus, index) => {
-          const [h, m] = bus.departure.split(':').map(Number);
-          const busTotalMins = h * 60 + m;
-          const diffMins = busTotalMins - currentTotalMins;
+        container.innerHTML = upcoming.map((item, index) => {
+          const [h, m] = item.departure.split(':').map(Number);
+          const itemTotalMins = h * 60 + m;
+          const diffMins = itemTotalMins - currentTotalMins;
 
-          // 💡 60分（1時間）以上の場合の表記切り替えロジック
           let timeText = '';
           if (diffMins >= 60) {
             const hours = Math.floor(diffMins / 60);
@@ -483,26 +558,34 @@
             timeText = `あと ${diffMins} 分`;
           }
 
+          // バッジや表示の切り分け（バスなら系統番号、地下鉄なら到着時刻を表示）
+          let badgeHtml = '';
+          if (currentMode === 'bus') {
+            badgeHtml = `<span class="route-badge">${item.route}</span> 行先: ${item.destination}`;
+          } else {
+            badgeHtml = `行先: ${item.destination}行 (到着: ${item.arrival})`;
+          }
+
           return `
-            <div class="card rank-${index}">
-              <!-- 💡 第①候補 / 第②候補 / 第③候補 表示 -->
+            <div class="card">
               <div class="candidate-tag cand-${index}">${candidateNames[index]}</div>
               <div class="card-header">
                 <div class="time-box">
                   <span class="rank-mark mark-${index}"></span>
-                  <span class="time">${bus.departure}</span>
-                  <span class="arrow">➔ ${bus.arrival}着</span>
+                  <span class="time">${item.departure}</span>
+                  ${currentMode === 'bus' ? `<span class="arrow">➔ ${item.arrival}着</span>` : ''}
                 </div>
                 <span class="mins badge-${index}">${timeText}</span>
               </div>
               <div class="details">
-                <span class="route-badge">${bus.route}</span> 行先: ${bus.destination}
+                ${badgeHtml}
               </div>
             </div>
           `;
         }).join('');
+
       } catch (e) {
-        document.getElementById('results').innerHTML = '<div class="empty">データの読み込みに失敗しました。</div>';
+        container.innerHTML = '<div class="empty">データの読み込みに失敗しました。</div>';
       }
     }
 
