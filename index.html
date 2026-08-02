@@ -306,6 +306,63 @@
       btn.innerText = `${month}月${date}日(${day}) ${hours}:${mins}:${secs}`;
     }
 
+    /* 🇯🇵 オフライン用・日本の祝日判定ロジック 🇯🇵 */
+    function isJapaneseHoliday(date) {
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+      const day = date.getDate();
+      const dayOfWeek = date.getDay();
+
+      // ハッピーマンデー計算補助（第N月曜日かチェック）
+      const isNthMonday = (n) => dayOfWeek === 1 && Math.ceil(day / 7) === n;
+
+      // 春分・秋分の日計算（1980〜2099年対応の概算式）
+      const getShunbun = (y) => Math.floor(20.8431 + 0.242194 * (y - 1980) - Math.floor((y - 1980) / 4));
+      const getShuubun = (y) => Math.floor(23.2488 + 0.242194 * (y - 1980) - Math.floor((y - 1980) / 4));
+
+      // 固定祝日
+      if (month === 1 && day === 1) return true;  // 元日
+      if (month === 2 && day === 11) return true; // 建国記念の日
+      if (month === 2 && day === 23) return true; // 天皇誕生日
+      if (month === 4 && day === 29) return true; // 昭和の日
+      if (month === 5 && day === 3) return true;  // 憲法記念日
+      if (month === 5 && day === 4) return true;  // みどもの日
+      if (month === 5 && day === 5) return true;  // こどもの日
+      if (month === 8 && day === 11) return true; // 山の日
+      if (month === 11 && day === 3) return true; // 文化の日
+      if (month === 11 && day === 23) return true; // 勤労感謝の日
+
+      // ハッピーマンデー
+      if (month === 1 && isNthMonday(2)) return true;  // 成人の日
+      if (month === 7 && isNthMonday(3)) return true;  // 海の日
+      if (month === 9 && isNthMonday(3)) return true;  // 敬老の日
+      if (month === 10 && isNthMonday(2)) return true; // スポーツの日
+
+      // 天文学的祝日（春分・秋分）
+      if (month === 3 && day === getShunbun(year)) return true;
+      if (month === 9 && day === getShuubun(year)) return true;
+
+      // 振替休日判定（前日が日曜日かつ祝日の場合）
+      const yesterday = new Date(date);
+      yesterday.setDate(date.getDate() - 1);
+      if (dayOfWeek === 1 && isJapaneseHoliday(yesterday)) return true;
+
+      return false;
+    }
+
+    /* 📅 曜日・祝日に合わせたJSONファイル選択 📅 */
+    function getScheduleJsonPath(now) {
+      const dayOfWeek = now.getDay(); // 0: 日曜日, 6: 土曜日
+
+      if (dayOfWeek === 0 || isJapaneseHoliday(now)) {
+        return './bus_holiday.json';
+      } else if (dayOfWeek === 6) {
+        return './bus_saturday.json';
+      } else {
+        return './bus_weekday.json';
+      }
+    }
+
     async function updateSchedule() {
       updateClock();
 
@@ -315,10 +372,10 @@
       }
 
       try {
-        const response = await fetch('./bus_weekday.json?v=' + Date.now(), { cache: 'no-store' });
-        const busData = await response.json();
-
         const now = new Date();
+        const jsonPath = getScheduleJsonPath(now);
+        const response = await fetch(`${jsonPath}?v=${Date.now()}`, { cache: 'no-store' });
+        const busData = await response.json();
 
         const currentHours = String(now.getHours()).padStart(2, '0');
         const currentMins = String(now.getMinutes()).padStart(2, '0');
