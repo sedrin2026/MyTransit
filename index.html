@@ -315,7 +315,7 @@
       }
 
       try {
-        const response = await fetch('./bus.json?v=' + Date.now(), { cache: 'no-store' });
+        const response = await fetch('./bus_weekday.json?v=' + Date.now(), { cache: 'no-store' });
         const busData = await response.json();
 
         const now = new Date();
