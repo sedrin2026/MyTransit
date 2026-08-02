@@ -35,14 +35,19 @@
       gap: 10px;
     }
 
-    /* 💡 サブタイトル（Transportation app） */
+    /* 💡 サブタイトル（Transportation app）を横細長い楕円形で囲み、タイトルへ近づける */
     .app-subtitle {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #5f6368;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #555555;
       letter-spacing: 1px;
-      margin-top: 2px;
+      margin-top: -2px; /* タイトルに少し近づける */
       text-transform: uppercase;
+      border: 1.5px solid #d0d7de;
+      border-radius: 20px; /* 横細長い楕円形状 */
+      padding: 2px 14px;
+      background-color: #f8f9fa;
+      display: inline-block;
     }
 
     /* 🎨 Googleカラー & 白縁取りタイトルデザイン */
@@ -99,9 +104,11 @@
       transition: all 0.2s ease;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     }
+    
+    /* 🍊 薄いオレンジ仕様 🍊 */
     .btn-bus {
-      background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
-      box-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
+      background: linear-gradient(135deg, #ffc285 0%, #ff9e59 100%);
+      box-shadow: 0 0 12px rgba(255, 170, 100, 0.4);
     }
 
     /* 🌿 薄いモスグリーン仕様 🌿 */
@@ -131,7 +138,7 @@
       border-radius: 12px;
       margin-bottom: 15px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      border: 1px solid #00f2fe;
+      border: 1px solid #ff9e59;
     }
     .bus-stop-panel.active {
       display: flex;
@@ -165,7 +172,7 @@
       gap: 6px;
     }
     .bus-stop-panel input[type="radio"] {
-      accent-color: #0052d4;
+      accent-color: #ff8c32;
       transform: scale(1.2);
     }
     .subway-stop-panel input[type="radio"] {
@@ -179,13 +186,13 @@
       font-size: 1.1rem;
       font-weight: bold;
       text-align: center;
-      color: #0052d4;
+      color: #d96b00;
       background: #ffffff;
-      border: 2px solid #00d2ff;
+      border: 2px solid #ffb37e;
       border-radius: 8px;
       padding: 10px 40px 10px 10px;
       margin: 15px 0;
-      box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+      box-shadow: 0 0 10px rgba(255, 179, 126, 0.25);
       display: none;
     }
     .sub-title.subway-theme {
@@ -225,11 +232,11 @@
       font-size: 1.15rem; 
       font-weight: 800; 
       color: #ffffff; 
-      background: linear-gradient(135deg, #00d2ff 0%, #0052d4 100%); 
+      background: linear-gradient(135deg, #ffc285 0%, #ff8c32 100%); 
       border: none; 
       border-radius: 12px; 
       cursor: pointer; 
-      box-shadow: 0 0 15px rgba(0, 210, 255, 0.5); 
+      box-shadow: 0 0 15px rgba(255, 140, 50, 0.35); 
       transition: all 0.2s ease;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
       letter-spacing: 0.5px;
@@ -252,7 +259,7 @@
       border: 1px solid #eee;
     }
 
-    /* 💡 第①候補・第②候補・第③候補 バッジデザイン */
+    /* 💡 第①候補〜第⑤候補 バッジデザイン */
     .candidate-tag {
       display: inline-block;
       font-size: 0.72rem;
@@ -264,6 +271,8 @@
     .cand-0 { background-color: #ffeef0; color: #dc3545; border: 1px solid #f5c6cb; }
     .cand-1 { background-color: #eafaf1; color: #28a745; border: 1px solid #c3e6cb; }
     .cand-2 { background-color: #edf5ff; color: #007bff; border: 1px solid #b8daff; }
+    .cand-3 { background-color: #fff9e6; color: #d97706; border: 1px solid #fde68a; }
+    .cand-4 { background-color: #f3e8ff; color: #7c3aed; border: 1px solid #ddd6fe; }
 
     .card-header { display: flex; justify-content: space-between; align-items: center; }
     .time-box { display: flex; align-items: center; gap: 8px; }
@@ -271,6 +280,8 @@
     .mark-0 { background: #dc3545; }
     .mark-1 { background: #28a745; }
     .mark-2 { background: #007bff; }
+    .mark-3 { background: #d97706; }
+    .mark-4 { background: #7c3aed; }
 
     .time { font-size: 1.5rem; font-weight: bold; color: #111; }
     .arrow { color: #888; font-size: 0.9rem; }
@@ -279,11 +290,13 @@
     .badge-0 { background: #f8d7da; color: #721c24; }
     .badge-1 { background: #d4edda; color: #155724; }
     .badge-2 { background: #cce5ff; color: #004085; }
+    .badge-3 { background: #fef3c7; color: #92400e; }
+    .badge-4 { background: #ede9fe; color: #5b21b6; }
 
     .details { font-size: 0.85rem; color: #666; margin-top: 10px; }
     
     .route-badge { 
-      background: #00d2ff; 
+      background: #ff8c32; 
       padding: 2px 6px; 
       border-radius: 4px; 
       font-weight: bold; 
@@ -531,12 +544,12 @@
           const response = await fetch(`${jsonPath}?v=${Date.now()}`, { cache: 'no-store' });
           targetData = await response.json();
         } else if (currentMode === 'subway') {
-          // 💡 地下鉄も自動判定されたファイルから読み込み
           const jsonPath = getSubwayJsonPath(now);
           const response = await fetch(`${jsonPath}?v=${Date.now()}`, { cache: 'no-store' });
           targetData = await response.json();
         }
 
+        // 💡 候補数を 5 件に増やして取得
         const upcoming = targetData
           .filter(item => item.from === currentSelectedStop)
           .map(item => {
@@ -546,14 +559,14 @@
           })
           .filter(item => item.itemTotalMins >= currentTotalMins)
           .sort((a, b) => a.itemTotalMins - b.itemTotalMins)
-          .slice(0, 3);
+          .slice(0, 5);
 
         if (upcoming.length === 0) {
           container.innerHTML = '<div class="empty">本日の該当便はすべて終了しました。</div>';
           return;
         }
 
-        const candidateNames = ['第①候補', '第②候補', '第③候補'];
+        const candidateNames = ['第①候補', '第②候補', '第③候補', '第④候補', '第⑤候補'];
 
         container.innerHTML = upcoming.map((item, index) => {
           const diffMins = item.itemTotalMins - currentTotalMins;
