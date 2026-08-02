@@ -31,7 +31,7 @@
       display: flex;
       gap: 12px;
       justify-content: center;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
     .mode-btn {
       flex: 1;
@@ -49,12 +49,12 @@
       transition: all 0.2s ease;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     }
-    /* バスボタン（ネオンシアン $\rightarrow$ ブルー） */
+    /* バスボタン */
     .btn-bus {
       background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
       box-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
     }
-    /* 地下鉄ボタン（ネオンパープル $\rightarrow$ ピンク） */
+    /* 地下鉄ボタン */
     .btn-subway {
       background: linear-gradient(135deg, #b224ef 0%, #7579ff 100%);
       box-shadow: 0 0 12px rgba(178, 36, 239, 0.4);
@@ -63,15 +63,42 @@
       transform: scale(0.96);
       opacity: 0.9;
     }
-    .mode-icon {
-      font-size: 1.1rem;
+    .mode-icon { font-size: 1.1rem; }
+
+    /* 🎛 バス停ラジオボタンパネル */
+    .bus-stop-panel {
+      display: none; /* 初期状態は非表示 */
+      background: #ffffff;
+      padding: 12px 16px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border: 1px solid #00f2fe;
+    }
+    .bus-stop-panel.active {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .radio-label {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #2c3e50;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .radio-label input[type="radio"] {
+      accent-color: #004085;
+      transform: scale(1.2);
     }
 
-    /* ⚡ 手動更新ボタン ⚡ */
+    /* ⚡ リアルタイム日時入り更新ボタン ⚡ */
     .btn { 
       width: 100%; 
       padding: 14px; 
-      font-size: 1rem; 
+      font-size: 0.95rem; 
       font-weight: bold; 
       color: #ffffff; 
       background: linear-gradient(135deg, #00d2ff 0%, #0052d4 100%); 
@@ -119,11 +146,11 @@
   <div class="container">
     <!-- トップタイトル -->
     <div class="app-title">MY TRANSIT 🚌 🚇</div>
-    <div class="sub-title">三軒屋 ➔ 次郎丸駅前</div>
+    <div class="sub-title" id="route-title">三軒屋 ➔ 次郎丸駅前</div>
 
     <!-- サイバーモード選択ボタン -->
     <div class="mode-select-container">
-      <button class="mode-btn btn-bus">
+      <button class="mode-btn btn-bus" onclick="toggleBusPanel()">
         <span class="mode-icon">🚌</span> バス停から選択
       </button>
       <button class="mode-btn btn-subway">
@@ -131,13 +158,55 @@
       </button>
     </div>
 
-    <button class="btn" onclick="updateSchedule()">🔄 手動で更新</button>
+    <!-- 🎛 バス停ラジオボタン（トグル表示） -->
+    <div class="bus-stop-panel" id="bus-panel">
+      <label class="radio-label">
+        <input type="radio" name="busStop" value="三軒屋" checked onchange="changeBusStop('三軒屋')"> 三軒屋
+      </label>
+      <label class="radio-label">
+        <input type="radio" name="busStop" value="次郎丸" onchange="changeBusStop('次郎丸')"> 次郎丸
+      </label>
+    </div>
+
+    <!-- ⚡ リアルタイム日時表示ボタン ⚡ -->
+    <button class="btn" id="update-btn" onclick="updateSchedule()">🔄 --/-- --:--:-- 更新</button>
 
     <div id="results" class="results"></div>
   </div>
 
   <script>
+    // 💡 バス停切り替え用パネルのトグル表示
+    function toggleBusPanel() {
+      const panel = document.getElementById('bus-panel');
+      panel.classList.toggle('active');
+    }
+
+    // 💡 ラジオボタン選択時の見出し変更
+    function changeBusStop(name) {
+      const title = document.getElementById('route-title');
+      if (name === '三軒屋') {
+        title.innerText = '三軒屋 ➔ 次郎丸駅前';
+      } else {
+        title.innerText = '次郎丸駅前 ➔ 天神・博多方面';
+      }
+      updateSchedule();
+    }
+
+    // 💡 リアルタイム時計（秒単位で更新）
+    function updateClock() {
+      const now = new Date();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const date = String(now.getDate()).padStart(2, '0');
+      const hours = String(now.getHours()).padStart(2, '0');
+      const mins = String(now.getMinutes()).padStart(2, '0');
+      const secs = String(now.getSeconds()).padStart(2, '0');
+
+      const btn = document.getElementById('update-btn');
+      btn.innerText = `🔄 ${month}/${date} ${hours}:${mins}:${secs} 更新`;
+    }
+
     async function updateSchedule() {
+      updateClock(); // ボタン日時を即時更新
       try {
         const response = await fetch('./bus.json');
         const busData = await response.json();
@@ -188,6 +257,8 @@
     }
 
     updateSchedule();
+    // 1秒ごとに時計を動かし、1分（60000ms）ごとに時刻表データを自動更新
+    setInterval(updateClock, 1000);
     setInterval(updateSchedule, 60000);
   </script>
 </body>
