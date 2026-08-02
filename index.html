@@ -316,13 +316,7 @@
         const response = await fetch('./bus.json?v=' + Date.now(), { cache: 'no-store' });
         const busData = await response.json();
 
-        // 🧪 テスト用時刻設定（後で本番に戻す箇所）
         const now = new Date();
-        now.setHours(10, 0, 0, 0); // テスト用に10:00へ固定
-        // --------------------------------------------------
-        // 【本番用に戻す場合】
-        // 上の now.setHours(10, 0, 0, 0); を削除またはコメントアウト（// を先頭に付与）してください。
-        // --------------------------------------------------
 
         const currentHours = String(now.getHours()).padStart(2, '0');
         const currentMins = String(now.getMinutes()).padStart(2, '0');
