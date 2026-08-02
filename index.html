@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- 💡 キャッシュを無効化して常に最新状態を読み込ませる設定 -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
   <title>MY TRANSIT 🚌 🚇</title>
   <style>
     * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
@@ -26,7 +32,7 @@
       color: #0052d4;
       margin-bottom: 15px;
       font-weight: bold;
-      display: none; /* 初期状態は隠す */
+      display: none;
     }
 
     /* ⚡ サイバーチック・モード選択ナビゲーション ⚡ */
@@ -53,12 +59,10 @@
       transition: all 0.2s ease;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     }
-    /* バスボタン */
     .btn-bus {
       background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
       box-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
     }
-    /* 地下鉄ボタン */
     .btn-subway {
       background: linear-gradient(135deg, #b224ef 0%, #7579ff 100%);
       box-shadow: 0 0 12px rgba(178, 36, 239, 0.4);
@@ -71,7 +75,7 @@
 
     /* 🎛 バス停ラジオボタンパネル */
     .bus-stop-panel {
-      display: none; /* 初期状態は非表示 */
+      display: none;
       background: #ffffff;
       padding: 12px 16px;
       border-radius: 12px;
@@ -98,7 +102,7 @@
       transform: scale(1.2);
     }
 
-    /* ⚡ リアルタイム日時表示ボタン（曜日入り） ⚡ */
+    /* ⚡ リアルタイム日時表示ボタン ⚡ */
     .btn { 
       width: 100%; 
       padding: 16px; 
@@ -122,7 +126,6 @@
     .results { margin-top: 20px; }
     .card { background: white; padding: 16px; border-radius: 12px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
     
-    /* 順位ごとの色設定 */
     .rank-0 { border-left: 6px solid #dc3545; }
     .rank-1 { border-left: 6px solid #28a745; }
     .rank-2 { border-left: 6px solid #007bff; }
@@ -149,13 +152,9 @@
 <body>
 
   <div class="container">
-    <!-- トップタイトル -->
     <div class="app-title">MY TRANSIT 🚌 🚇</div>
-    
-    <!-- バス停選択時のみ表示される区間タイトル -->
     <div class="sub-title" id="route-title"></div>
 
-    <!-- サイバーモード選択ボタン -->
     <div class="mode-select-container">
       <button class="mode-btn btn-bus" onclick="toggleBusPanel()">
         <span class="mode-icon">🚌</span> バス停から選択
@@ -165,7 +164,6 @@
       </button>
     </div>
 
-    <!-- 🎛 バス停ラジオボタン（トグル表示） -->
     <div class="bus-stop-panel" id="bus-panel">
       <label class="radio-label">
         <input type="radio" name="busStop" value="三軒屋" onchange="changeBusStop('三軒屋')"> 三軒屋
@@ -175,7 +173,6 @@
       </label>
     </div>
 
-    <!-- ⚡ リアルタイム日時表示ボタン（曜日入り） ⚡ -->
     <button class="btn" id="update-btn" onclick="updateSchedule()">--月--日(--) --:--:-- 更新</button>
 
     <div id="results" class="results"></div>
@@ -199,13 +196,10 @@
       updateSchedule();
     }
 
-    // 💡 リアルタイム時計（曜日を追加）
     function updateClock() {
       const now = new Date();
       const month = now.getMonth() + 1;
       const date = now.getDate();
-      
-      // 曜日リスト
       const dayList = ['日', '月', '火', '水', '木', '金', '土'];
       const day = dayList[now.getDay()];
 
@@ -220,7 +214,8 @@
     async function updateSchedule() {
       updateClock();
       try {
-        const response = await fetch('./bus.json');
+        // 💡 読み込み時にURLの末尾へ現在時刻（タイムスタンプ）を付けてキャッシュを強制回避
+        const response = await fetch('./bus.json?v=' + Date.now());
         const busData = await response.json();
 
         const now = new Date();
