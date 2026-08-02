@@ -1,709 +1,369 @@
-[
-  {
-    "departure": "08:05",
-    "arrival": "08:09",
-    "route": "2",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "08:18",
-    "arrival": "08:22",
-    "route": "19",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "08:26",
-    "arrival": "08:30",
-    "route": "201",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "08:35",
-    "arrival": "08:39",
-    "route": "2",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "08:50",
-    "arrival": "08:54",
-    "route": "201",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "08:52",
-    "arrival": "08:56",
-    "route": "19",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "09:05",
-    "arrival": "09:09",
-    "route": "2",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "09:20",
-    "arrival": "09:24",
-    "route": "201",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "09:23",
-    "arrival": "09:27",
-    "route": "19",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "09:35",
-    "arrival": "09:39",
-    "route": "2",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "09:50",
-    "arrival": "09:54",
-    "route": "201",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "09:54",
-    "arrival": "09:58",
-    "route": "19",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "10:05",
-    "arrival": "10:09",
-    "route": "2",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "10:20",
-    "arrival": "10:24",
-    "route": "201",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "10:25",
-    "arrival": "10:29",
-    "route": "19",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "10:35",
-    "arrival": "10:39",
-    "route": "2",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "10:50",
-    "arrival": "10:54",
-    "route": "201",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "10:56",
-    "arrival": "11:00",
-    "route": "19",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "11:05",
-    "arrival": "11:09",
-    "route": "2",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "11:20",
-    "arrival": "11:24",
-    "route": "201",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "11:27",
-    "arrival": "11:31",
-    "route": "19",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "11:35",
-    "arrival": "11:39",
-    "route": "2",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "11:50",
-    "arrival": "11:54",
-    "route": "201",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "11:58",
-    "arrival": "12:02",
-    "route": "19",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "12:05",
-    "arrival": "12:10",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "12:10",
-    "arrival": "12:15",
-    "route": "201",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "12:12",
-    "arrival": "12:17",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "12:21",
-    "arrival": "12:26",
-    "route": "19",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "12:42",
-    "arrival": "12:47",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "12:45",
-    "arrival": "12:50",
-    "route": "201",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "12:56",
-    "arrival": "13:01",
-    "route": "19",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "13:05",
-    "arrival": "13:10",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "13:22",
-    "arrival": "13:27",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "13:30",
-    "arrival": "13:35",
-    "route": "201",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "13:31",
-    "arrival": "13:36",
-    "route": "19",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "13:42",
-    "arrival": "13:47",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "13:55",
-    "arrival": "14:00",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "14:01",
-    "arrival": "14:06",
-    "route": "19",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "14:02",
-    "arrival": "14:07",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "14:10",
-    "arrival": "14:15",
-    "route": "201",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "14:29",
-    "arrival": "14:34",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "14:41",
-    "arrival": "14:46",
-    "route": "19",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "14:42",
-    "arrival": "14:47",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "14:50",
-    "arrival": "14:55",
-    "route": "201",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "15:03",
-    "arrival": "15:08",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "15:21",
-    "arrival": "15:26",
-    "route": "19",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "15:22",
-    "arrival": "15:27",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "15:35",
-    "arrival": "15:40",
-    "route": "201",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "15:42",
-    "arrival": "15:47",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "15:56",
-    "arrival": "16:01",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "16:01",
-    "arrival": "16:06",
-    "route": "19",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "16:05",
-    "arrival": "16:10",
-    "route": "201",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "16:22",
-    "arrival": "16:27",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "16:35",
-    "arrival": "16:40",
-    "route": "201",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "16:36",
-    "arrival": "16:41",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "16:41",
-    "arrival": "16:46",
-    "route": "19",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "17:08",
-    "arrival": "17:13",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "17:21",
-    "arrival": "17:26",
-    "route": "19",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "17:25",
-    "arrival": "17:30",
-    "route": "201",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "17:28",
-    "arrival": "17:33",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "17:38",
-    "arrival": "17:43",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "17:44",
-    "arrival": "17:49",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "17:59",
-    "arrival": "18:05",
-    "route": "19",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "18:01",
-    "arrival": "18:06",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "18:09",
-    "arrival": "18:14",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "18:10",
-    "arrival": "18:15",
-    "route": "201",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "18:15",
-    "arrival": "18:20",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "18:23",
-    "arrival": "18:29",
-    "route": "19",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "18:29",
-    "arrival": "18:34",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "18:35",
-    "arrival": "18:40",
-    "route": "201",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "18:45",
-    "arrival": "18:50",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "18:48",
-    "arrival": "18:54",
-    "route": "19",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "19:05",
-    "arrival": "19:10",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "19:10",
-    "arrival": "19:15",
-    "route": "201",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "19:12",
-    "arrival": "19:17",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "19:18",
-    "arrival": "19:24",
-    "route": "19",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "19:30",
-    "arrival": "19:35",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "19:35",
-    "arrival": "19:40",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "19:40",
-    "arrival": "19:45",
-    "route": "201",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "19:47",
-    "arrival": "19:52",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "19:48",
-    "arrival": "19:54",
-    "route": "19",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "19:59",
-    "arrival": "20:04",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "20:08",
-    "arrival": "20:13",
-    "route": "201",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "20:11",
-    "arrival": "20:16",
-    "route": "19",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "20:14",
-    "arrival": "20:19",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "20:19",
-    "arrival": "20:24",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "20:33",
-    "arrival": "20:38",
-    "route": "201",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "20:39",
-    "arrival": "20:44",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "20:56",
-    "arrival": "21:01",
-    "route": "19",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "21:10",
-    "arrival": "21:15",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "21:13",
-    "arrival": "21:18",
-    "route": "201",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "21:29",
-    "arrival": "21:34",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "21:31",
-    "arrival": "21:36",
-    "route": "19",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "21:47",
-    "arrival": "21:52",
-    "route": "201",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "22:04",
-    "arrival": "22:09",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "22:05",
-    "arrival": "22:10",
-    "route": "19",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "22:48",
-    "arrival": "22:53",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "22:52",
-    "arrival": "22:57",
-    "route": "201",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "23:16",
-    "arrival": "23:21",
-    "route": "19",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "23:43",
-    "arrival": "23:48",
-    "route": "2",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  },
-  {
-    "departure": "23:52",
-    "arrival": "23:57",
-    "route": "201",
-    "destination": "三軒屋",
-    "from": "次郎丸"
-  }
-]
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- 💡 キャッシュ無効化設定 -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <title>MY TRANSIT 🚌 🚇</title>
+  <style>
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: #f4f6f8; margin: 0; padding: 20px; color: #333; display: flex; justify-content: center; }
+    .container { max-width: 400px; width: 100%; }
+    
+    /* 📱 アプリタイトル（可愛くポップにデザイン！） */
+    .app-title {
+      font-size: 1.8rem;
+      font-weight: 900;
+      text-align: center;
+      margin: 10px 0 15px 0;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    /* 🎨 可愛らしいカラフルテキストデザイン */
+    .title-text {
+      font-family: "Fredoka", "M PLUS Rounded 1c", "ヒラギノ丸ゴ ProN", "Arial Rounded MT Bold", sans-serif;
+      background: linear-gradient(45deg, #ff416c, #ff4b2b, #ff8c00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 4px rgba(255, 75, 43, 0.25));
+    }
+
+    /* 🎨 ロゴ横の可愛いバスイラスト */
+    .header-bus-icon {
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    /* ⚡ サイバーチック・モード選択ナビゲーション ⚡ */
+    .mode-select-container {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 12px;
+      margin-top: 10px;
+    }
+    .mode-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 12px 8px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    .btn-bus {
+      background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
+    }
+
+    /* ⚡ 蛍光サイバーオレンジ仕様 ⚡ */
+    .btn-subway {
+      background: linear-gradient(135deg, #ff0055 0%, #ff5e00 50%, #ffb700 100%);
+      box-shadow: 0 0 14px rgba(255, 94, 0, 0.6);
+    }
+
+    .mode-btn:active {
+      transform: scale(0.96);
+      opacity: 0.9;
+    }
+
+    /* 🚍 アイコンの位置調整 */
+    .mode-icon { 
+      font-size: 1.15rem; 
+      display: inline-flex;
+      align-items: center;
+      transform: translateY(-1px);
+    }
+
+    /* 🎛 バス停ラジオボタンパネル */
+    .bus-stop-panel {
+      display: none;
+      background: #ffffff;
+      padding: 12px 16px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border: 1px solid #00f2fe;
+    }
+    .bus-stop-panel.active {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .radio-label {
+      font-size: 0.95rem;
+      font-weight: bold;
+      color: #2c3e50;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .radio-label input[type="radio"] {
+      accent-color: #0052d4;
+      transform: scale(1.2);
+    }
+
+    /* 💡 長方形枠の区間タイトル ＆ 閉じるボタン */
+    .sub-title {
+      position: relative;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-align: center;
+      color: #0052d4;
+      background: #ffffff;
+      border: 2px solid #00d2ff;
+      border-radius: 8px;
+      padding: 10px 40px 10px 10px;
+      margin: 15px 0;
+      box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+      display: none;
+    }
+    
+    .close-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #f0f4f8;
+      border: 1px solid #bcd;
+      color: #666;
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .close-btn:active {
+      background: #e0e0e0;
+      transform: translateY(-50%) scale(0.9);
+    }
+
+    /* ⚡ リアルタイム日時表示ボタン ⚡ */
+    .btn { 
+      width: 100%; 
+      padding: 16px; 
+      font-size: 1.15rem; 
+      font-weight: 800; 
+      color: #ffffff; 
+      background: linear-gradient(135deg, #00d2ff 0%, #0052d4 100%); 
+      border: none; 
+      border-radius: 12px; 
+      cursor: pointer; 
+      box-shadow: 0 0 15px rgba(0, 210, 255, 0.5); 
+      transition: all 0.2s ease;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      letter-spacing: 0.5px;
+    }
+    .btn:active { 
+      transform: scale(0.97); 
+      box-shadow: 0 0 8px rgba(0, 210, 255, 0.7); 
+    }
+
+    .results { margin-top: 20px; }
+    .card { background: white; padding: 16px; border-radius: 12px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    
+    .rank-0 { border-left: 6px solid #dc3545; }
+    .rank-1 { border-left: 6px solid #28a745; }
+    .rank-2 { border-left: 6px solid #007bff; }
+
+    .badge-0 { background: #f8d7da; color: #721c24; }
+    .badge-1 { background: #d4edda; color: #155724; }
+    .badge-2 { background: #cce5ff; color: #004085; }
+
+    .card-header { display: flex; justify-content: space-between; align-items: center; }
+    .time-box { display: flex; align-items: center; gap: 8px; }
+    .rank-mark { display: inline-block; width: 10px; height: 10px; border-radius: 50%; }
+    .mark-0 { background: #dc3545; }
+    .mark-1 { background: #28a745; }
+    .mark-2 { background: #007bff; }
+
+    .time { font-size: 1.5rem; font-weight: bold; color: #111; }
+    .arrow { color: #888; font-size: 0.9rem; }
+    .mins { font-size: 0.85rem; font-weight: bold; padding: 4px 8px; border-radius: 6px; }
+    .details { font-size: 0.85rem; color: #666; margin-top: 10px; }
+    .route-badge { background: #e9ecef; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #495057; }
+    .empty { text-align: center; color: #777; margin-top: 30px; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="app-title">
+      <img src="illust1772_thumb.gif" alt="バス" class="header-bus-icon">
+      <span class="title-text">MY TRANSIT</span>
+    </div>
+
+    <div class="mode-select-container">
+      <button class="mode-btn btn-bus" onclick="toggleBusPanel()">
+        <span class="mode-icon">🚍</span> バス停から選択
+      </button>
+      <!-- ⚡ 蛍光サイバーオレンジ仕様 ⚡ -->
+      <button class="mode-btn btn-subway" onclick="toggleSubwayPanel()">
+        <span class="mode-icon">🚇</span> 地下鉄から選択
+      </button>
+    </div>
+
+    <!-- 🎛 バス停ラジオボタン（トグル表示） -->
+    <div class="bus-stop-panel" id="bus-panel">
+      <label class="radio-label">
+        <input type="radio" name="busStop" value="三軒屋" onchange="changeBusStop('三軒屋')"> 三軒屋
+      </label>
+      <label class="radio-label">
+        <input type="radio" name="busStop" value="次郎丸" onchange="changeBusStop('次郎丸')"> 次郎丸
+      </label>
+    </div>
+
+    <!-- 💡 長方形枠のタイトル ＋ 閉じるボタン -->
+    <div class="sub-title" id="route-title">
+      <span id="route-text"></span>
+      <button class="close-btn" onclick="resetToInitialState()" title="閉じる">✕</button>
+    </div>
+
+    <!-- ⚡ リアルタイム日時表示ボタン ⚡ -->
+    <button class="btn" id="update-btn" onclick="updateSchedule()">--月--日(--) --:--:--</button>
+
+    <div id="results" class="results"></div>
+  </div>
+
+  <script>
+    let isStopSelected = false;
+    let currentSelectedStop = '';
+
+    function toggleBusPanel() {
+      const panel = document.getElementById('bus-panel');
+      panel.classList.toggle('active');
+    }
+
+    function toggleSubwayPanel() {
+      // 地下鉄ボタンが押されたときの処理
+    }
+
+    function changeBusStop(name) {
+      isStopSelected = true;
+      currentSelectedStop = name;
+      const title = document.getElementById('route-title');
+      const text = document.getElementById('route-text');
+      title.style.display = 'block';
+
+      if (name === '三軒屋') {
+        text.innerText = '三軒屋 ➔ 次郎丸';
+      } else {
+        text.innerText = '次郎丸 ➔ 三軒屋';
+      }
+      updateSchedule();
+    }
+
+    function resetToInitialState() {
+      isStopSelected = false;
+      currentSelectedStop = '';
+      document.getElementById('route-title').style.display = 'none';
+
+      const panel = document.getElementById('bus-panel');
+      panel.classList.remove('active');
+      const radios = document.getElementsByName('busStop');
+      radios.forEach(radio => radio.checked = false);
+
+      document.getElementById('results').innerHTML = '';
+    }
+
+    function updateClock() {
+      const now = new Date();
+      const month = now.getMonth() + 1;
+      const date = now.getDate();
+      const dayList = ['日', '月', '火', '水', '木', '金', '土'];
+      const day = dayList[now.getDay()];
+
+      const hours = String(now.getHours()).padStart(2, '0');
+      const mins = String(now.getMinutes()).padStart(2, '0');
+      const secs = String(now.getSeconds()).padStart(2, '0');
+
+      const btn = document.getElementById('update-btn');
+      btn.innerText = `${month}月${date}日(${day}) ${hours}:${mins}:${secs}`;
+    }
+
+    async function updateSchedule() {
+      updateClock();
+
+      if (!isStopSelected) {
+        document.getElementById('results').innerHTML = '';
+        return;
+      }
+
+      try {
+        const response = await fetch('./bus.json?v=' + Date.now(), { cache: 'no-store' });
+        const busData = await response.json();
+
+        const now = new Date();
+
+        const currentHours = String(now.getHours()).padStart(2, '0');
+        const currentMins = String(now.getMinutes()).padStart(2, '0');
+        const currentTimeStr = `${currentHours}:${currentMins}`;
+        const currentTotalMins = now.getHours() * 60 + now.getMinutes();
+
+        const upcoming = busData
+          .filter(bus => bus.from === currentSelectedStop && bus.departure >= currentTimeStr)
+          .sort((a, b) => a.departure.localeCompare(b.departure))
+          .slice(0, 3);
+
+        const container = document.getElementById('results');
+
+        if (upcoming.length === 0) {
+          container.innerHTML = '<div class="empty">本日の該当便はすべて終了しました。</div>';
+          return;
+        }
+
+        container.innerHTML = upcoming.map((bus, index) => {
+          const [h, m] = bus.departure.split(':').map(Number);
+          const busTotalMins = h * 60 + m;
+          const diffMins = busTotalMins - currentTotalMins;
+
+          return `
+            <div class="card rank-${index}">
+              <div class="card-header">
+                <div class="time-box">
+                  <span class="rank-mark mark-${index}"></span>
+                  <span class="time">${bus.departure}</span>
+                  <span class="arrow">➔ ${bus.arrival}着</span>
+                </div>
+                <span class="mins badge-${index}">あと ${diffMins} 分</span>
+              </div>
+              <div class="details">
+                <span class="route-badge">${bus.route}</span> 行先: ${bus.destination}
+              </div>
+            </div>
+          `;
+        }).join('');
+      } catch (e) {
+        document.getElementById('results').innerHTML = '<div class="empty">データの読み込みに失敗しました。</div>';
+      }
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+    setInterval(updateSchedule, 60000);
+  </script>
+</body>
+</html>
