@@ -340,6 +340,20 @@
           const busTotalMins = h * 60 + m;
           const diffMins = busTotalMins - currentTotalMins;
 
+          // 💡 60分（1時間）以上の場合の表記切り替えロジック
+          let timeText = '';
+          if (diffMins >= 60) {
+            const hours = Math.floor(diffMins / 60);
+            const remainingMins = diffMins % 60;
+            if (remainingMins === 0) {
+              timeText = `あと ${hours}時間`;
+            } else {
+              timeText = `あと ${hours}時間 ${remainingMins}分`;
+            }
+          } else {
+            timeText = `あと ${diffMins} 分`;
+          }
+
           return `
             <div class="card rank-${index}">
               <div class="card-header">
@@ -348,7 +362,7 @@
                   <span class="time">${bus.departure}</span>
                   <span class="arrow">➔ ${bus.arrival}着</span>
                 </div>
-                <span class="mins badge-${index}">あと ${diffMins} 分</span>
+                <span class="mins badge-${index}">${timeText}</span>
               </div>
               <div class="details">
                 <span class="route-badge">${bus.route}</span> 行先: ${bus.destination}
