@@ -220,7 +220,7 @@
       <button class="mode-btn btn-bus" onclick="toggleBusPanel()">
         <span class="mode-icon">🚍</span> バス停から選択
       </button>
-      <!-- ⚡ 蛍光サイバーオレンジボタン ⚡ -->
+      <!-- ⚡ 蛍光サイバーオレンジ仕様 ⚡ -->
       <button class="mode-btn btn-subway" onclick="toggleSubwayPanel()">
         <span class="mode-icon">🚇</span> 地下鉄から選択
       </button>
@@ -250,7 +250,7 @@
 
   <script>
     let isStopSelected = false;
-    let currentSelectedStop = ''; // 選択されたバス停名を保持
+    let currentSelectedStop = '';
 
     function toggleBusPanel() {
       const panel = document.getElementById('bus-panel');
@@ -263,7 +263,7 @@
 
     function changeBusStop(name) {
       isStopSelected = true;
-      currentSelectedStop = name; // 出発地を記録
+      currentSelectedStop = name;
       const title = document.getElementById('route-title');
       const text = document.getElementById('route-text');
       title.style.display = 'block';
@@ -313,17 +313,22 @@
       }
 
       try {
-        // キャッシュを無効化して bus.json を取得
         const response = await fetch('./bus.json?v=' + Date.now(), { cache: 'no-store' });
         const busData = await response.json();
 
+        // 🧪 テスト用時刻設定（後で本番に戻す箇所）
         const now = new Date();
+        now.setHours(10, 0, 0, 0); // テスト用に10:00へ固定
+        // --------------------------------------------------
+        // 【本番用に戻す場合】
+        // 上の now.setHours(10, 0, 0, 0); を削除またはコメントアウト（// を先頭に付与）してください。
+        // --------------------------------------------------
+
         const currentHours = String(now.getHours()).padStart(2, '0');
         const currentMins = String(now.getMinutes()).padStart(2, '0');
         const currentTimeStr = `${currentHours}:${currentMins}`;
         const currentTotalMins = now.getHours() * 60 + now.getMinutes();
 
-        // 💡 選択された出発地 (bus.from) かつ 現在時刻以降 の便をフィルタリング
         const upcoming = busData
           .filter(bus => bus.from === currentSelectedStop && bus.departure >= currentTimeStr)
           .sort((a, b) => a.departure.localeCompare(b.departure))
