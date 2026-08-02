@@ -75,7 +75,7 @@
       object-fit: contain;
     }
 
-    /* ⚡ サイバーチック・モード選択ナビゲーション ⚡ */
+    /* ⚡ ナビゲーションボタン設定 ⚡ */
     .mode-select-container {
       display: flex;
       gap: 12px;
@@ -104,10 +104,10 @@
       box-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
     }
 
-    /* ⚡ 蛍光サイバーオレンジ仕様 ⚡ */
+    /* 🌿 薄いモスグリーン仕様 🌿 */
     .btn-subway {
-      background: linear-gradient(135deg, #ff0055 0%, #ff5e00 50%, #ffb700 100%);
-      box-shadow: 0 0 14px rgba(255, 94, 0, 0.6);
+      background: linear-gradient(135deg, #a3b899 0%, #7d9670 100%);
+      box-shadow: 0 0 12px rgba(125, 150, 112, 0.4);
     }
 
     .mode-btn:active {
@@ -147,7 +147,7 @@
       border-radius: 12px;
       margin-bottom: 15px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      border: 1px solid #ff5e00;
+      border: 1px solid #7d9670;
     }
     .subway-stop-panel.active {
       display: flex;
@@ -169,7 +169,7 @@
       transform: scale(1.2);
     }
     .subway-stop-panel input[type="radio"] {
-      accent-color: #ff5e00;
+      accent-color: #7d9670;
       transform: scale(1.2);
     }
 
@@ -189,9 +189,9 @@
       display: none;
     }
     .sub-title.subway-theme {
-      color: #ff5e00;
-      border: 2px solid #ffb700;
-      box-shadow: 0 0 10px rgba(255, 183, 0, 0.3);
+      color: #4a633d;
+      border: 2px solid #a3b899;
+      box-shadow: 0 0 10px rgba(163, 184, 153, 0.3);
     }
     
     .close-btn {
@@ -235,8 +235,8 @@
       letter-spacing: 0.5px;
     }
     .btn.subway-theme {
-      background: linear-gradient(135deg, #ff5e00 0%, #ffb700 100%);
-      box-shadow: 0 0 15px rgba(255, 94, 0, 0.5);
+      background: linear-gradient(135deg, #a3b899 0%, #68825b 100%);
+      box-shadow: 0 0 15px rgba(125, 150, 112, 0.4);
     }
     .btn:active { 
       transform: scale(0.97); 
@@ -289,15 +289,8 @@
       font-weight: bold; 
       color: #ffffff; 
     }
-    .subway-route-badge {
-      background: #ff5e00;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: bold;
-      color: #ffffff;
-    }
 
-    .empty { text-align: center; color: #777; марgin-top: 30px; font-size: 0.95rem; }
+    .empty { text-align: center; color: #777; margin-top: 30px; font-size: 0.95rem; }
   </style>
 </head>
 <body>
@@ -408,12 +401,18 @@
       const text = document.getElementById('route-text');
       const btn = document.getElementById('update-btn');
 
-      // 地下鉄用のオレンジテーマに切り替え
+      // 地下鉄用のモスグリーンテーマに切り替え
       title.className = 'sub-title subway-theme';
       btn.className = 'btn subway-theme';
       title.style.display = 'block';
 
-      text.innerText = `${name} ➔ 七隈線`;
+      // 💡 指定された表示内容に変更
+      if (name === '次郎丸駅') {
+        text.innerText = '次郎丸駅 ➔ 橋本駅';
+      } else if (name === '橋本駅') {
+        text.innerText = '橋本駅 ➔ 次郎丸駅';
+      }
+
       updateSchedule();
     }
 
@@ -510,10 +509,9 @@
 
       try {
         const now = new Date();
-        const currentHours = String(now.getHours()).padStart(2, '0');
-        const currentMins = String(now.getMinutes()).padStart(2, '0');
-        const currentTimeStr = `${currentHours}:${currentMins}`;
-        const currentTotalMins = now.getHours() * 60 + now.getMinutes();
+        const currentHours = now.getHours();
+        const currentMins = now.getMinutes();
+        const currentTotalMins = currentHours * 60 + currentMins;
 
         let targetData = [];
 
@@ -522,15 +520,20 @@
           const response = await fetch(`${jsonPath}?v=${Date.now()}`, { cache: 'no-store' });
           targetData = await response.json();
         } else if (currentMode === 'subway') {
-          // 地下鉄は平日用 JSON を読み込み
           const response = await fetch(`./subway_weekday.json?v=${Date.now()}`, { cache: 'no-store' });
           targetData = await response.json();
         }
 
-        // 共通のフィルタリング・並び替え処理（出発駅が一致し、現在時刻以降のもの）
+        // 数値の合計分（分の絶対値）で算出して確実に判定・並び替え
         const upcoming = targetData
-          .filter(item => item.from === currentSelectedStop && item.departure >= currentTimeStr)
-          .sort((a, b) => a.departure.localeCompare(b.departure))
+          .filter(item => item.from === currentSelectedStop)
+          .map(item => {
+            const [h, m] = item.departure.split(':').map(Number);
+            const itemTotalMins = h * 60 + m;
+            return { ...item, itemTotalMins };
+          })
+          .filter(item => item.itemTotalMins >= currentTotalMins)
+          .sort((a, b) => a.itemTotalMins - b.itemTotalMins)
           .slice(0, 3);
 
         if (upcoming.length === 0) {
@@ -541,9 +544,7 @@
         const candidateNames = ['第①候補', '第②候補', '第③候補'];
 
         container.innerHTML = upcoming.map((item, index) => {
-          const [h, m] = item.departure.split(':').map(Number);
-          const itemTotalMins = h * 60 + m;
-          const diffMins = itemTotalMins - currentTotalMins;
+          const diffMins = item.itemTotalMins - currentTotalMins;
 
           let timeText = '';
           if (diffMins >= 60) {
@@ -558,7 +559,6 @@
             timeText = `あと ${diffMins} 分`;
           }
 
-          // バッジや表示の切り分け（バスなら系統番号、地下鉄なら到着時刻を表示）
           let badgeHtml = '';
           if (currentMode === 'bus') {
             badgeHtml = `<span class="route-badge">${item.route}</span> 行先: ${item.destination}`;
