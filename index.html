@@ -26,7 +26,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px; /* ロゴと文字の間隔 */
+      gap: 10px;
     }
 
     /* 🎨 ロゴ横の可愛いバスイラスト */
@@ -73,12 +73,12 @@
       opacity: 0.9;
     }
 
-    /* 🚌 アイコンの位置を文字と完全に揃える調整 */
+    /* 🚍 正面を向いたバスアイコンの位置調整 */
     .mode-icon { 
-      font-size: 1.1rem; 
+      font-size: 1.15rem; 
       display: inline-flex;
       align-items: center;
-      transform: translateY(-1px); /* わずかな上下ズレを補正 */
+      transform: translateY(-1px);
     }
 
     /* 🎛 バス停ラジオボタンパネル */
@@ -110,8 +110,9 @@
       transform: scale(1.2);
     }
 
-    /* 💡 長方形枠の区間タイトル */
+    /* 💡 長方形枠の区間タイトル ＆ 閉じるボタン */
     .sub-title {
+      position: relative;
       font-size: 1.1rem;
       font-weight: bold;
       text-align: center;
@@ -119,10 +120,34 @@
       background: #ffffff;
       border: 2px solid #00d2ff;
       border-radius: 8px;
-      padding: 10px;
+      padding: 10px 40px 10px 10px; /* 右側に閉じるボタン用の余白を確保 */
       margin: 15px 0;
       box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
       display: none;
+    }
+    
+    .close-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #f0f4f8;
+      border: 1px solid #bcd;
+      color: #666;
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .close-btn:active {
+      background: #e0e0e0;
+      transform: translateY(-50%) scale(0.9);
     }
 
     /* ⚡ リアルタイム日時表示ボタン ⚡ */
@@ -181,8 +206,9 @@
     </div>
 
     <div class="mode-select-container">
+      <!-- 🚍 アイコンを正面を向いたバス（🚍）に変更 -->
       <button class="mode-btn btn-bus" onclick="toggleBusPanel()">
-        <span class="mode-icon">🚌</span> バス停から選択
+        <span class="mode-icon">🚍</span> バス停から選択
       </button>
       <button class="mode-btn btn-subway" onclick="toggleSubwayPanel()">
         <span class="mode-icon">🚇</span> 地下鉄から選択
@@ -199,8 +225,11 @@
       </label>
     </div>
 
-    <!-- 💡 バス停選択時にだけ現れる長方形枠のタイトル -->
-    <div class="sub-title" id="route-title"></div>
+    <!-- 💡 長方形枠のタイトル ＋ 閉じるボタン -->
+    <div class="sub-title" id="route-title">
+      <span id="route-text"></span>
+      <button class="close-btn" onclick="resetToInitialState()" title="閉じる">✕</button>
+    </div>
 
     <!-- ⚡ リアルタイム日時表示ボタン ⚡ -->
     <button class="btn" id="update-btn" onclick="updateSchedule()">--月--日(--) --:--:--</button>
@@ -217,20 +246,38 @@
     }
 
     function toggleSubwayPanel() {
-      // 地下鉄ボタンが押されたときの処理（必要に応じて追加）
+      // 地下鉄ボタンが押されたときの処理
     }
 
     function changeBusStop(name) {
       isStopSelected = true;
       const title = document.getElementById('route-title');
+      const text = document.getElementById('route-text');
       title.style.display = 'block';
 
       if (name === '三軒屋') {
-        title.innerText = '三軒屋 ➔ 次郎丸';
+        text.innerText = '三軒屋 ➔ 次郎丸';
       } else {
-        title.innerText = '次郎丸 ➔ 三軒屋';
+        text.innerText = '次郎丸 ➔ 三軒屋';
       }
       updateSchedule();
+    }
+
+    // 💡 閉じるボタンを押したときの「初期状態に戻す」処理
+    function resetToInitialState() {
+      isStopSelected = false;
+
+      // 区間タイトルを隠す
+      document.getElementById('route-title').style.display = 'none';
+
+      // バス停ラジオボタンの選択を解除＆パネルをたたむ
+      const panel = document.getElementById('bus-panel');
+      panel.classList.remove('active');
+      const radios = document.getElementsByName('busStop');
+      radios.forEach(radio => radio.checked = false);
+
+      // 時刻表表示を消す
+      document.getElementById('results').innerHTML = '';
     }
 
     function updateClock() {
