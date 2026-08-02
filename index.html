@@ -9,7 +9,7 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
 
-  <title>MY TRANSIT 🚞 🚇</title>
+  <title>MY TRANSIT 🚌 🚇</title>
   <style>
     * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body { background-color: #f4f6f8; margin: 0; padding: 20px; color: #333; display: flex; justify-content: center; }
@@ -17,21 +17,21 @@
     
     /* 📱 アプリタイトル（ヘッダー） */
     .app-title {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 800;
       text-align: center;
       color: #1a252f;
-      margin: 10px 0 5px 0;
+      margin: 10px 0 10px 0;
       letter-spacing: 0.5px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px; /* ロゴと文字の間隔 */
+      gap: 10px; /* ロゴと文字の間隔 */
     }
 
     /* 🎨 ロゴ横の可愛いバスイラスト */
     .header-bus-icon {
-      height: 45px; /* タイトルの大きさに合わせて調整 */
+      height: 50px;
       width: auto;
       object-fit: contain;
     }
@@ -72,7 +72,14 @@
       transform: scale(0.96);
       opacity: 0.9;
     }
-    .mode-icon { font-size: 1.1rem; }
+
+    /* 🚌 アイコンの位置を文字と完全に揃える調整 */
+    .mode-icon { 
+      font-size: 1.1rem; 
+      display: inline-flex;
+      align-items: center;
+      transform: translateY(-1px); /* わずかな上下ズレを補正 */
+    }
 
     /* 🎛 バス停ラジオボタンパネル */
     .bus-stop-panel {
@@ -168,7 +175,6 @@
 <body>
 
   <div class="container">
-    <!-- 🎈 タイトル横に可愛いバスを配置！ -->
     <div class="app-title">
       <img src="illust1772_thumb.gif" alt="バス" class="header-bus-icon">
       <span>MY TRANSIT</span>
@@ -178,7 +184,7 @@
       <button class="mode-btn btn-bus" onclick="toggleBusPanel()">
         <span class="mode-icon">🚌</span> バス停から選択
       </button>
-      <button class="mode-btn btn-subway">
+      <button class="mode-btn btn-subway" onclick="toggleSubwayPanel()">
         <span class="mode-icon">🚇</span> 地下鉄から選択
       </button>
     </div>
@@ -208,6 +214,10 @@
     function toggleBusPanel() {
       const panel = document.getElementById('bus-panel');
       panel.classList.toggle('active');
+    }
+
+    function toggleSubwayPanel() {
+      // 地下鉄ボタンが押されたときの処理（必要に応じて追加）
     }
 
     function changeBusStop(name) {
