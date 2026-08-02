@@ -1,54 +1,5 @@
 [
   {
-    "departure": "06:40",
-    "arrival": "06:44",
-    "route": "2",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "06:55",
-    "arrival": "06:59",
-    "route": "201",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "07:11",
-    "arrival": "07:15",
-    "route": "2",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "07:22",
-    "arrival": "07:26",
-    "route": "201",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "07:33",
-    "arrival": "07:37",
-    "route": "2",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "07:44",
-    "arrival": "07:48",
-    "route": "19",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
-    "departure": "07:54",
-    "arrival": "07:58",
-    "route": "201",
-    "destination": "次郎丸",
-    "from": "三軒屋"
-  },
-  {
     "departure": "08:05",
     "arrival": "08:09",
     "route": "2",
