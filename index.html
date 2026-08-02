@@ -15,18 +15,26 @@
     body { background-color: #f4f6f8; margin: 0; padding: 20px; color: #333; display: flex; justify-content: center; }
     .container { max-width: 400px; width: 100%; }
     
-    /* 📱 アプリタイトル（ヘッダー） */
+    /* 📱 アプリタイトル（可愛くポップにデザイン！） */
     .app-title {
-      font-size: 1.6rem;
-      font-weight: 800;
+      font-size: 1.8rem;
+      font-weight: 900;
       text-align: center;
-      color: #1a252f;
-      margin: 10px 0 10px 0;
-      letter-spacing: 0.5px;
+      margin: 10px 0 15px 0;
+      letter-spacing: 1px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
+    }
+
+    /* 🎨 可愛らしいカラフルテキストデザイン */
+    .title-text {
+      font-family: "Fredoka", "M PLUS Rounded 1c", "ヒラギノ丸ゴ ProN", "Arial Rounded MT Bold", sans-serif;
+      background: linear-gradient(45deg, #ff416c, #ff4b2b, #ff8c00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 4px rgba(255, 75, 43, 0.25));
     }
 
     /* 🎨 ロゴ横の可愛いバスイラスト */
@@ -64,16 +72,19 @@
       background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
       box-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
     }
+
+    /* ⚡ 蛍光サイバーオレンジ仕様 ⚡ */
     .btn-subway {
-      background: linear-gradient(135deg, #b224ef 0%, #7579ff 100%);
-      box-shadow: 0 0 12px rgba(178, 36, 239, 0.4);
+      background: linear-gradient(135deg, #ff0055 0%, #ff5e00 50%, #ffb700 100%);
+      box-shadow: 0 0 14px rgba(255, 94, 0, 0.6);
     }
+
     .mode-btn:active {
       transform: scale(0.96);
       opacity: 0.9;
     }
 
-    /* 🚍 正面を向いたバスアイコンの位置調整 */
+    /* 🚍 アイコンの位置調整 */
     .mode-icon { 
       font-size: 1.15rem; 
       display: inline-flex;
@@ -120,7 +131,7 @@
       background: #ffffff;
       border: 2px solid #00d2ff;
       border-radius: 8px;
-      padding: 10px 40px 10px 10px; /* 右側に閉じるボタン用の余白を確保 */
+      padding: 10px 40px 10px 10px;
       margin: 15px 0;
       box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
       display: none;
@@ -202,14 +213,14 @@
   <div class="container">
     <div class="app-title">
       <img src="illust1772_thumb.gif" alt="バス" class="header-bus-icon">
-      <span>MY TRANSIT</span>
+      <span class="title-text">MY TRANSIT</span>
     </div>
 
     <div class="mode-select-container">
-      <!-- 🚍 アイコンを正面を向いたバス（🚍）に変更 -->
       <button class="mode-btn btn-bus" onclick="toggleBusPanel()">
         <span class="mode-icon">🚍</span> バス停から選択
       </button>
+      <!-- ⚡ 蛍光サイバーオレンジボタン ⚡ -->
       <button class="mode-btn btn-subway" onclick="toggleSubwayPanel()">
         <span class="mode-icon">🚇</span> 地下鉄から選択
       </button>
@@ -263,20 +274,15 @@
       updateSchedule();
     }
 
-    // 💡 閉じるボタンを押したときの「初期状態に戻す」処理
     function resetToInitialState() {
       isStopSelected = false;
-
-      // 区間タイトルを隠す
       document.getElementById('route-title').style.display = 'none';
 
-      // バス停ラジオボタンの選択を解除＆パネルをたたむ
       const panel = document.getElementById('bus-panel');
       panel.classList.remove('active');
       const radios = document.getElementsByName('busStop');
       radios.forEach(radio => radio.checked = false);
 
-      // 時刻表表示を消す
       document.getElementById('results').innerHTML = '';
     }
 
