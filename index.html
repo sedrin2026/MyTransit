@@ -401,12 +401,10 @@
       const text = document.getElementById('route-text');
       const btn = document.getElementById('update-btn');
 
-      // 地下鉄用のモスグリーンテーマに切り替え
       title.className = 'sub-title subway-theme';
       btn.className = 'btn subway-theme';
       title.style.display = 'block';
 
-      // 💡 指定された表示内容に変更
       if (name === '次郎丸駅') {
         text.innerText = '次郎丸駅 ➔ 橋本駅';
       } else if (name === '橋本駅') {
@@ -486,6 +484,7 @@
       return false;
     }
 
+    /* 🚌 バス用：曜日・祝日に合わせたJSONファイルの判定 */
     function getBusJsonPath(now) {
       const dayOfWeek = now.getDay();
       if (dayOfWeek === 0 || isJapaneseHoliday(now)) {
@@ -494,6 +493,18 @@
         return './bus_saturday.json';
       } else {
         return './bus_weekday.json';
+      }
+    }
+
+    /* 🚇 地下鉄用：曜日・祝日に合わせたJSONファイルの判定 */
+    function getSubwayJsonPath(now) {
+      const dayOfWeek = now.getDay();
+      if (dayOfWeek === 0 || isJapaneseHoliday(now)) {
+        return './subway_holiday.json';
+      } else if (dayOfWeek === 6) {
+        return './subway_saturday.json';
+      } else {
+        return './subway_weekday.json';
       }
     }
 
@@ -520,11 +531,12 @@
           const response = await fetch(`${jsonPath}?v=${Date.now()}`, { cache: 'no-store' });
           targetData = await response.json();
         } else if (currentMode === 'subway') {
-          const response = await fetch(`./subway_weekday.json?v=${Date.now()}`, { cache: 'no-store' });
+          // 💡 地下鉄も自動判定されたファイルから読み込み
+          const jsonPath = getSubwayJsonPath(now);
+          const response = await fetch(`${jsonPath}?v=${Date.now()}`, { cache: 'no-store' });
           targetData = await response.json();
         }
 
-        // 数値の合計分（分の絶対値）で算出して確実に判定・並び替え
         const upcoming = targetData
           .filter(item => item.from === currentSelectedStop)
           .map(item => {
