@@ -225,18 +225,18 @@
       transform: translateY(-50%) scale(0.9);
     }
 
-    /* ⚡ リアルタイム日時表示ボタン ⚡ */
+    /* ⚡ リアルタイム日時表示ボタン ⚡ (優しいブルーに変更) */
     .btn { 
       width: 100%; 
-      padding: 16px; 
-      font-size: 1.15rem; 
+      padding: 14px 10px; 
+      font-size: 1.05rem; 
       font-weight: 800; 
       color: #ffffff; 
-      background: linear-gradient(135deg, #ffc285 0%, #ff8c32 100%); 
+      background: linear-gradient(135deg, #89c4f4 0%, #5b9bd5 100%); 
       border: none; 
       border-radius: 12px; 
       cursor: pointer; 
-      box-shadow: 0 0 15px rgba(255, 140, 50, 0.35); 
+      box-shadow: 0 0 12px rgba(91, 155, 213, 0.35); 
       transition: all 0.2s ease;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
       letter-spacing: 0.5px;
@@ -247,6 +247,58 @@
     }
     .btn:active { 
       transform: scale(0.97); 
+    }
+
+    /* 📅 簡易カレンダーのスタイル */
+    .calendar-container {
+      display: none;
+      width: 100%;
+      margin-top: 10px;
+      background: #ffffff;
+      border: 1px solid #7ea8f8;
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+    .calendar-container.active {
+      display: block;
+    }
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+      color: #3b5998;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      padding: 0 4px;
+    }
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+    .calendar-day-header {
+      font-weight: bold;
+      padding: 4px 0;
+      color: #666;
+    }
+    .calendar-day-header.sun { color: #e74c3c; }
+    .calendar-day-header.sat { color: #3498db; }
+    .calendar-cell {
+      padding: 8px 0;
+      border-radius: 6px;
+      color: #333;
+    }
+    .calendar-cell.sun { color: #e74c3c; }
+    .calendar-cell.sat { color: #3498db; }
+    .calendar-cell.today {
+      background-color: #5b9bd5;
+      color: #ffffff;
+      font-weight: bold;
+      border-radius: 50%;
     }
 
     .results { margin-top: 20px; }
@@ -326,10 +378,10 @@
     <!-- モード選択ボタン -->
     <div class="mode-select-container">
       <button class="mode-btn btn-bus" onclick="toggleBusPanel()">
-        <span class="mode-icon">🚍</span> バス停から選択
+        <span class="mode-icon">f68f</span> バス停から選択
       </button>
       <button class="mode-btn btn-subway" onclick="toggleSubwayPanel()">
-        <span class="mode-icon">🚇</span> 地下鉄から選択
+        <span class="mode-icon">f637</span> 地下鉄から選択
       </button>
     </div>
 
@@ -360,7 +412,22 @@
     </div>
 
     <!-- ⚡ リアルタイム日時表示ボタン ⚡ -->
-    <button class="btn" id="update-btn" onclick="updateSchedule()">--月--日(--) --:--:--</button>
+    <button class="btn" id="update-btn" onclick="handleDateBtnClick()">----年--月--日(--) --:--:--</button>
+
+    <!-- 📅 簡易カレンダーエリア -->
+    <div class="calendar-container" id="calendar-area">
+      <div class="calendar-header" id="calendar-month-title">2026年 8月</div>
+      <div class="calendar-grid">
+        <div class="calendar-day-header sun">日</div>
+        <div class="calendar-day-header">月</div>
+        <div class="calendar-day-header">火</div>
+        <div class="calendar-day-header">水</div>
+        <div class="calendar-day-header">木</div>
+        <div class="calendar-day-header">金</div>
+        <div class="calendar-day-header sat">土</div>
+      </div>
+      <div class="calendar-grid" id="calendar-days"></div>
+    </div>
 
     <div id="results" class="results"></div>
   </div>
@@ -371,6 +438,7 @@
     let currentSelectedStop = '';
 
     function toggleBusPanel() {
+      closeCalendar();
       const busPanel = document.getElementById('bus-panel');
       const subwayPanel = document.getElementById('subway-panel');
       subwayPanel.classList.remove('active');
@@ -378,6 +446,7 @@
     }
 
     function toggleSubwayPanel() {
+      closeCalendar();
       const busPanel = document.getElementById('bus-panel');
       const subwayPanel = document.getElementById('subway-panel');
       busPanel.classList.remove('active');
@@ -385,6 +454,7 @@
     }
 
     function changeBusStop(name) {
+      closeCalendar();
       currentMode = 'bus';
       isStopSelected = true;
       currentSelectedStop = name;
@@ -406,6 +476,7 @@
     }
 
     function changeSubwayStop(name) {
+      closeCalendar();
       currentMode = 'subway';
       isStopSelected = true;
       currentSelectedStop = name;
@@ -443,10 +514,68 @@
       radios.forEach(radio => radio.checked = false);
 
       document.getElementById('results').innerHTML = '';
+      closeCalendar();
+    }
+
+    /* 📅 日時ボタン押下時の動作（未選択の初期状態の時のみカレンダー開閉） */
+    function handleDateBtnClick() {
+      if (!isStopSelected) {
+        const cal = document.getElementById('calendar-area');
+        if (cal.classList.contains('active')) {
+          cal.classList.remove('active');
+        } else {
+          renderCalendar();
+          cal.classList.add('active');
+        }
+      } else {
+        updateSchedule();
+      }
+    }
+
+    function closeCalendar() {
+      document.getElementById('calendar-area').classList.remove('active');
+    }
+
+    /* 📅 簡易カレンダー生成ロジック */
+    function renderCalendar() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth(); // 0-11
+      const todayDate = now.getDate();
+
+      document.getElementById('calendar-month-title').innerText = `${year}年 ${month + 1}月`;
+
+      const firstDay = new Date(year, month, 1).getDay();
+      const lastDate = new Date(year, month + 1, 0).getDate();
+
+      const daysContainer = document.getElementById('calendar-days');
+      daysContainer.innerHTML = '';
+
+      // 月初の空白セル
+      for (let i = 0; i < firstDay; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = 'calendar-cell';
+        daysContainer.appendChild(emptyCell);
+      }
+
+      // 日付セル
+      for (let d = 1; d <= lastDate; d++) {
+        const dayCell = document.createElement('div');
+        const dayOfWeek = (firstDay + d - 1) % 7;
+        
+        dayCell.className = 'calendar-cell';
+        if (dayOfWeek === 0) dayCell.classList.add('sun');
+        if (dayOfWeek === 6) dayCell.classList.add('sat');
+        if (d === todayDate) dayCell.classList.add('today');
+
+        dayCell.innerText = d;
+        daysContainer.appendChild(dayCell);
+      }
     }
 
     function updateClock() {
       const now = new Date();
+      const year = now.getFullYear();
       const month = now.getMonth() + 1;
       const date = now.getDate();
       const dayList = ['日', '月', '火', '水', '木', '金', '土'];
@@ -457,7 +586,8 @@
       const secs = String(now.getSeconds()).padStart(2, '0');
 
       const btn = document.getElementById('update-btn');
-      btn.innerText = `${month}月${date}日(${day}) ${hours}:${mins}:${secs}`;
+      // 💡 西暦を含めたフォーマット
+      btn.innerText = `${year}年${month}月${date}日(${day}) ${hours}:${mins}:${secs}`;
     }
 
     /* 🇯🇵 オフライン用・日本の祝日判定ロジック 🇯🇵 */
@@ -549,7 +679,6 @@
           targetData = await response.json();
         }
 
-        // 💡 候補数を 5 件に増やして取得
         const upcoming = targetData
           .filter(item => item.from === currentSelectedStop)
           .map(item => {
