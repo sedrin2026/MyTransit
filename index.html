@@ -3,25 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>バス時刻表（三軒屋 ➔ 次郎丸駅前）</title>
+  <title>MY TRANSIT 🚌 🚇</title>
   <style>
     * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body { background-color: #f4f6f8; margin: 0; padding: 20px; color: #333; display: flex; justify-content: center; }
     .container { max-width: 400px; width: 100%; }
-    h1 { font-size: 1.1rem; text-align: center; color: #555; margin-bottom: 15px; }
-    .btn { width: 100%; padding: 14px; font-size: 1rem; font-weight: bold; color: white; background: #333; border: none; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: 0.2s; }
-    .btn:active { transform: scale(0.98); }
+    
+    /* 📱 アプリタイトル（ヘッダー） */
+    .app-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-align: center;
+      color: #1a252f;
+      margin: 10px 0 5px 0;
+      letter-spacing: 0.5px;
+    }
+    .sub-title {
+      font-size: 0.85rem;
+      text-align: center;
+      color: #7f8c8d;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    /* ⚡ サイバーチック・モード選択ナビゲーション ⚡ */
+    .mode-select-container {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+    .mode-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 12px 8px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    /* バスボタン（ネオンシアン $\rightarrow$ ブルー） */
+    .btn-bus {
+      background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
+    }
+    /* 地下鉄ボタン（ネオンパープル $\rightarrow$ ピンク） */
+    .btn-subway {
+      background: linear-gradient(135deg, #b224ef 0%, #7579ff 100%);
+      box-shadow: 0 0 12px rgba(178, 36, 239, 0.4);
+    }
+    .mode-btn:active {
+      transform: scale(0.96);
+      opacity: 0.9;
+    }
+    .mode-icon {
+      font-size: 1.1rem;
+    }
+
+    /* ⚡ 手動更新ボタン ⚡ */
+    .btn { 
+      width: 100%; 
+      padding: 14px; 
+      font-size: 1rem; 
+      font-weight: bold; 
+      color: #ffffff; 
+      background: linear-gradient(135deg, #00d2ff 0%, #0052d4 100%); 
+      border: none; 
+      border-radius: 12px; 
+      cursor: pointer; 
+      box-shadow: 0 0 15px rgba(0, 210, 255, 0.5); 
+      transition: all 0.2s ease;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    .btn:active { 
+      transform: scale(0.97); 
+      box-shadow: 0 0 8px rgba(0, 210, 255, 0.7); 
+    }
+
     .results { margin-top: 20px; }
     .card { background: white; padding: 16px; border-radius: 12px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
     
-    /* 順位ごとの色設定（左線とバッジ） */
-    .rank-0 { border-left: 6px solid #dc3545; } /* 1番目：赤 */
-    .rank-1 { border-left: 6px solid #28a745; } /* 2番目：緑 */
-    .rank-2 { border-left: 6px solid #007bff; } /* 3番目：青 */
+    /* 順位ごとの色設定 */
+    .rank-0 { border-left: 6px solid #dc3545; }
+    .rank-1 { border-left: 6px solid #28a745; }
+    .rank-2 { border-left: 6px solid #007bff; }
 
-    .badge-0 { background: #f8d7da; color: #721c24; } /* 赤バッジ */
-    .badge-1 { background: #d4edda; color: #155724; } /* 緑バッジ */
-    .badge-2 { background: #cce5ff; color: #004085; } /* 青バッジ */
+    .badge-0 { background: #f8d7da; color: #721c24; }
+    .badge-1 { background: #d4edda; color: #155724; }
+    .badge-2 { background: #cce5ff; color: #004085; }
 
     .card-header { display: flex; justify-content: space-between; align-items: center; }
     .time-box { display: flex; align-items: center; gap: 8px; }
@@ -41,7 +117,20 @@
 <body>
 
   <div class="container">
-    <h1>三軒屋 ➔ 次郎丸駅前</h1>
+    <!-- トップタイトル -->
+    <div class="app-title">MY TRANSIT 🚌 🚇</div>
+    <div class="sub-title">三軒屋 ➔ 次郎丸駅前</div>
+
+    <!-- サイバーモード選択ボタン -->
+    <div class="mode-select-container">
+      <button class="mode-btn btn-bus">
+        <span class="mode-icon">🚌</span> バス停から選択
+      </button>
+      <button class="mode-btn btn-subway">
+        <span class="mode-icon">🚇</span> 地下鉄から選択
+      </button>
+    </div>
+
     <button class="btn" onclick="updateSchedule()">🔄 手動で更新</button>
 
     <div id="results" class="results"></div>
@@ -59,7 +148,7 @@
         const currentTimeStr = `${currentHours}:${currentMins}`;
         const currentTotalMins = now.getHours() * 60 + now.getMinutes();
 
-        // 現在時刻以降の直近3件を取得
+        // 直近3件を取得
         const upcoming = busData
           .filter(bus => bus.departure >= currentTimeStr)
           .sort((a, b) => a.departure.localeCompare(b.departure))
@@ -98,10 +187,7 @@
       }
     }
 
-    // 初回読み込み
     updateSchedule();
-
-    // 💡 1分（60000ミリ秒）ごとに自動更新して過ぎた時間を除外
     setInterval(updateSchedule, 60000);
   </script>
 </body>
