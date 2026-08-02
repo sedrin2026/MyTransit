@@ -16,17 +16,33 @@
     body { background-color: #ffffff; margin: 0; padding: 20px; color: #333; display: flex; justify-content: center; }
     .container { max-width: 400px; width: 100%; }
     
-    /* 📱 アプリタイトル（両側に画像を配置） */
+    /* 📱 アプリタイトルエリア（縦並び配置調整） */
+    .app-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px 0 15px 0;
+    }
+
     .app-title {
       font-size: 1.8rem;
       font-weight: 900;
       text-align: center;
-      margin: 10px 0 15px 0;
       letter-spacing: 1px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
+    }
+
+    /* 💡 新規追加：サブタイトル（Transportation app） */
+    .app-subtitle {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #5f6368;
+      letter-spacing: 1px;
+      margin-top: 2px;
+      text-transform: uppercase;
     }
 
     /* 🎨 Googleカラー & 白縁取りタイトルデザイン */
@@ -246,15 +262,19 @@
 <body>
 
   <div class="container">
-    <!-- 📱 アプリタイトル（Googleカラー＆可愛らしい白縁取り） -->
-    <div class="app-title">
-      <img src="illust1772_thumb.gif" alt="バス" class="header-icon">
-      <span class="title-text">
-        <span class="gc-blue">M</span><span class="gc-red">Y</span>
-        <span>&nbsp;</span>
-        <span class="gc-yellow">T</span><span class="gc-blue">R</span><span class="gc-green">A</span><span class="gc-red">N</span><span class="gc-yellow">S</span><span class="gc-blue">I</span><span class="gc-green">T</span>
-      </span>
-      <img src="illust3615_thumb.gif" alt="動物バス" class="header-icon">
+    <!-- 📱 アプリタイトルエリア（Googleカラー＆可愛らしい白縁取り ＋ サブタイトル） -->
+    <div class="app-header">
+      <div class="app-title">
+        <img src="illust1772_thumb.gif" alt="バス" class="header-icon">
+        <span class="title-text">
+          <span class="gc-blue">M</span><span class="gc-red">Y</span>
+          <span>&nbsp;</span>
+          <span class="gc-yellow">T</span><span class="gc-blue">R</span><span class="gc-green">A</span><span class="gc-red">N</span><span class="gc-yellow">S</span><span class="gc-blue">I</span><span class="gc-green">T</span>
+        </span>
+        <img src="illust3615_thumb.gif" alt="動物バス" class="header-icon">
+      </div>
+      <!-- 💡 タイトル直下のサブタイトル -->
+      <div class="app-subtitle">Transportation app</div>
     </div>
 
     <div class="mode-select-container">
