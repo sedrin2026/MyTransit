@@ -12,7 +12,8 @@
   <title>MY TRANSIT 🚌 🚇</title>
   <style>
     * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background-color: #f4f6f8; margin: 0; padding: 20px; color: #333; display: flex; justify-content: center; }
+    /* 💡 アプリ背景を真っ白に変更 */
+    body { background-color: #ffffff; margin: 0; padding: 20px; color: #333; display: flex; justify-content: center; }
     .container { max-width: 400px; width: 100%; }
     
     /* 📱 アプリタイトル（両側に画像を配置） */
@@ -28,14 +29,28 @@
       gap: 10px;
     }
 
-    /* 🎨 可愛らしいカラフルテキストデザイン */
+    /* 🎨 Googleカラー & 白縁取りタイトルデザイン */
     .title-text {
       font-family: "Fredoka", "M PLUS Rounded 1c", "ヒラギノ丸ゴ ProN", "Arial Rounded MT Bold", sans-serif;
-      background: linear-gradient(45deg, #ff416c, #ff4b2b, #ff8c00);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 2px 4px rgba(255, 75, 43, 0.25));
+      display: inline-flex;
+      letter-spacing: 1px;
+      /* 💡 くっきり可愛く見せる白縁取り */
+      filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.15));
     }
+    .title-text span {
+      display: inline-block;
+      text-shadow: 
+        -1.5px -1.5px 0 #fff,  
+         1.5px -1.5px 0 #fff,
+        -1.5px  1.5px 0 #fff,
+         1.5px  1.5px 0 #fff,
+         0px 2px 3px rgba(0,0,0,0.2);
+    }
+    /* Googleカラー配色 */
+    .gc-blue   { color: #4285F4; }
+    .gc-red    { color: #EA4335; }
+    .gc-yellow { color: #FBBC05; }
+    .gc-green  { color: #34A853; }
 
     /* 🎨 ロゴ左右のイラスト共通設定 */
     .header-icon {
@@ -183,7 +198,14 @@
     }
 
     .results { margin-top: 20px; }
-    .card { background: white; padding: 16px; border-radius: 12px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    .card { 
+      background: white; 
+      padding: 14px 16px; 
+      border-radius: 12px; 
+      margin-bottom: 12px; 
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08); 
+      border: 1px solid #eee;
+    }
     
     .rank-0 { border-left: 6px solid #dc3545; }
     .rank-1 { border-left: 6px solid #28a745; }
@@ -192,6 +214,19 @@
     .badge-0 { background: #f8d7da; color: #721c24; }
     .badge-1 { background: #d4edda; color: #155724; }
     .badge-2 { background: #cce5ff; color: #004085; }
+
+    /* 💡 第①候補・第②候補・第③候補 バッジデザイン */
+    .candidate-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+    }
+    .cand-0 { background-color: #ffeef0; color: #dc3545; border: 1px solid #f5c6cb; }
+    .cand-1 { background-color: #eafaf1; color: #28a745; border: 1px solid #c3e6cb; }
+    .cand-2 { background-color: #edf5ff; color: #007bff; border: 1px solid #b8daff; }
 
     .card-header { display: flex; justify-content: space-between; align-items: center; }
     .time-box { display: flex; align-items: center; gap: 8px; }
@@ -211,10 +246,14 @@
 <body>
 
   <div class="container">
-    <!-- 📱 アプリタイトル（左：バス画像 / 中央：ロゴ / 右：動物バス画像） -->
+    <!-- 📱 アプリタイトル（Googleカラー＆可愛らしい白縁取り） -->
     <div class="app-title">
       <img src="illust1772_thumb.gif" alt="バス" class="header-icon">
-      <span class="title-text">MY TRANSIT</span>
+      <span class="title-text">
+        <span class="gc-blue">M</span><span class="gc-red">Y</span>
+        <span>&nbsp;</span>
+        <span class="gc-yellow">T</span><span class="gc-blue">R</span><span class="gc-green">A</span><span class="gc-red">N</span><span class="gc-yellow">S</span><span class="gc-blue">I</span><span class="gc-green">T</span>
+      </span>
       <img src="illust3615_thumb.gif" alt="動物バス" class="header-icon">
     </div>
 
@@ -270,8 +309,9 @@
       const text = document.getElementById('route-text');
       title.style.display = 'block';
 
+      /* 💡 三軒屋選択時は「三軒屋 ➔ 次郎丸駅前」、次郎丸選択時は元の「次郎丸 ➔ 三軒屋」を表示 */
       if (name === '三軒屋') {
-        text.innerText = '三軒屋 ➔ 次郎丸';
+        text.innerText = '三軒屋 ➔ 次郎丸駅前';
       } else {
         text.innerText = '次郎丸 ➔ 三軒屋';
       }
@@ -394,6 +434,8 @@
           return;
         }
 
+        const candidateNames = ['第①候補', '第②候補', '第③候補'];
+
         container.innerHTML = upcoming.map((bus, index) => {
           const [h, m] = bus.departure.split(':').map(Number);
           const busTotalMins = h * 60 + m;
@@ -415,6 +457,8 @@
 
           return `
             <div class="card rank-${index}">
+              <!-- 💡 第①候補 / 第②候補 / 第③候補 表示 -->
+              <div class="candidate-tag cand-${index}">${candidateNames[index]}</div>
               <div class="card-header">
                 <div class="time-box">
                   <span class="rank-mark mark-${index}"></span>
