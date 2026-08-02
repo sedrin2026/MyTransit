@@ -1,5 +1,221 @@
 [
   {
+    "route": "306",
+    "type": "都市高",
+    "departure": "08:02",
+    "arrival": "08:08",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "藤崎"
+  },
+  {
+    "route": "2",
+    "type": "普通",
+    "departure": "08:07",
+    "arrival": "08:13",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "天神"
+  },
+  {
+    "route": "19",
+    "type": "快速",
+    "departure": "08:19",
+    "arrival": "08:25",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "博多駅"
+  },
+  {
+    "route": "306",
+    "type": "都市高",
+    "departure": "08:22",
+    "arrival": "08:28",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "藤崎"
+  },
+  {
+    "route": "2",
+    "type": "普通",
+    "departure": "08:38",
+    "arrival": "08:44",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "天神"
+  },
+  {
+    "route": "201",
+    "type": "普通",
+    "departure": "08:40",
+    "arrival": "08:46",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "天神"
+  },
+  {
+    "route": "19",
+    "type": "快速",
+    "departure": "08:59",
+    "arrival": "09:05",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "中央埠頭"
+  },
+  {
+    "route": "2",
+    "type": "普通",
+    "departure": "09:00",
+    "arrival": "09:06",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "九州大学"
+  },
+  {
+    "route": "2",
+    "type": "普通",
+    "departure": "09:08",
+    "arrival": "09:14",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "天神"
+  },
+  {
+    "route": "201",
+    "type": "普通",
+    "departure": "09:12",
+    "arrival": "09:18",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "天神 core"
+  },
+  {
+    "route": "19",
+    "type": "普通",
+    "departure": "09:20",
+    "arrival": "09:25",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "天神三丁目"
+  },
+  {
+    "route": "2",
+    "type": "普通",
+    "departure": "09:37",
+    "arrival": "09:42",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "天神 core"
+  },
+  {
+    "route": "201",
+    "type": "普通",
+    "departure": "09:50",
+    "arrival": "09:55",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "天神 core"
+  },
+  {
+    "route": "19",
+    "type": "普通",
+    "departure": "09:55",
+    "arrival": "10:00",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "天神三丁目"
+  },
+  {
+    "route": "2",
+    "type": "普通",
+    "departure": "10:07",
+    "arrival": "10:12",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "天神 core"
+  },
+  {
+    "route": "2",
+    "type": "普通",
+    "departure": "10:22",
+    "arrival": "10:27",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "天神 core"
+  },
+  {
+    "route": "201",
+    "type": "普通",
+    "departure": "10:35",
+    "arrival": "10:40",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "天神 core"
+  },
+  {
+    "route": "19",
+    "type": "普通",
+    "departure": "10:40",
+    "arrival": "10:45",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "天神三丁目"
+  },
+  {
+    "route": "2",
+    "type": "普通",
+    "departure": "10:52",
+    "arrival": "10:57",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "天神 core"
+  },
+  {
+    "route": "2",
+    "type": "普通",
+    "departure": "11:10",
+    "arrival": "11:15",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "天神 core"
+  },
+  {
+    "route": "19",
+    "type": "普通",
+    "departure": "11:15",
+    "arrival": "11:20",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "天神三丁目"
+  },
+  {
+    "route": "201",
+    "type": "普通",
+    "departure": "11:20",
+    "arrival": "11:25",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "天神 core"
+  },
+  {
+    "route": "2",
+    "type": "普通",
+    "departure": "11:37",
+    "arrival": "11:42",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "天神 core"
+  },
+  {
+    "route": "19",
+    "type": "普通",
+    "departure": "11:55",
+    "arrival": "12:00",
+    "from": "三軒屋",
+    "to": "次郎丸駅前",
+    "destination": "天神三丁目"
+  },
+  {
     "route": "2",
     "type": "普通",
     "departure": "12:00",
