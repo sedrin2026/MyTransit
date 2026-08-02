@@ -23,21 +23,17 @@
       color: #1a252f;
       margin: 10px 0 5px 0;
       letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px; /* ロゴと文字の間隔 */
     }
-    
-    /* 💡 バス停選択時のみ表示される区間（長方形枠付き・大きめ） */
-    .sub-title {
-      font-size: 1.1rem;
-      font-weight: bold;
-      text-align: center;
-      color: #0052d4;
-      background: #ffffff;
-      border: 2px solid #00d2ff;
-      border-radius: 8px;
-      padding: 10px;
-      margin: 15px 0;
-      box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
-      display: none; /* 初期状態は隠す */
+
+    /* 🎨 ロゴ横の可愛いバスイラスト */
+    .header-bus-icon {
+      height: 38px; /* タイトルの大きさに合わせて調整 */
+      width: auto;
+      object-fit: contain;
     }
 
     /* ⚡ サイバーチック・モード選択ナビゲーション ⚡ */
@@ -107,7 +103,22 @@
       transform: scale(1.2);
     }
 
-    /* ⚡ リアルタイム日時表示ボタン（「更新」文字を削除） ⚡ */
+    /* 💡 長方形枠の区間タイトル */
+    .sub-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-align: center;
+      color: #0052d4;
+      background: #ffffff;
+      border: 2px solid #00d2ff;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 15px 0;
+      box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+      display: none;
+    }
+
+    /* ⚡ リアルタイム日時表示ボタン ⚡ */
     .btn { 
       width: 100%; 
       padding: 16px; 
@@ -157,7 +168,11 @@
 <body>
 
   <div class="container">
-    <div class="app-title">MY TRANSIT 🚌 🚇</div>
+    <!-- 🎈 タイトル横に可愛いバスを配置！ -->
+    <div class="app-title">
+      <img src="illust1772_thumb.gif" alt="バス" class="header-bus-icon">
+      <span>MY TRANSIT</span>
+    </div>
 
     <div class="mode-select-container">
       <button class="mode-btn btn-bus" onclick="toggleBusPanel()">
@@ -188,7 +203,7 @@
   </div>
 
   <script>
-    let isStopSelected = false; // バス停が選択されたかどうかのフラグ
+    let isStopSelected = false;
 
     function toggleBusPanel() {
       const panel = document.getElementById('bus-panel');
@@ -196,9 +211,9 @@
     }
 
     function changeBusStop(name) {
-      isStopSelected = true; // 選択されたので有効化
+      isStopSelected = true;
       const title = document.getElementById('route-title');
-      title.style.display = 'block'; // 長方形枠タイトルを表示
+      title.style.display = 'block';
 
       if (name === '三軒屋') {
         title.innerText = '三軒屋 ➔ 次郎丸';
@@ -208,7 +223,6 @@
       updateSchedule();
     }
 
-    // 💡 時計表示（「更新」文字を削除）
     function updateClock() {
       const now = new Date();
       const month = now.getMonth() + 1;
@@ -227,7 +241,6 @@
     async function updateSchedule() {
       updateClock();
 
-      // 💡 バス停がまだ選択されていない場合は時刻表を出さずに終了する
       if (!isStopSelected) {
         document.getElementById('results').innerHTML = '';
         return;
@@ -281,7 +294,6 @@
       }
     }
 
-    // 初期実行（時計のみ動かし、時刻表は出さない）
     updateClock();
     setInterval(updateClock, 1000);
     setInterval(updateSchedule, 60000);
