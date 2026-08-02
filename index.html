@@ -15,7 +15,7 @@
     body { background-color: #f4f6f8; margin: 0; padding: 20px; color: #333; display: flex; justify-content: center; }
     .container { max-width: 400px; width: 100%; }
     
-    /* 📱 アプリタイトル（可愛くポップにデザイン！） */
+    /* 📱 アプリタイトル（両側に画像を配置） */
     .app-title {
       font-size: 1.8rem;
       font-weight: 900;
@@ -37,8 +37,8 @@
       filter: drop-shadow(0 2px 4px rgba(255, 75, 43, 0.25));
     }
 
-    /* 🎨 ロゴ横の可愛いバスイラスト */
-    .header-bus-icon {
+    /* 🎨 ロゴ左右のイラスト共通設定 */
+    .header-icon {
       height: 50px;
       width: auto;
       object-fit: contain;
@@ -211,9 +211,11 @@
 <body>
 
   <div class="container">
+    <!-- 📱 アプリタイトル（左：バス画像 / 中央：ロゴ / 右：動物バス画像） -->
     <div class="app-title">
-      <img src="illust1772_thumb.gif" alt="バス" class="header-bus-icon">
+      <img src="illust1772_thumb.gif" alt="バス" class="header-icon">
       <span class="title-text">MY TRANSIT</span>
+      <img src="illust3615_thumb.gif" alt="動物バス" class="header-icon">
     </div>
 
     <div class="mode-select-container">
