@@ -250,6 +250,7 @@
 
   <script>
     let isStopSelected = false;
+    let currentSelectedStop = ''; // 選択されたバス停名を保持
 
     function toggleBusPanel() {
       const panel = document.getElementById('bus-panel');
@@ -262,6 +263,7 @@
 
     function changeBusStop(name) {
       isStopSelected = true;
+      currentSelectedStop = name; // 出発地を記録
       const title = document.getElementById('route-title');
       const text = document.getElementById('route-text');
       title.style.display = 'block';
@@ -276,6 +278,7 @@
 
     function resetToInitialState() {
       isStopSelected = false;
+      currentSelectedStop = '';
       document.getElementById('route-title').style.display = 'none';
 
       const panel = document.getElementById('bus-panel');
@@ -310,7 +313,8 @@
       }
 
       try {
-        const response = await fetch('./bus.json?v=' + Date.now());
+        // キャッシュを無効化して bus.json を取得
+        const response = await fetch('./bus.json?v=' + Date.now(), { cache: 'no-store' });
         const busData = await response.json();
 
         const now = new Date();
@@ -319,8 +323,9 @@
         const currentTimeStr = `${currentHours}:${currentMins}`;
         const currentTotalMins = now.getHours() * 60 + now.getMinutes();
 
+        // 💡 選択された出発地 (bus.from) かつ 現在時刻以降 の便をフィルタリング
         const upcoming = busData
-          .filter(bus => bus.departure >= currentTimeStr)
+          .filter(bus => bus.from === currentSelectedStop && bus.departure >= currentTimeStr)
           .sort((a, b) => a.departure.localeCompare(b.departure))
           .slice(0, 3);
 
