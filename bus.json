@@ -6,7 +6,7 @@
     "arrival": "12:05",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -15,7 +15,7 @@
     "arrival": "12:12",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "201",
@@ -24,7 +24,7 @@
     "arrival": "12:20",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "19",
@@ -33,7 +33,7 @@
     "arrival": "12:25",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神三丁目"
+    "destination": "天神三丁目"
   },
   {
     "route": "2",
@@ -42,7 +42,7 @@
     "arrival": "12:42",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "201",
@@ -51,7 +51,7 @@
     "arrival": "12:55",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "19",
@@ -60,7 +60,7 @@
     "arrival": "13:00",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神三丁目"
+    "destination": "天神三丁目"
   },
   {
     "route": "2",
@@ -69,7 +69,7 @@
     "arrival": "13:12",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -78,7 +78,7 @@
     "arrival": "13:27",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "201",
@@ -87,7 +87,7 @@
     "arrival": "13:40",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "19",
@@ -96,7 +96,7 @@
     "arrival": "13:45",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神三丁目"
+    "destination": "天神三丁目"
   },
   {
     "route": "2",
@@ -105,7 +105,7 @@
     "arrival": "13:57",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -114,7 +114,7 @@
     "arrival": "14:15",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "19",
@@ -123,7 +123,7 @@
     "arrival": "14:20",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神三丁目"
+    "destination": "天神三丁目"
   },
   {
     "route": "201",
@@ -132,7 +132,7 @@
     "arrival": "14:25",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -141,7 +141,7 @@
     "arrival": "14:42",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "19",
@@ -150,7 +150,7 @@
     "arrival": "15:00",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神三丁目"
+    "destination": "天神三丁目"
   },
   {
     "route": "201",
@@ -159,7 +159,7 @@
     "arrival": "15:10",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -168,7 +168,7 @@
     "arrival": "15:12",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -177,7 +177,7 @@
     "arrival": "15:27",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "19",
@@ -186,7 +186,7 @@
     "arrival": "15:40",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神三丁目"
+    "destination": "天神三丁目"
   },
   {
     "route": "201",
@@ -195,7 +195,7 @@
     "arrival": "15:55",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -204,7 +204,7 @@
     "arrival": "15:57",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -213,7 +213,7 @@
     "arrival": "16:13",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "19",
@@ -222,7 +222,7 @@
     "arrival": "16:20",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神三丁目"
+    "destination": "天神三丁目"
   },
   {
     "route": "201",
@@ -231,7 +231,7 @@
     "arrival": "16:25",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -240,7 +240,7 @@
     "arrival": "16:35",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -249,7 +249,7 @@
     "arrival": "16:45",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "201",
@@ -258,7 +258,7 @@
     "arrival": "16:55",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "19",
@@ -267,7 +267,7 @@
     "arrival": "17:00",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神三丁目"
+    "destination": "天神三丁目"
   },
   {
     "route": "2",
@@ -276,7 +276,7 @@
     "arrival": "17:08",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -285,7 +285,7 @@
     "arrival": "17:20",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "201",
@@ -294,7 +294,7 @@
     "arrival": "17:25",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "19",
@@ -303,7 +303,7 @@
     "arrival": "17:40",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神三丁目"
+    "destination": "天神三丁目"
   },
   {
     "route": "2",
@@ -312,7 +312,7 @@
     "arrival": "17:43",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "201",
@@ -321,7 +321,7 @@
     "arrival": "17:55",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -330,7 +330,7 @@
     "arrival": "17:58",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -339,7 +339,7 @@
     "arrival": "18:13",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "19",
@@ -348,7 +348,7 @@
     "arrival": "18:20",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神三丁目"
+    "destination": "天神三丁目"
   },
   {
     "route": "201",
@@ -357,7 +357,7 @@
     "arrival": "18:25",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -366,7 +366,7 @@
     "arrival": "18:28",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -375,7 +375,7 @@
     "arrival": "18:43",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "201",
@@ -384,7 +384,7 @@
     "arrival": "18:53",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "19",
@@ -393,7 +393,7 @@
     "arrival": "19:00",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神三丁目"
+    "destination": "天神三丁目"
   },
   {
     "route": "2",
@@ -402,7 +402,7 @@
     "arrival": "19:03",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -411,7 +411,7 @@
     "arrival": "19:18",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "201",
@@ -420,7 +420,7 @@
     "arrival": "19:23",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "19",
@@ -429,7 +429,7 @@
     "arrival": "19:40",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神三丁目"
+    "destination": "天神三丁目"
   },
   {
     "route": "2",
@@ -438,7 +438,7 @@
     "arrival": "19:48",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "201",
@@ -447,7 +447,7 @@
     "arrival": "19:53",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -456,7 +456,7 @@
     "arrival": "20:03",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -465,7 +465,7 @@
     "arrival": "20:13",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "19",
@@ -474,7 +474,7 @@
     "arrival": "20:18",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神三丁目"
+    "destination": "天神三丁目"
   },
   {
     "route": "201",
@@ -483,7 +483,7 @@
     "arrival": "20:23",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -492,7 +492,7 @@
     "arrival": "20:33",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "201",
@@ -501,7 +501,7 @@
     "arrival": "20:43",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -510,7 +510,7 @@
     "arrival": "20:53",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "19",
@@ -519,7 +519,7 @@
     "arrival": "20:58",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神三丁目"
+    "destination": "天神三丁目"
   },
   {
     "route": "2",
@@ -528,7 +528,7 @@
     "arrival": "21:10",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "201",
@@ -537,7 +537,7 @@
     "arrival": "21:13",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -546,7 +546,7 @@
     "arrival": "21:25",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "19",
@@ -555,7 +555,7 @@
     "arrival": "21:38",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神三丁目"
+    "destination": "天神三丁目"
   },
   {
     "route": "2",
@@ -564,7 +564,7 @@
     "arrival": "21:40",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "201",
@@ -573,7 +573,7 @@
     "arrival": "21:43",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -582,7 +582,7 @@
     "arrival": "21:55",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -591,7 +591,7 @@
     "arrival": "22:10",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "201",
@@ -600,7 +600,7 @@
     "arrival": "22:13",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "19",
@@ -609,7 +609,7 @@
     "arrival": "22:18",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神三丁目"
+    "destination": "天神三丁目"
   },
   {
     "route": "2",
@@ -618,7 +618,7 @@
     "arrival": "22:25",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "201",
@@ -627,7 +627,7 @@
     "arrival": "22:43",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -636,7 +636,7 @@
     "arrival": "22:45",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "19",
@@ -645,7 +645,7 @@
     "arrival": "22:58",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神三丁目"
+    "destination": "天神三丁目"
   },
   {
     "route": "2",
@@ -654,7 +654,7 @@
     "arrival": "23:05",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "201",
@@ -663,7 +663,7 @@
     "arrival": "23:13",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -672,7 +672,7 @@
     "arrival": "23:28",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "19",
@@ -681,7 +681,7 @@
     "arrival": "23:38",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神三丁目"
+    "destination": "天神三丁目"
   },
   {
     "route": "201",
@@ -690,7 +690,7 @@
     "arrival": "23:43",
     "from": "三軒屋",
     "to": "次郎丸駅前",
-    "terminal": "天神 core"
+    "destination": "天神 core"
   },
   {
     "route": "2",
@@ -699,7 +699,7 @@
     "arrival": "12:10",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "201",
@@ -708,7 +708,7 @@
     "arrival": "12:15",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "2",
@@ -717,7 +717,7 @@
     "arrival": "12:17",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "19",
@@ -726,7 +726,7 @@
     "arrival": "12:26",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "2",
@@ -735,7 +735,7 @@
     "arrival": "12:47",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "201",
@@ -744,7 +744,7 @@
     "arrival": "12:50",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "19",
@@ -753,7 +753,7 @@
     "arrival": "13:01",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "2",
@@ -762,7 +762,7 @@
     "arrival": "13:10",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "2",
@@ -771,7 +771,7 @@
     "arrival": "13:27",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "201",
@@ -780,7 +780,7 @@
     "arrival": "13:35",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "19",
@@ -789,7 +789,7 @@
     "arrival": "13:36",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "2",
@@ -798,7 +798,7 @@
     "arrival": "13:47",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "2",
@@ -807,7 +807,7 @@
     "arrival": "14:00",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "19",
@@ -816,7 +816,7 @@
     "arrival": "14:06",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "2",
@@ -825,7 +825,7 @@
     "arrival": "14:07",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "201",
@@ -834,7 +834,7 @@
     "arrival": "14:15",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "2",
@@ -843,7 +843,7 @@
     "arrival": "14:34",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "19",
@@ -852,7 +852,7 @@
     "arrival": "14:46",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "2",
@@ -861,7 +861,7 @@
     "arrival": "14:47",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "201",
@@ -870,7 +870,7 @@
     "arrival": "14:55",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "2",
@@ -879,7 +879,7 @@
     "arrival": "15:08",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "19",
@@ -888,7 +888,7 @@
     "arrival": "15:26",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "2",
@@ -897,7 +897,7 @@
     "arrival": "15:27",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "201",
@@ -906,7 +906,7 @@
     "arrival": "15:40",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "2",
@@ -915,7 +915,7 @@
     "arrival": "15:47",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "2",
@@ -924,7 +924,7 @@
     "arrival": "16:01",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "19",
@@ -933,7 +933,7 @@
     "arrival": "16:06",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "201",
@@ -942,7 +942,7 @@
     "arrival": "16:10",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "2",
@@ -951,7 +951,7 @@
     "arrival": "16:27",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "201",
@@ -960,7 +960,7 @@
     "arrival": "16:40",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "2",
@@ -969,7 +969,7 @@
     "arrival": "16:41",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "19",
@@ -978,7 +978,7 @@
     "arrival": "16:46",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "2",
@@ -987,7 +987,7 @@
     "arrival": "17:13",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "19",
@@ -996,7 +996,7 @@
     "arrival": "17:26",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "201",
@@ -1005,7 +1005,7 @@
     "arrival": "17:30",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "2",
@@ -1014,7 +1014,7 @@
     "arrival": "17:33",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "2",
@@ -1023,7 +1023,7 @@
     "arrival": "17:43",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "2",
@@ -1032,7 +1032,7 @@
     "arrival": "17:49",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "19",
@@ -1041,7 +1041,7 @@
     "arrival": "18:05",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "2",
@@ -1050,7 +1050,7 @@
     "arrival": "18:50",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "19",
@@ -1059,7 +1059,7 @@
     "arrival": "18:54",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "2",
@@ -1068,7 +1068,7 @@
     "arrival": "19:10",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "201",
@@ -1077,7 +1077,7 @@
     "arrival": "19:15",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "2",
@@ -1086,7 +1086,7 @@
     "arrival": "19:17",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "19",
@@ -1095,7 +1095,7 @@
     "arrival": "19:24",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "2",
@@ -1104,7 +1104,7 @@
     "arrival": "19:35",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "2",
@@ -1113,7 +1113,7 @@
     "arrival": "19:40",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "201",
@@ -1122,7 +1122,7 @@
     "arrival": "19:45",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "2",
@@ -1131,7 +1131,7 @@
     "arrival": "19:52",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "19",
@@ -1140,7 +1140,7 @@
     "arrival": "19:54",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "2",
@@ -1149,7 +1149,7 @@
     "arrival": "20:04",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "201",
@@ -1158,7 +1158,7 @@
     "arrival": "20:13",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "19",
@@ -1167,7 +1167,7 @@
     "arrival": "20:16",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "2",
@@ -1176,7 +1176,7 @@
     "arrival": "20:19",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "2",
@@ -1185,7 +1185,7 @@
     "arrival": "20:24",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "201",
@@ -1194,7 +1194,7 @@
     "arrival": "20:38",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "2",
@@ -1203,7 +1203,7 @@
     "arrival": "20:44",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "19",
@@ -1212,7 +1212,7 @@
     "arrival": "21:01",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "2",
@@ -1221,7 +1221,7 @@
     "arrival": "21:15",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "201",
@@ -1230,7 +1230,7 @@
     "arrival": "21:18",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "2",
@@ -1239,7 +1239,7 @@
     "arrival": "21:34",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "19",
@@ -1248,7 +1248,7 @@
     "arrival": "21:36",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "201",
@@ -1257,7 +1257,7 @@
     "arrival": "21:52",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "2",
@@ -1266,7 +1266,7 @@
     "arrival": "22:09",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "19",
@@ -1275,7 +1275,7 @@
     "arrival": "22:10",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   },
   {
     "route": "2",
@@ -1284,7 +1284,7 @@
     "arrival": "22:53",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "201",
@@ -1293,7 +1293,7 @@
     "arrival": "22:57",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "19",
@@ -1302,7 +1302,7 @@
     "arrival": "23:21",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "2",
@@ -1311,7 +1311,7 @@
     "arrival": "23:48",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "四箇田団地"
+    "destination": "四箇田団地"
   },
   {
     "route": "201",
@@ -1320,6 +1320,6 @@
     "arrival": "23:57",
     "from": "次郎丸",
     "to": "三軒屋",
-    "terminal": "金武車庫"
+    "destination": "金武車庫"
   }
 ]
