@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-transit-v3';
+const CACHE_NAME = 'my-transit-v4'; // バージョンを v4 に上げます
 const urlsToCache = [
   './index.html',
   './manifest.json',
@@ -22,10 +22,16 @@ self.addEventListener('install', (event) => {
   );
 });
 
+// 💡 パスの違いを無視して強制的にキャッシュから返す最強版
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
+    caches.match(event.request, { ignoreSearch: true }).then((cachedResponse) => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+      return fetch(event.request).catch(() => {
+        console.log('オフラインです');
+      });
     })
   );
 });
