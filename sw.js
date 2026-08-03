@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-transit-v1';
+const CACHE_NAME = 'my-transit-v2'; // バージョンを v2 に上げるとキャッシュが更新されやすくなります
 const urlsToCache = [
   './index.html',
   './manifest.json',
@@ -9,7 +9,9 @@ const urlsToCache = [
   './bus_holiday.json',
   './subway_weekday.json',
   './subway_saturday.json',
-  './subway_holiday.json'
+  './subway_holiday.json',
+  './illust1772_thumb.gif',
+  './illust3615_thumb.gif'
 ];
 
 // インストール時にファイルをキャッシュする
