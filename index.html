@@ -437,6 +437,12 @@
     let isStopSelected = false;
     let currentSelectedStop = '';
 
+    /* 💡 行先文字列の変換関数（「天神 core」などを「天神」に統一） */
+    function formatDestination(dest) {
+      if (!dest) return '';
+      return dest.replace(/天神\s*core|天神コア前|天神コア/gi, '天神');
+    }
+
     function toggleBusPanel() {
       closeCalendar();
       const busPanel = document.getElementById('bus-panel');
@@ -586,7 +592,6 @@
       const secs = String(now.getSeconds()).padStart(2, '0');
 
       const btn = document.getElementById('update-btn');
-      // 💡 西暦を含めたフォーマット
       btn.innerText = `${year}年${month}月${date}日(${day}) ${hours}:${mins}:${secs}`;
     }
 
@@ -713,11 +718,14 @@
             timeText = `あと ${diffMins} 分`;
           }
 
+          // 💡 行先名称をフォーマット関数に通して「天神」に変換
+          const formattedDest = formatDestination(item.destination);
+
           let badgeHtml = '';
           if (currentMode === 'bus') {
-            badgeHtml = `<span class="route-badge">${item.route}</span> 行先: ${item.destination}`;
+            badgeHtml = `<span class="route-badge">${item.route}</span> 行先: ${formattedDest}`;
           } else {
-            badgeHtml = `行先: ${item.destination}行 (到着: ${item.arrival})`;
+            badgeHtml = `行先: ${formattedDest}行 (到着: ${item.arrival})`;
           }
 
           return `
