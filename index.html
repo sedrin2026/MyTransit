@@ -4,11 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- 💡 キャッシュ無効化設定 -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-
   <title>MY TRANSIT 🚌 🚇</title>
   <link rel="manifest" href="manifest.json">
   <style>
@@ -677,11 +672,11 @@
 
         if (currentMode === 'bus') {
           const jsonPath = getBusJsonPath(now);
-          const response = await fetch(`${jsonPath}?v=${Date.now()}`, { cache: 'no-store' });
+          const response = await fetch(jsonPath);
           targetData = await response.json();
         } else if (currentMode === 'subway') {
           const jsonPath = getSubwayJsonPath(now);
-          const response = await fetch(`${jsonPath}?v=${Date.now()}`, { cache: 'no-store' });
+          const response = await fetch(jsonPath);
           targetData = await response.json();
         }
 
