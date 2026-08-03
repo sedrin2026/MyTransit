@@ -756,5 +756,14 @@
     setInterval(updateClock, 1000);
     setInterval(updateSchedule, 60000);
   </script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then((reg) => { console.log('サービスワーカー登録成功:', reg.scope); })
+        .catch((err) => { console.log('サービスワーカー登録失敗:', err); });
+    });
+  }
+</script>
 </body>
 </html>
