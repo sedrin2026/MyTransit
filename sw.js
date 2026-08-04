@@ -1,31 +1,32 @@
-const CACHE_NAME = 'my-transit-v5'; // バージョンを v5 に上げます
+const CACHE_NAME = 'my-transit-v6';
 const urlsToCache = [
+  './',
   './index.html',
   './manifest.json',
-  './icon-192.png',
-  './icon-512.png',
-  './title.png',
-  './bus_map.png',     // 🚌 西鉄バス路線図を追加
-  './subway_map.png',  // 🚇 福岡市地下鉄路線図を追加
+  './illust1772_thumb.gif',
+  './illust3615_thumb.gif',
+  './bus_map.png',
+  './subway_map.png',
   './bus_weekday.json',
   './bus_saturday.json',
   './bus_holiday.json',
   './subway_weekday.json',
   './subway_saturday.json',
-  './subway_holiday.json',
-  './illust1772_thumb.gif',
-  './illust3615_thumb.gif'
+  './subway_holiday.json'
 ];
 
+// インストール時にキャッシュを作成
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache);
-    })
+    caches.open(CACHE_NAME)
+      .then((cache) => {
+        return cache.addAll(urlsToCache);
+      })
   );
+  self.skipWaiting(); // すぐに新しいService Workerを有効化
 });
 
-// 💡 古いキャッシュを自動でお掃除して新しくするアクティベート処理
+// アクティベート時に古いキャッシュを削除
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -38,18 +39,18 @@ self.addEventListener('activate', (event) => {
       );
     })
   );
+  self.clients.claim(); // すべてのクライアントを制御下に置く
 });
 
-// 💡 パスの違いを無視して強制的にキャッシュから返す最強版
+// フェッチ（オフライン対応）
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request, { ignoreSearch: true }).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(event.request).catch(() => {
-        console.log('オフラインです');
-      });
-    })
+    caches.match(event.request)
+      .then((response) => {
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      })
   );
 });
