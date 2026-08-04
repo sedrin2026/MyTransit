@@ -8,20 +8,20 @@
   <link rel="manifest" href="manifest.json">
   <style>
     * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    /* 💡 アプリ背景を真っ白に変更 */
-    body { background-color: #ffffff; margin: 0; padding: 20px; color: #333; display: flex; justify-content: center; }
-    .container { max-width: 400px; width: 100%; }
+    /* 💡 アプリ背景を真っ白に変更 & 1画面収まり用調整 */
+    body { background-color: #ffffff; margin: 0; padding: 10px 20px; color: #333; display: flex; justify-content: center; height: 100vh; overflow: hidden; }
+    .container { max-width: 400px; width: 100%; display: flex; flex-direction: column; height: 100%; justify-content: space-between; }
     
     /* 📱 アプリタイトルエリア（縦並び配置調整） */
     .app-header {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 10px 0 15px 0;
+      margin: 4px 0 8px 0;
     }
 
     .app-title {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 900;
       text-align: center;
       letter-spacing: 1px;
@@ -33,7 +33,7 @@
 
     /* 💡 サブタイトル（Transportation app）を横細長い楕円形で囲み、タイトルへ近づける */
     .app-subtitle {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 700;
       color: #555555;
       letter-spacing: 1px;
@@ -41,7 +41,7 @@
       text-transform: uppercase;
       border: 1.5px solid #d0d7de;
       border-radius: 20px; /* 横細長い楕円形状 */
-      padding: 2px 14px;
+      padding: 1px 12px;
       background-color: #f8f9fa;
       display: inline-block;
     }
@@ -71,7 +71,7 @@
 
     /* 🎨 ロゴ左右のイラスト共通設定 */
     .header-icon {
-      height: 50px;
+      height: 40px;
       width: auto;
       object-fit: contain;
     }
@@ -79,10 +79,10 @@
     /* ⚡ ナビゲーションボタン設定 ⚡ */
     .mode-select-container {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       justify-content: center;
-      margin-bottom: 12px;
-      margin-top: 10px;
+      margin-bottom: 8px;
+      margin-top: 4px;
     }
     .mode-btn {
       flex: 1;
@@ -90,12 +90,12 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      padding: 12px 8px;
+      padding: 10px 8px;
       font-size: 0.85rem;
       font-weight: bold;
       color: #ffffff;
       border: none;
-      border-radius: 12px;
+      border-radius: 10px;
       cursor: pointer;
       transition: all 0.2s ease;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -104,13 +104,13 @@
     /* 🍊 薄いオレンジ仕様 🍊 */
     .btn-bus {
       background: linear-gradient(135deg, #ffc285 0%, #ff9e59 100%);
-      box-shadow: 0 0 12px rgba(255, 170, 100, 0.4);
+      box-shadow: 0 0 10px rgba(255, 170, 100, 0.4);
     }
 
     /* 🌿 薄いモスグリーン仕様 🌿 */
     .btn-subway {
       background: linear-gradient(135deg, #a3b899 0%, #7d9670 100%);
-      box-shadow: 0 0 12px rgba(125, 150, 112, 0.4);
+      box-shadow: 0 0 10px rgba(125, 150, 112, 0.4);
     }
 
     .mode-btn:active {
@@ -120,7 +120,7 @@
 
     /* 🚍 アイコンの位置調整 */
     .mode-icon { 
-      font-size: 1.15rem; 
+      font-size: 1.1rem; 
       display: inline-flex;
       align-items: center;
       transform: translateY(-1px);
@@ -130,9 +130,9 @@
     .bus-stop-panel {
       display: none;
       background: #ffffff;
-      padding: 12px 16px;
-      border-radius: 12px;
-      margin-bottom: 15px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      margin-bottom: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       border: 1px solid #ff9e59;
     }
@@ -146,9 +146,9 @@
     .subway-stop-panel {
       display: none;
       background: #ffffff;
-      padding: 12px 16px;
-      border-radius: 12px;
-      margin-bottom: 15px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      margin-bottom: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       border: 1px solid #7d9670;
     }
@@ -159,7 +159,7 @@
     }
 
     .radio-label {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: bold;
       color: #2c3e50;
       cursor: pointer;
@@ -169,25 +169,25 @@
     }
     .bus-stop-panel input[type="radio"] {
       accent-color: #ff8c32;
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
     .subway-stop-panel input[type="radio"] {
       accent-color: #7d9670;
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
 
     /* 💡 長方形枠の区間タイトル ＆ 閉じるボタン */
     .sub-title {
       position: relative;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: bold;
       text-align: center;
       color: #d96b00;
       background: #ffffff;
       border: 2px solid #ffb37e;
       border-radius: 8px;
-      padding: 10px 40px 10px 10px;
-      margin: 15px 0;
+      padding: 8px 40px 8px 10px;
+      margin: 10px 0;
       box-shadow: 0 0 10px rgba(255, 179, 126, 0.25);
       display: none;
     }
@@ -206,9 +206,9 @@
       border: 1px solid #bcd;
       color: #666;
       border-radius: 50%;
-      width: 26px;
-      height: 26px;
-      font-size: 0.8rem;
+      width: 24px;
+      height: 24px;
+      font-size: 0.75rem;
       font-weight: bold;
       cursor: pointer;
       display: flex;
@@ -221,39 +221,76 @@
       transform: translateY(-50%) scale(0.9);
     }
 
-    /* ⚡ リアルタイム日時表示ボタン ⚡ (優しいブルーに変更) */
+    /* ⚡ リアルタイム日時表示ボタン ⚡ */
     .btn { 
       width: 100%; 
-      padding: 14px 10px; 
-      font-size: 1.05rem; 
+      padding: 12px 10px; 
+      font-size: 1rem; 
       font-weight: 800; 
       color: #ffffff; 
       background: linear-gradient(135deg, #89c4f4 0%, #5b9bd5 100%); 
       border: none; 
-      border-radius: 12px; 
+      border-radius: 10px; 
       cursor: pointer; 
-      box-shadow: 0 0 12px rgba(91, 155, 213, 0.35); 
+      box-shadow: 0 0 10px rgba(91, 155, 213, 0.35); 
       transition: all 0.2s ease;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
       letter-spacing: 0.5px;
     }
     .btn.subway-theme {
       background: linear-gradient(135deg, #a3b899 0%, #68825b 100%);
-      box-shadow: 0 0 15px rgba(125, 150, 112, 0.4);
+      box-shadow: 0 0 12px rgba(125, 150, 112, 0.4);
     }
     .btn:active { 
       transform: scale(0.97); 
+    }
+
+    /* 🗺️ ホーム画面用 路線図表示エリア */
+    .home-maps-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 8px 0;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    .map-card {
+      width: 100%;
+      background: #f8f9fa;
+      border: 1px solid #e1e4e8;
+      border-radius: 10px;
+      padding: 6px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .map-title {
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: #555;
+      margin-bottom: 4px;
+    }
+    .map-image {
+      max-width: 100%;
+      height: 95px;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #fff;
     }
 
     /* 📅 簡易カレンダーのスタイル */
     .calendar-container {
       display: none;
       width: 100%;
-      margin-top: 10px;
+      margin-top: 8px;
       background: #ffffff;
       border: 1px solid #7ea8f8;
-      border-radius: 12px;
-      padding: 12px;
+      border-radius: 10px;
+      padding: 10px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     }
     .calendar-container.active {
@@ -265,27 +302,27 @@
       align-items: center;
       font-weight: bold;
       color: #3b5998;
-      font-size: 0.95rem;
-      margin-bottom: 8px;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
       padding: 0 4px;
     }
     .calendar-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 4px;
+      gap: 2px;
       text-align: center;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
     }
     .calendar-day-header {
       font-weight: bold;
-      padding: 4px 0;
+      padding: 2px 0;
       color: #666;
     }
     .calendar-day-header.sun { color: #e74c3c; }
     .calendar-day-header.sat { color: #3498db; }
     .calendar-cell {
-      padding: 8px 0;
-      border-radius: 6px;
+      padding: 6px 0;
+      border-radius: 4px;
       color: #333;
     }
     .calendar-cell.sun { color: #e74c3c; }
@@ -297,55 +334,24 @@
       border-radius: 50%;
     }
 
-    /* 🗺️ 路線図カードのレイアウト（上下配置・1画面収まり調整） */
-    .route-maps-container {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 12px;
-      width: 100%;
-    }
-    .map-card {
-      background: #ffffff;
-      padding: 8px 10px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      border: 1px solid #eee;
-      text-align: center;
-    }
-    .map-card h3 {
-      font-size: 0.8rem;
-      margin: 0 0 6px 0;
-      color: #444;
-      font-weight: bold;
-    }
-    .map-card img {
-      width: 100%;
-      height: auto;
-      max-height: 115px;
-      object-fit: contain;
-      display: block;
-      border-radius: 4px;
-    }
-
-    .results { margin-top: 20px; }
+    .results { margin-top: 10px; overflow-y: auto; max-height: calc(100vh - 220px); }
     .card { 
       background: white; 
-      padding: 14px 16px; 
-      border-radius: 12px; 
-      margin-bottom: 12px; 
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08); 
+      padding: 12px 14px; 
+      border-radius: 10px; 
+      margin-bottom: 10px; 
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08); 
       border: 1px solid #eee;
     }
 
     /* 💡 第①候補〜第⑤候補 バッジデザイン */
     .candidate-tag {
       display: inline-block;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: bold;
       padding: 2px 6px;
       border-radius: 4px;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .cand-0 { background-color: #ffeef0; color: #dc3545; border: 1px solid #f5c6cb; }
     .cand-1 { background-color: #eafaf1; color: #28a745; border: 1px solid #c3e6cb; }
@@ -355,16 +361,16 @@
 
     .card-header { display: flex; justify-content: space-between; align-items: center; }
     .time-box { display: flex; align-items: center; gap: 8px; }
-    .rank-mark { display: inline-block; width: 10px; height: 10px; border-radius: 50%; }
+    .rank-mark { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
     .mark-0 { background: #dc3545; }
     .mark-1 { background: #28a745; }
     .mark-2 { background: #007bff; }
     .mark-3 { background: #d97706; }
     .mark-4 { background: #7c3aed; }
 
-    .time { font-size: 1.5rem; font-weight: bold; color: #111; }
-    .arrow { color: #888; font-size: 0.9rem; }
-    .mins { font-size: 0.85rem; font-weight: bold; padding: 4px 8px; border-radius: 6px; }
+    .time { font-size: 1.3rem; font-weight: bold; color: #111; }
+    .arrow { color: #888; font-size: 0.85rem; }
+    .mins { font-size: 0.8rem; font-weight: bold; padding: 3px 6px; border-radius: 6px; }
     
     .badge-0 { background: #f8d7da; color: #721c24; }
     .badge-1 { background: #d4edda; color: #155724; }
@@ -372,7 +378,7 @@
     .badge-3 { background: #fef3c7; color: #92400e; }
     .badge-4 { background: #ede9fe; color: #5b21b6; }
 
-    .details { font-size: 0.85rem; color: #666; margin-top: 10px; }
+    .details { font-size: 0.8rem; color: #666; margin-top: 8px; }
     
     .route-badge { 
       background: #ff8c32; 
@@ -382,7 +388,7 @@
       color: #ffffff; 
     }
 
-    .empty { text-align: center; color: #777; margin-top: 30px; font-size: 0.95rem; }
+    .empty { text-align: center; color: #777; margin-top: 20px; font-size: 0.9rem; }
   </style>
 </head>
 <body>
@@ -441,6 +447,18 @@
     <!-- ⚡ リアルタイム日時表示ボタン ⚡ -->
     <button class="btn" id="update-btn" onclick="handleDateBtnClick()">----年--月--日(--) --:--:--</button>
 
+    <!-- 🗺️ ホーム画面用 路線図エリア（検索開始時は非表示） -->
+    <div class="home-maps-container" id="home-maps">
+      <div class="map-card">
+        <div class="map-title">🚌 西鉄バス路線図</div>
+        <img src="bus-map.png" alt="バス路線図" class="map-image">
+      </div>
+      <div class="map-card">
+        <div class="map-title">🚇 福岡市地下鉄 路線図</div>
+        <img src="subway-map.png" alt="地下鉄路線図" class="map-image">
+      </div>
+    </div>
+
     <!-- 📅 簡易カレンダーエリア -->
     <div class="calendar-container" id="calendar-area">
       <div class="calendar-header" id="calendar-month-title">2026年 8月</div>
@@ -454,20 +472,6 @@
         <div class="calendar-day-header sat">土</div>
       </div>
       <div class="calendar-grid" id="calendar-days"></div>
-    </div>
-
-    <!-- 🗺️ 起動時のみ表示する2つの路線図エリア（上下配置） -->
-    <div class="route-maps-container" id="initial-route-maps">
-      <!-- 上：バス路線図 -->
-      <div class="map-card">
-        <h3>福岡市西区(金武周辺)西鉄バス路線図</h3>
-        <img src="nishi-s051101_2.png" alt="西鉄バス路線図">
-      </div>
-      <!-- 下：地下鉄路線図 -->
-      <div class="map-card">
-        <h3>福岡市地下鉄 路線図</h3>
-        <img src="福岡市地下鉄_路線図_修正版_2.png" alt="福岡市地下鉄路線図">
-      </div>
     </div>
 
     <div id="results" class="results"></div>
@@ -513,9 +517,9 @@
       title.className = 'sub-title';
       btn.className = 'btn';
       title.style.display = 'block';
-
-      // 🔍 検索開始に伴い路線図エリアを非表示
-      document.getElementById('initial-route-maps').style.display = 'none';
+      
+      // 💡 検索開始時に路線図を非表示にする
+      document.getElementById('home-maps').style.display = 'none';
 
       if (name === '三軒屋') {
         text.innerText = '三軒屋 ➔ 次郎丸駅前';
@@ -539,8 +543,8 @@
       btn.className = 'btn subway-theme';
       title.style.display = 'block';
 
-      // 🔍 検索開始に伴い路線図エリアを非表示
-      document.getElementById('initial-route-maps').style.display = 'none';
+      // 💡 検索開始時に路線図を非表示にする
+      document.getElementById('home-maps').style.display = 'none';
 
       if (name === '次郎丸駅') {
         text.innerText = '次郎丸駅 ➔ 橋本駅';
@@ -560,8 +564,8 @@
       document.getElementById('bus-panel').classList.remove('active');
       document.getElementById('subway-panel').classList.remove('active');
       
-      // 🏠 ホーム画面（待機状態）へ戻ったため路線図エリアを再表示
-      document.getElementById('initial-route-maps').style.display = 'flex';
+      // 💡 ホーム画面へ戻ったら路線図を再表示する
+      document.getElementById('home-maps').style.display = 'flex';
       
       const btn = document.getElementById('update-btn');
       btn.className = 'btn';
@@ -785,7 +789,7 @@
                 <div class="time-box">
                   <span class="rank-mark mark-${index}"></span>
                   <span class="time">${item.departure}</span>
-                  ${currentMode === 'bus' ? `<span class="arrow">➔ ${item.arrival}上が</span>` : ''}
+                  ${currentMode === 'bus' ? `<span class="arrow">➔ ${item.arrival}着</span>` : ''}
                 </div>
                 <span class="mins badge-${index}">${timeText}</span>
               </div>
