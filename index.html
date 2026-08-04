@@ -251,7 +251,7 @@
       align-items: center;
     }
     
-    /* 🍊 バス停パネル・ボタンと同じ薄いオレンジのグラデーション・枠線に統一 */
+    /* 🍊 バス路線図カードの背景・枠線（薄いオレンジ） */
     .map-card.bus-map-card {
       background: linear-gradient(135deg, #fffaf4 0%, #fff2e6 100%);
       border: 1px solid #ffbc85;
@@ -259,6 +259,17 @@
     }
     .map-card.bus-map-card .map-title {
       color: #d96b00;
+      font-weight: 800;
+    }
+
+    /* 🌿 地下鉄路線図カードの背景・枠線（薄いモスグリーン） */
+    .map-card.subway-map-card {
+      background: linear-gradient(135deg, #f6f8f5 0%, #ebf0ea 100%);
+      border: 1px solid #a3b899;
+      box-shadow: 0 2px 8px rgba(125, 150, 112, 0.15);
+    }
+    .map-card.subway-map-card .map-title {
+      color: #4a633d;
       font-weight: 800;
     }
 
@@ -434,12 +445,12 @@
     <button class="btn" id="update-btn" onclick="handleDateBtnClick()">----年--月--日(--) --:--:--</button>
 
     <div class="home-maps-container" id="home-maps">
-      <!-- 💡 ここに bus-map-card クラスを追加しました！ -->
       <div class="map-card bus-map-card">
         <div class="map-title">🚌 西鉄バス路線図</div>
         <img src="bus-map.png" alt="バス路線図" class="map-image">
       </div>
-      <div class="map-card">
+      <!-- 💡 ここに subway-map-card クラスを追加して薄いモスグリーンに統一しました！ -->
+      <div class="map-card subway-map-card">
         <div class="map-title">🚇 福岡市地下鉄 路線図</div>
         <img src="subway-map.png" alt="地下鉄路線図" class="map-image">
       </div>
