@@ -1,12 +1,12 @@
-const CACHE_NAME = 'my-transit-v7'; // バージョンを v7 に上げます
+const CACHE_NAME = 'my-transit-v8';
 const urlsToCache = [
   './',
   './index.html',
   './manifest.json',
   './illust1772_thumb.gif',
   './illust3615_thumb.gif',
-  './bus-map.png',     // 💡 ハイフンに変更
-  './subway-map.png',  // 💡 ハイフンに変更
+  './bus-map.png',
+  './subway-map.png',
   './bus_weekday.json',
   './bus_saturday.json',
   './bus_holiday.json',
@@ -26,7 +26,7 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
 
-// アクティベート時に古いキャッシュを削除
+// アクティベート時に古いキャッシュを完全消去
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -42,15 +42,17 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// フェッチ（オフライン対応）
+// フェッチ（ネットワーク優先にして画像が確実に表示されるようにする）
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request)
+    fetch(event.request)
       .then((response) => {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
+        // ネットワークから取得できたら、それを返す
+        return response;
+      })
+      .catch(() => {
+        // オフラインのときはキャッシュから探す
+        return caches.match(event.request);
       })
   );
 });
