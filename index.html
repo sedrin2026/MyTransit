@@ -8,11 +8,9 @@
   <link rel="manifest" href="manifest.json">
   <style>
     * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    /* 💡 アプリ背景を真っ白に変更 & 1画面収まり用調整 */
     body { background-color: #ffffff; margin: 0; padding: 10px 20px; color: #333; display: flex; justify-content: center; min-height: 100vh; }
     .container { max-width: 400px; width: 100%; display: flex; flex-direction: column; justify-content: flex-start; }
     
-    /* 📱 アプリタイトルエリア（縦並び配置調整） */
     .app-header {
       display: flex;
       flex-direction: column;
@@ -31,7 +29,6 @@
       gap: 10px;
     }
 
-    /* 💡 サブタイトル（Transportation app）を横細長い楕円形で囲み、タイトルへ近づける */
     .app-subtitle {
       font-size: 0.65rem;
       font-weight: 700;
@@ -46,7 +43,6 @@
       display: inline-block;
     }
 
-    /* 🎨 Googleカラー & 白縁取りタイトルデザイン */
     .title-text {
       font-family: "Fredoka", "M PLUS Rounded 1c", "ヒラギノ丸ゴ ProN", "Arial Rounded MT Bold", sans-serif;
       display: inline-flex;
@@ -67,14 +63,12 @@
     .gc-yellow { color: #FBBC05; }
     .gc-green  { color: #34A853; }
 
-    /* 🎨 ロゴ左右のイラスト共通設定 */
     .header-icon {
       height: 40px;
       width: auto;
       object-fit: contain;
     }
 
-    /* ⚡ ナビゲーションボタン設定 ⚡ */
     .mode-select-container {
       display: flex;
       gap: 10px;
@@ -99,13 +93,11 @@
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     }
     
-    /* 🍊 薄いオレンジ仕様 🍊 */
     .btn-bus {
       background: linear-gradient(135deg, #ffc285 0%, #ff9e59 100%);
       box-shadow: 0 0 10px rgba(255, 170, 100, 0.4);
     }
 
-    /* 🌿 薄いモスグリーン仕様 🌿 */
     .btn-subway {
       background: linear-gradient(135deg, #a3b899 0%, #7d9670 100%);
       box-shadow: 0 0 10px rgba(125, 150, 112, 0.4);
@@ -123,7 +115,6 @@
       transform: translateY(-1px);
     }
 
-    /* 🎛 バス停ラジオボタンパネル */
     .bus-stop-panel {
       display: none;
       background: #ffffff;
@@ -139,7 +130,6 @@
       align-items: center;
     }
 
-    /* 🚇 地下鉄駅選択パネル */
     .subway-stop-panel {
       display: none;
       background: #ffffff;
@@ -173,7 +163,6 @@
       transform: scale(1.1);
     }
 
-    /* 💡 長方形枠の区間タイトル ＆ 閉じるボタン */
     .sub-title {
       position: relative;
       font-size: 1rem;
@@ -218,7 +207,6 @@
       transform: translateY(-50%) scale(0.9);
     }
 
-    /* ⚡ リアルタイム日時表示ボタン ⚡ */
     .btn { 
       width: 100%; 
       padding: 12px 10px; 
@@ -243,7 +231,6 @@
       transform: scale(0.97); 
     }
 
-    /* 🗺️ ホーム画面用 路線図エリア */
     .home-maps-container {
       display: flex;
       flex-direction: column;
@@ -264,7 +251,7 @@
       align-items: center;
     }
     
-    /* 🍊 西鉄バス路線図カードの背景と枠線を「バス停から選択」ボタン・パネルと同じテイストに統一 */
+    /* 🍊 バス停パネル・ボタンと同じ薄いオレンジのグラデーション・枠線に統一 */
     .map-card.bus-map-card {
       background: linear-gradient(135deg, #fffaf4 0%, #fff2e6 100%);
       border: 1px solid #ffbc85;
@@ -289,7 +276,6 @@
       background: #fff;
     }
 
-    /* 📅 簡易カレンダーのスタイル */
     .calendar-container {
       display: none;
       width: 100%;
@@ -351,7 +337,6 @@
       border: 1px solid #eee;
     }
 
-    /* 💡 第①候補〜第⑤候補 バッジデザイン */
     .candidate-tag {
       display: inline-block;
       font-size: 0.7rem;
@@ -401,7 +386,6 @@
 <body>
 
   <div class="container">
-    <!-- 📱 アプリタイトルエリア -->
     <div class="app-header">
       <div class="app-title">
         <img src="illust1772_thumb.gif" alt="バス" class="header-icon">
@@ -415,7 +399,6 @@
       <div class="app-subtitle">Transportation app</div>
     </div>
 
-    <!-- モード選択ボタン -->
     <div class="mode-select-container">
       <button class="mode-btn btn-bus" onclick="toggleBusPanel()">
         <span class="mode-icon">🚍</span> バス停から選択
@@ -425,7 +408,6 @@
       </button>
     </div>
 
-    <!-- 🎛 バス停ラジオボタンパネル -->
     <div class="bus-stop-panel" id="bus-panel">
       <label class="radio-label">
         <input type="radio" name="transitStop" value="三軒屋" onchange="changeBusStop('三軒屋')"> 三軒屋
@@ -435,7 +417,6 @@
       </label>
     </div>
 
-    <!-- 🚇 地下鉄駅ラジオボタンパネル -->
     <div class="subway-stop-panel" id="subway-panel">
       <label class="radio-label">
         <input type="radio" name="transitStop" value="次郎丸駅" onchange="changeSubwayStop('次郎丸駅')"> 次郎丸駅
@@ -445,18 +426,15 @@
       </label>
     </div>
 
-    <!-- 💡 区間タイトル ＋ 閉じるボタン -->
     <div class="sub-title" id="route-title">
       <span id="route-text"></span>
       <button class="close-btn" onclick="resetToInitialState()" title="閉じる">✕</button>
     </div>
 
-    <!-- ⚡ リアルタイム日時表示ボタン ⚡ -->
     <button class="btn" id="update-btn" onclick="handleDateBtnClick()">----年--月--日(--) --:--:--</button>
 
-    <!-- 🗺️ ホーム画面用 路線図エリア -->
     <div class="home-maps-container" id="home-maps">
-      <!-- 🍊 バス路線図カードの背景をバス停パネルと同じテイスト（bus-map-card）に統一 -->
+      <!-- 💡 ここに bus-map-card クラスを追加しました！ -->
       <div class="map-card bus-map-card">
         <div class="map-title">🚌 西鉄バス路線図</div>
         <img src="bus-map.png" alt="バス路線図" class="map-image">
@@ -467,7 +445,6 @@
       </div>
     </div>
 
-    <!-- 📅 簡易カレンダーエリア -->
     <div class="calendar-container" id="calendar-area">
       <div class="calendar-header" id="calendar-month-title">2026年 8月</div>
       <div class="calendar-grid">
