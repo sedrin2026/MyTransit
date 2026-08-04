@@ -297,35 +297,35 @@
       border-radius: 50%;
     }
 
-    /* 🗺️ 路線図カードのレイアウト修正（縦並びで綺麗に収める） */
+    /* 🗺️ 路線図カードのレイアウト（上下配置・1画面収まり調整） */
     .route-maps-container {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin-top: 15px;
+      gap: 10px;
+      margin-top: 12px;
       width: 100%;
     }
     .map-card {
       background: #ffffff;
-      padding: 12px;
+      padding: 8px 10px;
       border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       border: 1px solid #eee;
       text-align: center;
     }
     .map-card h3 {
-      font-size: 0.9rem;
-      margin: 0 0 8px 0;
-      color: #333;
+      font-size: 0.8rem;
+      margin: 0 0 6px 0;
+      color: #444;
       font-weight: bold;
     }
     .map-card img {
       width: 100%;
       height: auto;
-      max-height: 250px;
+      max-height: 115px;
       object-fit: contain;
       display: block;
-      border-radius: 6px;
+      border-radius: 4px;
     }
 
     .results { margin-top: 20px; }
@@ -456,17 +456,17 @@
       <div class="calendar-grid" id="calendar-days"></div>
     </div>
 
-    <!-- 🗺️ 起動時のみ表示する2つの路線図エリア -->
+    <!-- 🗺️ 起動時のみ表示する2つの路線図エリア（上下配置） -->
     <div class="route-maps-container" id="initial-route-maps">
       <!-- 上：バス路線図 -->
       <div class="map-card">
         <h3>福岡市西区(金武周辺)西鉄バス路線図</h3>
-        <img src="nishi-s051101.png" alt="西鉄バス路線図">
+        <img src="nishi-s051101_2.png" alt="西鉄バス路線図">
       </div>
       <!-- 下：地下鉄路線図 -->
       <div class="map-card">
         <h3>福岡市地下鉄 路線図</h3>
-        <img src="subway_map.png" alt="福岡市地下鉄路線図">
+        <img src="福岡市地下鉄_路線図_修正版_2.png" alt="福岡市地下鉄路線図">
       </div>
     </div>
 
@@ -474,10 +474,11 @@
   </div>
 
   <script>
-    let currentMode = ''; 
+    let currentMode = ''; // 'bus' または 'subway'
     let isStopSelected = false;
     let currentSelectedStop = '';
 
+    /* 💡 行先文字列の変換関数（「天神 core」などを「天神」に統一） */
     function formatDestination(dest) {
       if (!dest) return '';
       return dest.replace(/天神\s*core|天神コア前|天神コア/gi, '天神');
@@ -513,6 +514,7 @@
       btn.className = 'btn';
       title.style.display = 'block';
 
+      // 🔍 検索開始に伴い路線図エリアを非表示
       document.getElementById('initial-route-maps').style.display = 'none';
 
       if (name === '三軒屋') {
@@ -537,6 +539,7 @@
       btn.className = 'btn subway-theme';
       title.style.display = 'block';
 
+      // 🔍 検索開始に伴い路線図エリアを非表示
       document.getElementById('initial-route-maps').style.display = 'none';
 
       if (name === '次郎丸駅') {
@@ -557,6 +560,7 @@
       document.getElementById('bus-panel').classList.remove('active');
       document.getElementById('subway-panel').classList.remove('active');
       
+      // 🏠 ホーム画面（待機状態）へ戻ったため路線図エリアを再表示
       document.getElementById('initial-route-maps').style.display = 'flex';
       
       const btn = document.getElementById('update-btn');
@@ -569,6 +573,7 @@
       closeCalendar();
     }
 
+    /* 📅 日時ボタン押下時の動作（未選択の初期状態の時のみカレンダー開閉） */
     function handleDateBtnClick() {
       if (!isStopSelected) {
         const cal = document.getElementById('calendar-area');
@@ -587,10 +592,11 @@
       document.getElementById('calendar-area').classList.remove('active');
     }
 
+    /* 📅 簡易カレンダー生成ロジック */
     function renderCalendar() {
       const now = new Date();
       const year = now.getFullYear();
-      const month = now.getMonth();
+      const month = now.getMonth(); // 0-11
       const todayDate = now.getDate();
 
       document.getElementById('calendar-month-title').innerText = `${year}年 ${month + 1}月`;
@@ -601,12 +607,14 @@
       const daysContainer = document.getElementById('calendar-days');
       daysContainer.innerHTML = '';
 
+      // 月初の空白セル
       for (let i = 0; i < firstDay; i++) {
         const emptyCell = document.createElement('div');
         emptyCell.className = 'calendar-cell';
         daysContainer.appendChild(emptyCell);
       }
 
+      // 日付セル
       for (let d = 1; d <= lastDate; d++) {
         const dayCell = document.createElement('div');
         const dayOfWeek = (firstDay + d - 1) % 7;
@@ -637,6 +645,7 @@
       btn.innerText = `${year}年${month}月${date}日(${day}) ${hours}:${mins}:${secs}`;
     }
 
+    /* 🇯🇵 オフライン用・日本の祝日判定ロジック 🇯🇵 */
     function isJapaneseHoliday(date) {
       const year = date.getFullYear();
       const month = date.getMonth() + 1;
@@ -673,6 +682,7 @@
       return false;
     }
 
+    /* 🚌 バス用：曜日・祝日に合わせたJSONファイルの判定 */
     function getBusJsonPath(now) {
       const dayOfWeek = now.getDay();
       if (dayOfWeek === 0 || isJapaneseHoliday(now)) {
@@ -684,6 +694,7 @@
       }
     }
 
+    /* 🚇 地下鉄用：曜日・祝日に合わせたJSONファイルの判定 */
     function getSubwayJsonPath(now) {
       const dayOfWeek = now.getDay();
       if (dayOfWeek === 0 || isJapaneseHoliday(now)) {
@@ -757,6 +768,7 @@
             timeText = `あと ${diffMins} 分`;
           }
 
+          // 💡 行先名称をフォーマット関数に通して「天神」に変換
           const formattedDest = formatDestination(item.destination);
 
           let badgeHtml = '';
@@ -773,7 +785,7 @@
                 <div class="time-box">
                   <span class="rank-mark mark-${index}"></span>
                   <span class="time">${item.departure}</span>
-                  ${currentMode === 'bus' ? `<span class="arrow">➔ ${item.arrival}着</span>` : ''}
+                  ${currentMode === 'bus' ? `<span class="arrow">➔ ${item.arrival}上が</span>` : ''}
                 </div>
                 <span class="mins badge-${index}">${timeText}</span>
               </div>
