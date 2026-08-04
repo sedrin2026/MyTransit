@@ -445,11 +445,11 @@
     <div class="home-maps-container" id="home-maps">
       <div class="map-card bus-map-card">
         <div class="map-title">🚌 西鉄バス路線図</div>
-        <img src="bus_map.png" alt="バス路線図" class="map-image">
+        <img src="bus-map.png" alt="バス路線図" class="map-image">
       </div>
       <div class="map-card subway-map-card">
         <div class="map-title">🚇 福岡市地下鉄 路線図</div>
-        <img src="subway_map.png" alt="地下鉄路線図" class="map-image">
+        <img src="subway-map.png" alt="地下鉄路線図" class="map-image">
       </div>
     </div>
 
@@ -807,7 +807,7 @@
         navigator.serviceWorker.register('./sw.js')
           .then((reg) => {
             console.log('サービスワーカー登録成功:', reg.scope);
-            reg.update(); // 💡 常に新しい Service Worker の更新をチェック
+            reg.update();
           })
           .catch((err) => { console.log('サービスワーカー登録失敗:', err); });
       });
