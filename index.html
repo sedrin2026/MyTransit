@@ -18,11 +18,11 @@
       margin: 4px 0 8px 0;
     }
 
-    /* 💡 修正：縦に伸びすぎないよう、高さの最大値を制限（object-fitで歪みを防止） */
+    /* 💡 タイトル画像の高さを抑える設定 */
     .app-header-image {
       width: 100%;
-      max-height: 65px; /* タイトルの高さをコンパクトに調整 */
-      object-fit: contain; /* 画像が縦横比を保ったまま枠内に収まるようにする */
+      max-height: 60px;
+      object-fit: contain;
       display: block;
     }
 
@@ -332,4 +332,217 @@
     
     .badge-0 { background: #f8d7da; color: #721c24; }
     .badge-1 { background: #d4edda; color: #155724; }
-    .badge-2 { background: #cce5ff; color: #00
+    .badge-2 { background: #cce5ff; color: #004085; }
+    .badge-3 { background: #fff3cd; color: #856404; }
+    .badge-4 { background: #e2d9f3; color: #432874; }
+
+    .details { margin-top: 8px; font-size: 0.85rem; color: #555; border-top: 1px dashed #eee; padding-top: 8px; }
+    .route-step { margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+    .step-icon { font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="app-header">
+      <img src="title.png" alt="MY TRANSIT" class="app-header-image">
+    </div>
+
+    <div class="mode-select-container">
+      <button class="mode-btn btn-bus" onclick="switchMode('bus')">
+        <span class="mode-icon">🚌</span>バス停から選択
+      </button>
+      <button class="mode-btn btn-subway" onclick="switchMode('subway')">
+        <span class="mode-icon">🚇</span>地下鉄から選択
+      </button>
+    </div>
+
+    <div id="busStopPanel" class="bus-stop-panel">
+      <label class="radio-label"><input type="radio" name="busStop" value="a" checked onchange="changeBusStop('a')"> A停留所</label>
+      <label class="radio-label"><input type="radio" name="busStop" value="b" onchange="changeBusStop('b')"> B停留所</label>
+    </div>
+
+    <div id="subwayStopPanel" class="subway-stop-panel">
+      <label class="radio-label"><input type="radio" name="subwayStop" value="meinohama" checked onchange="changeSubwayStop('meinohama')"> 姪浜駅</label>
+      <label class="radio-label"><input type="radio" name="subwayStop" value="muromi" onchange="changeSubwayStop('muromi')"> 室見駅</label>
+    </div>
+
+    <div id="subTitle" class="sub-title">
+      <span id="subTitleText">バス時刻表（A停留所）</span>
+      <button class="close-btn" onclick="resetToHome()">✕</button>
+    </div>
+
+    <button id="mainActionBtn" class="btn" onclick="toggleCalendar()">📅 2026年8月5日(水) 05:14</button>
+
+    <div id="calendarContainer" class="calendar-container">
+      <div class="calendar-header">
+        <button onclick="changeMonth(-1)" style="background:none; border:none; color:#3b5998; font-weight:bold; cursor:pointer;">◀</button>
+        <span id="calendarTitle">2026年 8月</span>
+        <button onclick="changeMonth(1)" style="background:none; border:none; color:#3b5998; font-weight:bold; cursor:pointer;">▶</button>
+      </div>
+      <div class="calendar-grid">
+        <div class="calendar-day-header sun">日</div>
+        <div class="calendar-day-header">月</div>
+        <div class="calendar-day-header">火</div>
+        <div class="calendar-day-header">水</div>
+        <div class="calendar-day-header">木</div>
+        <div class="calendar-day-header">金</div>
+        <div class="calendar-day-header sat">土</div>
+      </div>
+      <div id="calendarDays" class="calendar-grid" style="margin-top: 4px;"></div>
+    </div>
+
+    <div id="homeMaps" class="home-maps-container">
+      <div class="map-card bus-map-card">
+        <div class="map-title">🚌 西鉄バス路線図</div>
+        <img src="bus_map.png" alt="西鉄バス路線図" class="map-image">
+      </div>
+      <div class="map-card subway-map-card">
+        <div class="map-title">🚇 福岡市地下鉄 路線図</div>
+        <img src="subway_map.png" alt="福岡市地下鉄 路線図" class="map-image">
+      </div>
+    </div>
+
+    <div id="results" class="results"></div>
+  </div>
+
+  <script>
+    let currentMode = 'home';
+    let currentBusStop = 'a';
+    let currentSubwayStop = 'meinohama';
+    let currentDate = new Date(2026, 7, 5);
+    let viewYear = 2026;
+    let viewMonth = 7;
+
+    function switchMode(mode) {
+      currentMode = mode;
+      document.getElementById('homeMaps').style.display = 'none';
+      document.getElementById('calendarContainer').classList.remove('active');
+
+      const busPanel = document.getElementById('busStopPanel');
+      const subwayPanel = document.getElementById('subwayStopPanel');
+      const subTitle = document.getElementById('subTitle');
+      const subTitleText = document.getElementById('subTitleText');
+      const mainBtn = document.getElementById('mainActionBtn');
+
+      if (mode === 'bus') {
+        busPanel.classList.add('active');
+        subwayPanel.classList.remove('active');
+        subTitle.style.display = 'block';
+        subTitle.classList.remove('subway-theme');
+        mainBtn.classList.remove('subway-theme');
+        subTitleText.innerText = `バス時刻表（${currentBusStop === 'a' ? 'A停留所' : 'B停留所'}）`;
+        mainBtn.innerText = `🚌 バス時刻表を検索 (${currentBusStop === 'a' ? 'A停留所' : 'B停留所'})`;
+      } else if (mode === 'subway') {
+        subwayPanel.classList.add('active');
+        busPanel.classList.remove('active');
+        subTitle.style.display = 'block';
+        subTitle.classList.add('subway-theme');
+        mainBtn.classList.add('subway-theme');
+        const stopName = currentSubwayStop === 'meinohama' ? '姪浜駅' : '室見駅';
+        subTitleText.innerText = `地下鉄時刻表（${stopName}）`;
+        mainBtn.innerText = `🚇 地下鉄時刻表を検索 (${stopName})`;
+      }
+      renderSchedule();
+    }
+
+    function changeBusStop(stop) {
+      currentBusStop = stop;
+      document.getElementById('subTitleText').innerText = `バス時刻表（${stop === 'a' ? 'A停留所' : 'B停留所'}）`;
+      document.getElementById('mainActionBtn').innerText = `🚌 バス時刻表を検索 (${stop === 'a' ? 'A停留所' : 'B停留所'})`;
+      renderSchedule();
+    }
+
+    function changeSubwayStop(stop) {
+      currentSubwayStop = stop;
+      const stopName = stop === 'meinohama' ? '姪浜駅' : '室見駅';
+      document.getElementById('subTitleText').innerText = `地下鉄時刻表（${stopName}）`;
+      document.getElementById('mainActionBtn').innerText = `🚇 地下鉄時刻表を検索 (${stopName})`;
+      renderSchedule();
+    }
+
+    function resetToHome() {
+      currentMode = 'home';
+      document.getElementById('busStopPanel').classList.remove('active');
+      document.getElementById('subwayStopPanel').classList.remove('active');
+      document.getElementById('subTitle').style.display = 'none';
+      document.getElementById('calendarContainer').classList.remove('active');
+      document.getElementById('homeMaps').style.display = 'flex';
+      document.getElementById('mainActionBtn').classList.remove('subway-theme');
+      document.getElementById('mainActionBtn').innerText = "📅 2026年8月5日(水) 05:14";
+      document.getElementById('results').innerHTML = "";
+    }
+
+    function toggleCalendar() {
+      if (currentMode === 'home') {
+        const cal = document.getElementById('calendarContainer');
+        cal.classList.toggle('active');
+        if (cal.classList.contains('active')) {
+          renderCalendar();
+        }
+      } else {
+        renderSchedule();
+      }
+    }
+
+    function renderCalendar() {
+      const title = document.getElementById('calendarTitle');
+      title.innerText = `${viewYear}年 ${viewMonth + 1}月`;
+      const daysContainer = document.getElementById('calendarDays');
+      daysContainer.innerHTML = '';
+
+      const firstDay = new Date(viewYear, viewMonth, 1).getDay();
+      const lastDate = new Date(viewYear, viewMonth + 1, 0).getDate();
+
+      for (let i = 0; i < firstDay; i++) {
+        daysContainer.appendChild(document.createElement('div'));
+      }
+
+      for (let d = 1; d <= lastDate; d++) {
+        const cell = document.createElement('div');
+        cell.className = 'calendar-cell';
+        cell.innerText = d;
+        const dayOfWeek = new Date(viewYear, viewMonth, d).getDay();
+        if (dayOfWeek === 0) cell.classList.add('sun');
+        if (dayOfWeek === 6) cell.classList.add('sat');
+
+        if (viewYear === currentDate.getFullYear() && viewMonth === currentDate.getMonth() && d === currentDate.getDate()) {
+          cell.classList.add('today');
+        }
+        daysContainer.appendChild(cell);
+      }
+    }
+
+    function changeMonth(direction) {
+      viewMonth += direction;
+      if (viewMonth > 11) { viewMonth = 0; viewYear++; }
+      if (viewMonth < 0) { viewMonth = 11; viewYear--; }
+      renderCalendar();
+    }
+
+    function renderSchedule() {
+      const results = document.getElementById('results');
+      results.innerHTML = `
+        <div class="card">
+          <div style="font-weight: bold; margin-bottom: 6px; color: #333;">
+            ${currentMode === 'bus' ? `🚌 バス (${currentBusStop === 'a' ? 'A停留所' : 'B停留所'})` : `🚇 地下鉄 (${currentSubwayStop === 'meinohama' ? '姪浜駅' : '室見駅'})`} の直近のダイヤ
+          </div>
+          <div class="time-box">
+            <span class="rank-mark mark-0"></span>
+            <span class="time">05:25</span>
+            <span class="arrow">➔</span>
+            <span class="mins badge-0">あと11分</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="time-box">
+            <span class="rank-mark mark-1"></span>
+            <span class="time">05:50</span>
+            <span class="arrow">➔</span>
+            <span class="mins badge-1">あと36分</span>
+          </div>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
