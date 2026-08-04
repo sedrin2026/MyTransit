@@ -251,7 +251,6 @@
       align-items: center;
     }
     
-    /* 🍊 バス路線図カードの背景・枠線（薄いオレンジ） */
     .map-card.bus-map-card {
       background: linear-gradient(135deg, #fffaf4 0%, #fff2e6 100%);
       border: 1px solid #ffbc85;
@@ -262,7 +261,6 @@
       font-weight: 800;
     }
 
-    /* 🌿 地下鉄路線図カードの背景・枠線（薄いモスグリーン） */
     .map-card.subway-map-card {
       background: linear-gradient(135deg, #f6f8f5 0%, #ebf0ea 100%);
       border: 1px solid #a3b899;
@@ -447,12 +445,11 @@
     <div class="home-maps-container" id="home-maps">
       <div class="map-card bus-map-card">
         <div class="map-title">🚌 西鉄バス路線図</div>
-        <img src="bus-map.png" alt="バス路線図" class="map-image">
+        <img src="bus_map.png" alt="バス路線図" class="map-image">
       </div>
-      <!-- 💡 ここに subway-map-card クラスを追加して薄いモスグリーンに統一しました！ -->
       <div class="map-card subway-map-card">
         <div class="map-title">🚇 福岡市地下鉄 路線図</div>
-        <img src="subway-map.png" alt="地下鉄路線図" class="map-image">
+        <img src="subway_map.png" alt="地下鉄路線図" class="map-image">
       </div>
     </div>
 
@@ -804,14 +801,17 @@
     setInterval(updateClock, 1000);
     setInterval(updateSchedule, 60000);
   </script>
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js')
-        .then((reg) => { console.log('サービスワーカー登録成功:', reg.scope); })
-        .catch((err) => { console.log('サービスワーカー登録失敗:', err); });
-    });
-  }
-</script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then((reg) => {
+            console.log('サービスワーカー登録成功:', reg.scope);
+            reg.update(); // 💡 常に新しい Service Worker の更新をチェック
+          })
+          .catch((err) => { console.log('サービスワーカー登録失敗:', err); });
+      });
+    }
+  </script>
 </body>
 </html>
