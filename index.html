@@ -451,7 +451,7 @@
     <!-- ⚡ リアルタイム日時表示ボタン ⚡ -->
     <button class="btn" id="update-btn" onclick="handleDateBtnClick()">----年--月--日(--) --:--:--</button>
 
-    <!-- 🗺️ ホーム画面用 路線図エリア（検索開始時・カレンダー表示時は非表示） -->
+    <!-- 🗺️ ホーム画面用 路線図エリア（初期状態＝ホーム画面の時のみ表示） -->
     <div class="home-maps-container" id="home-maps">
       <div class="map-card">
         <div class="map-title">🚌 西鉄バス路線図</div>
@@ -486,6 +486,25 @@
     let isStopSelected = false;
     let currentSelectedStop = '';
 
+    /* 💡 表示状態を一元管理して路線図の表示/非表示を切り替える関数 */
+    function updateDisplayState() {
+      const homeMaps = document.getElementById('home-maps');
+      const calendarArea = document.getElementById('calendar-area');
+      const busPanel = document.getElementById('bus-panel');
+      const subwayPanel = document.getElementById('subway-panel');
+
+      const isCalendarActive = calendarArea.classList.contains('active');
+      const isBusPanelActive = busPanel.classList.contains('active');
+      const isSubwayPanelActive = subwayPanel.classList.contains('active');
+
+      // ホーム画面（待機状態）：カレンダーもバス停一覧も地下鉄一覧も開いていない時のみ表示
+      if (!isCalendarActive && !isBusPanelActive && !isSubwayPanelActive && !isStopSelected) {
+        homeMaps.style.display = 'flex';
+      } else {
+        homeMaps.style.display = 'none';
+      }
+    }
+
     /* 💡 行先文字列の変換関数（「天神 core」などを「天神」に統一） */
     function formatDestination(dest) {
       if (!dest) return '';
@@ -498,6 +517,7 @@
       const subwayPanel = document.getElementById('subway-panel');
       subwayPanel.classList.remove('active');
       busPanel.classList.toggle('active');
+      updateDisplayState();
     }
 
     function toggleSubwayPanel() {
@@ -506,6 +526,7 @@
       const subwayPanel = document.getElementById('subway-panel');
       busPanel.classList.remove('active');
       subwayPanel.classList.toggle('active');
+      updateDisplayState();
     }
 
     function changeBusStop(name) {
@@ -522,8 +543,7 @@
       btn.className = 'btn';
       title.style.display = 'block';
       
-      // 💡 検索開始時に路線図を非表示にする
-      document.getElementById('home-maps').style.display = 'none';
+      updateDisplayState();
 
       if (name === '三軒屋') {
         text.innerText = '三軒屋 ➔ 次郎丸駅前';
@@ -547,8 +567,7 @@
       btn.className = 'btn subway-theme';
       title.style.display = 'block';
 
-      // 💡 検索開始時に路線図を非表示にする
-      document.getElementById('home-maps').style.display = 'none';
+      updateDisplayState();
 
       if (name === '次郎丸駅') {
         text.innerText = '次郎丸駅 ➔ 橋本駅';
@@ -568,8 +587,7 @@
       document.getElementById('bus-panel').classList.remove('active');
       document.getElementById('subway-panel').classList.remove('active');
       
-      // 💡 ホーム画面へ戻ったら路線図を再表示する
-      document.getElementById('home-maps').style.display = 'flex';
+      updateDisplayState();
       
       const btn = document.getElementById('update-btn');
       btn.className = 'btn';
@@ -587,14 +605,11 @@
         const cal = document.getElementById('calendar-area');
         if (cal.classList.contains('active')) {
           cal.classList.remove('active');
-          // 💡 カレンダーを閉じたら路線図を再表示
-          document.getElementById('home-maps').style.display = 'flex';
         } else {
           renderCalendar();
           cal.classList.add('active');
-          // 💡 カレンダー表示中は路線図を非表示
-          document.getElementById('home-maps').style.display = 'none';
         }
+        updateDisplayState();
       } else {
         updateSchedule();
       }
@@ -602,10 +617,7 @@
 
     function closeCalendar() {
       document.getElementById('calendar-area').classList.remove('active');
-      // カレンダー閉鎖時に未選択（初期状態）なら路線図を表示
-      if (!isStopSelected) {
-        document.getElementById('home-maps').style.display = 'flex';
-      }
+      updateDisplayState();
     }
 
     /* 📅 簡易カレンダー生成ロジック */
