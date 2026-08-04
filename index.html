@@ -8,20 +8,20 @@
   <link rel="manifest" href="manifest.json">
   <style>
     * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    /* 💡 アプリ背景を真っ白に変更 & 1画面収まり用調整 */
-    body { background-color: #ffffff; margin: 0; padding: 10px 20px; color: #333; display: flex; justify-content: center; height: 100vh; overflow: hidden; }
-    .container { max-width: 400px; width: 100%; display: flex; flex-direction: column; height: 100%; justify-content: space-between; }
+    /* 💡 アプリ背景を真っ白に変更 & 1画面収まり用調整（overflowの制御を見直し） */
+    body { background-color: #ffffff; margin: 0; padding: 10px 20px; color: #333; display: flex; justify-content: center; min-height: 100vh; }
+    .container { max-width: 400px; width: 100%; display: flex; flex-direction: column; justify-content: flex-start; }
     
     /* 📱 アプリタイトルエリア（縦並び配置調整） */
     .app-header {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 2px 0 6px 0;
+      margin: 4px 0 8px 0;
     }
 
     .app-title {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 900;
       text-align: center;
       letter-spacing: 1px;
@@ -33,7 +33,7 @@
 
     /* 💡 サブタイトル（Transportation app）を横細長い楕円形で囲み、タイトルへ近づける */
     .app-subtitle {
-      font-size: 0.6rem;
+      font-size: 0.65rem;
       font-weight: 700;
       color: #555555;
       letter-spacing: 1px;
@@ -71,7 +71,7 @@
 
     /* 🎨 ロゴ左右のイラスト共通設定 */
     .header-icon {
-      height: 35px;
+      height: 40px;
       width: auto;
       object-fit: contain;
     }
@@ -79,10 +79,10 @@
     /* ⚡ ナビゲーションボタン設定 ⚡ */
     .mode-select-container {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       justify-content: center;
-      margin-bottom: 6px;
-      margin-top: 2px;
+      margin-bottom: 8px;
+      margin-top: 4px;
     }
     .mode-btn {
       flex: 1;
@@ -90,12 +90,12 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      padding: 8px 8px;
-      font-size: 0.8rem;
+      padding: 10px 8px;
+      font-size: 0.85rem;
       font-weight: bold;
       color: #ffffff;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
       transition: all 0.2s ease;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -104,13 +104,13 @@
     /* 🍊 薄いオレンジ仕様 🍊 */
     .btn-bus {
       background: linear-gradient(135deg, #ffc285 0%, #ff9e59 100%);
-      box-shadow: 0 0 8px rgba(255, 170, 100, 0.4);
+      box-shadow: 0 0 10px rgba(255, 170, 100, 0.4);
     }
 
     /* 🌿 薄いモスグリーン仕様 🌿 */
     .btn-subway {
       background: linear-gradient(135deg, #a3b899 0%, #7d9670 100%);
-      box-shadow: 0 0 8px rgba(125, 150, 112, 0.4);
+      box-shadow: 0 0 10px rgba(125, 150, 112, 0.4);
     }
 
     .mode-btn:active {
@@ -120,7 +120,7 @@
 
     /* 🚍 アイコンの位置調整 */
     .mode-icon { 
-      font-size: 1rem; 
+      font-size: 1.1rem; 
       display: inline-flex;
       align-items: center;
       transform: translateY(-1px);
@@ -130,9 +130,9 @@
     .bus-stop-panel {
       display: none;
       background: #ffffff;
-      padding: 8px 16px;
-      border-radius: 8px;
-      margin-bottom: 8px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      margin-bottom: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       border: 1px solid #ff9e59;
     }
@@ -146,9 +146,9 @@
     .subway-stop-panel {
       display: none;
       background: #ffffff;
-      padding: 8px 16px;
-      border-radius: 8px;
-      margin-bottom: 8px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      margin-bottom: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       border: 1px solid #7d9670;
     }
@@ -159,7 +159,7 @@
     }
 
     .radio-label {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: bold;
       color: #2c3e50;
       cursor: pointer;
@@ -179,15 +179,15 @@
     /* 💡 長方形枠の区間タイトル ＆ 閉じるボタン */
     .sub-title {
       position: relative;
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: bold;
       text-align: center;
       color: #d96b00;
       background: #ffffff;
       border: 2px solid #ffb37e;
       border-radius: 8px;
-      padding: 6px 40px 6px 10px;
-      margin: 8px 0;
+      padding: 8px 40px 8px 10px;
+      margin: 10px 0;
       box-shadow: 0 0 10px rgba(255, 179, 126, 0.25);
       display: none;
     }
@@ -199,16 +199,16 @@
     
     .close-btn {
       position: absolute;
-      right: 8px;
+      right: 10px;
       top: 50%;
       transform: translateY(-50%);
       background: #f0f4f8;
       border: 1px solid #bcd;
       color: #666;
       border-radius: 50%;
-      width: 22px;
-      height: 22px;
-      font-size: 0.7rem;
+      width: 24px;
+      height: 24px;
+      font-size: 0.75rem;
       font-weight: bold;
       cursor: pointer;
       display: flex;
@@ -224,18 +224,19 @@
     /* ⚡ リアルタイム日時表示ボタン ⚡ */
     .btn { 
       width: 100%; 
-      padding: 10px 10px; 
-      font-size: 0.95rem; 
+      padding: 12px 10px; 
+      font-size: 1rem; 
       font-weight: 800; 
       color: #ffffff; 
       background: linear-gradient(135deg, #89c4f4 0%, #5b9bd5 100%); 
       border: none; 
-      border-radius: 8px; 
+      border-radius: 10px; 
       cursor: pointer; 
       box-shadow: 0 0 10px rgba(91, 155, 213, 0.35); 
       transition: all 0.2s ease;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
       letter-spacing: 0.5px;
+      margin-bottom: 8px;
     }
     .btn.subway-theme {
       background: linear-gradient(135deg, #a3b899 0%, #68825b 100%);
@@ -245,44 +246,37 @@
       transform: scale(0.97); 
     }
 
-    /* 🗺️ ホーム画面用 路線図表示エリア（余白最小限・カードいっぱい調整） */
+    /* 🗺️ ホーム画面用 路線図表示エリア */
     .home-maps-container {
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      margin: 4px 0;
-      flex: 1;
-      justify-content: space-between;
-      align-items: center;
-      overflow: hidden;
+      gap: 8px;
+      margin: 4px 0 10px 0;
+      width: 100%;
     }
     .map-card {
       width: 100%;
       background: #f8f9fa;
       border: 1px solid #e1e4e8;
-      border-radius: 8px;
-      padding: 2px 4px;
+      border-radius: 10px;
+      padding: 6px;
       text-align: center;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
       display: flex;
       flex-direction: column;
       align-items: center;
-      flex: 1;
-      justify-content: center;
-      overflow: hidden;
     }
     .map-title {
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       font-weight: bold;
       color: #555;
-      margin-bottom: 2px;
+      margin-bottom: 4px;
     }
     .map-image {
-      width: 100%;
-      height: auto;
-      max-height: 145px;
+      max-width: 100%;
+      height: 160px; /* スクリショのようにしっかり見せるため高さを調整 */
       object-fit: contain;
-      border-radius: 4px;
+      border-radius: 6px;
       background: #fff;
     }
 
@@ -290,11 +284,11 @@
     .calendar-container {
       display: none;
       width: 100%;
-      margin-top: 6px;
+      margin-top: 8px;
       background: #ffffff;
       border: 1px solid #7ea8f8;
-      border-radius: 8px;
-      padding: 8px;
+      border-radius: 10px;
+      padding: 10px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     }
     .calendar-container.active {
@@ -306,8 +300,8 @@
       align-items: center;
       font-weight: bold;
       color: #3b5998;
-      font-size: 0.85rem;
-      margin-bottom: 4px;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
       padding: 0 4px;
     }
     .calendar-grid {
@@ -315,7 +309,7 @@
       grid-template-columns: repeat(7, 1fr);
       gap: 2px;
       text-align: center;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
     }
     .calendar-day-header {
       font-weight: bold;
@@ -325,7 +319,7 @@
     .calendar-day-header.sun { color: #e74c3c; }
     .calendar-day-header.sat { color: #3498db; }
     .calendar-cell {
-      padding: 4px 0;
+      padding: 6px 0;
       border-radius: 4px;
       color: #333;
     }
@@ -338,12 +332,12 @@
       border-radius: 50%;
     }
 
-    .results { margin-top: 8px; overflow-y: auto; max-height: calc(100vh - 200px); }
+    .results { margin-top: 10px; }
     .card { 
       background: white; 
-      padding: 10px 12px; 
-      border-radius: 8px; 
-      margin-bottom: 8px; 
+      padding: 12px 14px; 
+      border-radius: 10px; 
+      margin-bottom: 10px; 
       box-shadow: 0 2px 8px rgba(0,0,0,0.08); 
       border: 1px solid #eee;
     }
@@ -351,7 +345,7 @@
     /* 💡 第①候補〜第⑤候補 バッジデザイン */
     .candidate-tag {
       display: inline-block;
-      font-size: 0.65rem;
+      font-size: 0.7rem;
       font-weight: bold;
       padding: 2px 6px;
       border-radius: 4px;
@@ -372,9 +366,9 @@
     .mark-3 { background: #d97706; }
     .mark-4 { background: #7c3aed; }
 
-    .time { font-size: 1.2rem; font-weight: bold; color: #111; }
-    .arrow { color: #888; font-size: 0.8rem; }
-    .mins { font-size: 0.75rem; font-weight: bold; padding: 2px 6px; border-radius: 6px; }
+    .time { font-size: 1.3rem; font-weight: bold; color: #111; }
+    .arrow { color: #888; font-size: 0.85rem; }
+    .mins { font-size: 0.8rem; font-weight: bold; padding: 3px 6px; border-radius: 6px; }
     
     .badge-0 { background: #f8d7da; color: #721c24; }
     .badge-1 { background: #d4edda; color: #155724; }
@@ -382,7 +376,7 @@
     .badge-3 { background: #fef3c7; color: #92400e; }
     .badge-4 { background: #ede9fe; color: #5b21b6; }
 
-    .details { font-size: 0.75rem; color: #666; margin-top: 6px; }
+    .details { font-size: 0.8rem; color: #666; margin-top: 8px; }
     
     .route-badge { 
       background: #ff8c32; 
@@ -392,7 +386,7 @@
       color: #ffffff; 
     }
 
-    .empty { text-align: center; color: #777; margin-top: 15px; font-size: 0.85rem; }
+    .empty { text-align: center; color: #777; margin-top: 20px; font-size: 0.9rem; }
   </style>
 </head>
 <body>
@@ -451,7 +445,7 @@
     <!-- ⚡ リアルタイム日時表示ボタン ⚡ -->
     <button class="btn" id="update-btn" onclick="handleDateBtnClick()">----年--月--日(--) --:--:--</button>
 
-    <!-- 🗺️ ホーム画面用 路線図エリア（初期状態＝ホーム画面の時のみ表示） -->
+    <!-- 🗺️ ホーム画面用 路線図エリア（検索開始時やカレンダー表示時は非表示） -->
     <div class="home-maps-container" id="home-maps">
       <div class="map-card">
         <div class="map-title">🚌 西鉄バス路線図</div>
@@ -482,51 +476,37 @@
   </div>
 
   <script>
-    let currentMode = ''; // 'bus' または 'subway'
+    let currentMode = ''; 
     let isStopSelected = false;
     let currentSelectedStop = '';
 
-    /* 💡 表示状態を一元管理して路線図の表示/非表示を切り替える関数 */
-    function updateDisplayState() {
-      const homeMaps = document.getElementById('home-maps');
-      const calendarArea = document.getElementById('calendar-area');
-      const busPanel = document.getElementById('bus-panel');
-      const subwayPanel = document.getElementById('subway-panel');
-
-      const isCalendarActive = calendarArea.classList.contains('active');
-      const isBusPanelActive = busPanel.classList.contains('active');
-      const isSubwayPanelActive = subwayPanel.classList.contains('active');
-
-      // ホーム画面（待機状態）：カレンダーもバス停一覧も地下鉄一覧も開いていない時のみ表示
-      if (!isCalendarActive && !isBusPanelActive && !isSubwayPanelActive && !isStopSelected) {
-        homeMaps.style.display = 'flex';
-      } else {
-        homeMaps.style.display = 'none';
-      }
-    }
-
-    /* 💡 行先文字列の変換関数（「天神 core」などを「天神」に統一） */
     function formatDestination(dest) {
       if (!dest) return '';
       return dest.replace(/天神\s*core|天神コア前|天神コア/gi, '天神');
     }
 
     function toggleBusPanel() {
-      closeCalendar();
+      // バスパネルを開く際もカレンダーが開いていれば閉じる、かつ路線図はホーム画面のまま維持
       const busPanel = document.getElementById('bus-panel');
       const subwayPanel = document.getElementById('subway-panel');
       subwayPanel.classList.remove('active');
       busPanel.classList.toggle('active');
-      updateDisplayState();
+      
+      // カレンダーが開いていた場合は閉じて、路線図の表示状態を再チェック
+      if (document.getElementById('calendar-area').classList.contains('active')) {
+        closeCalendar();
+      }
     }
 
     function toggleSubwayPanel() {
-      closeCalendar();
       const busPanel = document.getElementById('bus-panel');
       const subwayPanel = document.getElementById('subway-panel');
       busPanel.classList.remove('active');
       subwayPanel.classList.toggle('active');
-      updateDisplayState();
+      
+      if (document.getElementById('calendar-area').classList.contains('active')) {
+        closeCalendar();
+      }
     }
 
     function changeBusStop(name) {
@@ -543,7 +523,8 @@
       btn.className = 'btn';
       title.style.display = 'block';
       
-      updateDisplayState();
+      // 💡 バス停選択（検索開始時）に路線図を非表示にする
+      document.getElementById('home-maps').style.display = 'none';
 
       if (name === '三軒屋') {
         text.innerText = '三軒屋 ➔ 次郎丸駅前';
@@ -567,7 +548,8 @@
       btn.className = 'btn subway-theme';
       title.style.display = 'block';
 
-      updateDisplayState();
+      // 💡 地下鉄駅選択（検索開始時）に路線図を非表示にする
+      document.getElementById('home-maps').style.display = 'none';
 
       if (name === '次郎丸駅') {
         text.innerText = '次郎丸駅 ➔ 橋本駅';
@@ -587,7 +569,8 @@
       document.getElementById('bus-panel').classList.remove('active');
       document.getElementById('subway-panel').classList.remove('active');
       
-      updateDisplayState();
+      // 💡 ホーム画面へ戻ったら路線図を再表示する
+      document.getElementById('home-maps').style.display = 'flex';
       
       const btn = document.getElementById('update-btn');
       btn.className = 'btn';
@@ -599,17 +582,19 @@
       closeCalendar();
     }
 
-    /* 📅 日時ボタン押下時の動作（未選択の初期状態の時のみカレンダー開閉） */
     function handleDateBtnClick() {
       if (!isStopSelected) {
         const cal = document.getElementById('calendar-area');
         if (cal.classList.contains('active')) {
           cal.classList.remove('active');
+          // カレンダーを閉じたらホーム画面なので路線図を再表示
+          document.getElementById('home-maps').style.display = 'flex';
         } else {
           renderCalendar();
           cal.classList.add('active');
+          // カレンダーを開いたときは路線図を非表示にする
+          document.getElementById('home-maps').style.display = 'none';
         }
-        updateDisplayState();
       } else {
         updateSchedule();
       }
@@ -617,14 +602,16 @@
 
     function closeCalendar() {
       document.getElementById('calendar-area').classList.remove('active');
-      updateDisplayState();
+      // バス停や地下鉄が未選択の状態でカレンダーが閉じた場合は路線図を再表示
+      if (!isStopSelected) {
+        document.getElementById('home-maps').style.display = 'flex';
+      }
     }
 
-    /* 📅 簡易カレンダー生成ロジック */
     function renderCalendar() {
       const now = new Date();
       const year = now.getFullYear();
-      const month = now.getMonth(); // 0-11
+      const month = now.getMonth(); 
       const todayDate = now.getDate();
 
       document.getElementById('calendar-month-title').innerText = `${year}年 ${month + 1}月`;
@@ -635,14 +622,12 @@
       const daysContainer = document.getElementById('calendar-days');
       daysContainer.innerHTML = '';
 
-      // 月初の空白セル
       for (let i = 0; i < firstDay; i++) {
         const emptyCell = document.createElement('div');
         emptyCell.className = 'calendar-cell';
         daysContainer.appendChild(emptyCell);
       }
 
-      // 日付セル
       for (let d = 1; d <= lastDate; d++) {
         const dayCell = document.createElement('div');
         const dayOfWeek = (firstDay + d - 1) % 7;
@@ -673,7 +658,6 @@
       btn.innerText = `${year}年${month}月${date}日(${day}) ${hours}:${mins}:${secs}`;
     }
 
-    /* 🇯🇵 オフライン用・日本の祝日判定ロジック 🇯🇵 */
     function isJapaneseHoliday(date) {
       const year = date.getFullYear();
       const month = date.getMonth() + 1;
@@ -710,7 +694,6 @@
       return false;
     }
 
-    /* 🚌 バス用：曜日・祝日に合わせたJSONファイルの判定 */
     function getBusJsonPath(now) {
       const dayOfWeek = now.getDay();
       if (dayOfWeek === 0 || isJapaneseHoliday(now)) {
@@ -722,7 +705,6 @@
       }
     }
 
-    /* 🚇 地下鉄用：曜日・祝日に合わせたJSONファイルの判定 */
     function getSubwayJsonPath(now) {
       const dayOfWeek = now.getDay();
       if (dayOfWeek === 0 || isJapaneseHoliday(now)) {
@@ -796,7 +778,6 @@
             timeText = `あと ${diffMins} 分`;
           }
 
-          // 💡 行先名称をフォーマット関数に通して「天神」に変換
           const formattedDest = formatDestination(item.destination);
 
           let badgeHtml = '';
