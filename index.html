@@ -297,6 +297,36 @@
       border-radius: 50%;
     }
 
+    /* 🗺️ 追加した路線図カード用のスタイル（日時エリア下の空白部分に一画面で収まる調整） */
+    .route-maps-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+      width: 100%;
+    }
+    .map-card {
+      background: #ffffff;
+      padding: 8px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border: 1px solid #e0e0e0;
+      text-align: center;
+    }
+    .map-card h3 {
+      font-size: 0.85rem;
+      margin: 0 0 6px 0;
+      color: #444;
+    }
+    .map-card img {
+      width: 100%;
+      height: auto;
+      max-height: 220px; /* 一画面に収まるよう高さを調整 */
+      object-fit: contain;
+      display: block;
+      border-radius: 6px;
+    }
+
     .results { margin-top: 20px; }
     .card { 
       background: white; 
@@ -425,6 +455,20 @@
       <div class="calendar-grid" id="calendar-days"></div>
     </div>
 
+    <!-- 🗺️ 起動時の通常時のみ表示する2つの路線図エリア -->
+    <div class="route-maps-container" id="initial-route-maps">
+      <!-- 上：バス路線図 -->
+      <div class="map-card">
+        <h3>福岡市西区(金武周辺)西鉄バス路線図</h3>
+        <img src="nishi-s051101.png" alt="西鉄バス路線図">
+      </div>
+      <!-- 下：地下鉄路線図 -->
+      <div class="map-card">
+        <h3>福岡市地下鉄 路線図</h3>
+        <img src="福岡市地下鉄_路線図_修正版.png" alt="福岡市地下鉄路線図">
+      </div>
+    </div>
+
     <div id="results" class="results"></div>
   </div>
 
@@ -469,6 +513,9 @@
       btn.className = 'btn';
       title.style.display = 'block';
 
+      // 🛑 検索時は路線図を非表示にする
+      document.getElementById('initial-route-maps').style.display = 'none';
+
       if (name === '三軒屋') {
         text.innerText = '三軒屋 ➔ 次郎丸駅前';
       } else {
@@ -491,6 +538,9 @@
       btn.className = 'btn subway-theme';
       title.style.display = 'block';
 
+      // 🛑 検索時は路線図を非表示にする
+      document.getElementById('initial-route-maps').style.display = 'none';
+
       if (name === '次郎丸駅') {
         text.innerText = '次郎丸駅 ➔ 橋本駅';
       } else if (name === '橋本駅') {
@@ -508,6 +558,9 @@
       document.getElementById('route-title').style.display = 'none';
       document.getElementById('bus-panel').classList.remove('active');
       document.getElementById('subway-panel').classList.remove('active');
+      
+      // 🔄 初期状態（通常時）に戻ったときは路線図を再表示する
+      document.getElementById('initial-route-maps').style.display = 'flex';
       
       const btn = document.getElementById('update-btn');
       btn.className = 'btn';
