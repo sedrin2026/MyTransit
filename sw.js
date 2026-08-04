@@ -1,12 +1,12 @@
-const CACHE_NAME = 'my-transit-v6';
+const CACHE_NAME = 'my-transit-v7'; // バージョンを v7 に上げます
 const urlsToCache = [
   './',
   './index.html',
   './manifest.json',
   './illust1772_thumb.gif',
   './illust3615_thumb.gif',
-  './bus_map.png',
-  './subway_map.png',
+  './bus-map.png',     // 💡 ハイフンに変更
+  './subway-map.png',  // 💡 ハイフンに変更
   './bus_weekday.json',
   './bus_saturday.json',
   './bus_holiday.json',
@@ -23,7 +23,7 @@ self.addEventListener('install', (event) => {
         return cache.addAll(urlsToCache);
       })
   );
-  self.skipWaiting(); // すぐに新しいService Workerを有効化
+  self.skipWaiting();
 });
 
 // アクティベート時に古いキャッシュを削除
@@ -39,7 +39,7 @@ self.addEventListener('activate', (event) => {
       );
     })
   );
-  self.clients.claim(); // すべてのクライアントを制御下に置く
+  self.clients.claim();
 });
 
 // フェッチ（オフライン対応）
