@@ -8,7 +8,7 @@
   <link rel="manifest" href="manifest.json">
   <style>
     * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    /* 💡 アプリ背景を真っ白に変更 & 1画面収まり用調整（overflowの制御を見直し） */
+    /* 💡 アプリ背景を真っ白に変更 & 1画面収まり用調整 */
     body { background-color: #ffffff; margin: 0; padding: 10px 20px; color: #333; display: flex; justify-content: center; min-height: 100vh; }
     .container { max-width: 400px; width: 100%; display: flex; flex-direction: column; justify-content: flex-start; }
     
@@ -37,10 +37,10 @@
       font-weight: 700;
       color: #555555;
       letter-spacing: 1px;
-      margin-top: -2px; /* タイトルに少し近づける */
+      margin-top: -2px;
       text-transform: uppercase;
       border: 1.5px solid #d0d7de;
-      border-radius: 20px; /* 横細長い楕円形状 */
+      border-radius: 20px;
       padding: 1px 12px;
       background-color: #f8f9fa;
       display: inline-block;
@@ -51,7 +51,6 @@
       font-family: "Fredoka", "M PLUS Rounded 1c", "ヒラギノ丸ゴ ProN", "Arial Rounded MT Bold", sans-serif;
       display: inline-flex;
       letter-spacing: 1px;
-      /* 💡 くっきり可愛く見せる白縁取り */
       filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.15));
     }
     .title-text span {
@@ -63,7 +62,6 @@
          1.5px  1.5px 0 #fff,
          0px 2px 3px rgba(0,0,0,0.2);
     }
-    /* Googleカラー配色 */
     .gc-blue   { color: #4285F4; }
     .gc-red    { color: #EA4335; }
     .gc-yellow { color: #FBBC05; }
@@ -118,7 +116,6 @@
       opacity: 0.9;
     }
 
-    /* 🚍 アイコンの位置調整 */
     .mode-icon { 
       font-size: 1.1rem; 
       display: inline-flex;
@@ -246,7 +243,7 @@
       transform: scale(0.97); 
     }
 
-    /* 🗺️ ホーム画面用 路線図表示エリア */
+    /* 🗺️ ホーム画面用 路線図エリア */
     .home-maps-container {
       display: flex;
       flex-direction: column;
@@ -266,6 +263,18 @@
       flex-direction: column;
       align-items: center;
     }
+    
+    /* 🍊 西鉄バス路線図カードの背景と枠線を「バス停から選択」ボタン・パネルと同じテイストに統一 */
+    .map-card.bus-map-card {
+      background: linear-gradient(135deg, #fffaf4 0%, #fff2e6 100%);
+      border: 1px solid #ffbc85;
+      box-shadow: 0 2px 8px rgba(255, 158, 89, 0.15);
+    }
+    .map-card.bus-map-card .map-title {
+      color: #d96b00;
+      font-weight: 800;
+    }
+
     .map-title {
       font-size: 0.75rem;
       font-weight: bold;
@@ -274,7 +283,7 @@
     }
     .map-image {
       max-width: 100%;
-      height: 160px; /* スクリショのようにしっかり見せるため高さを調整 */
+      height: 160px;
       object-fit: contain;
       border-radius: 6px;
       background: #fff;
@@ -445,9 +454,10 @@
     <!-- ⚡ リアルタイム日時表示ボタン ⚡ -->
     <button class="btn" id="update-btn" onclick="handleDateBtnClick()">----年--月--日(--) --:--:--</button>
 
-    <!-- 🗺️ ホーム画面用 路線図エリア（検索開始時やカレンダー表示時は非表示） -->
+    <!-- 🗺️ ホーム画面用 路線図エリア -->
     <div class="home-maps-container" id="home-maps">
-      <div class="map-card">
+      <!-- 🍊 バス路線図カードの背景をバス停パネルと同じテイスト（bus-map-card）に統一 -->
+      <div class="map-card bus-map-card">
         <div class="map-title">🚌 西鉄バス路線図</div>
         <img src="bus-map.png" alt="バス路線図" class="map-image">
       </div>
@@ -486,13 +496,11 @@
     }
 
     function toggleBusPanel() {
-      // バスパネルを開く際もカレンダーが開いていれば閉じる、かつ路線図はホーム画面のまま維持
       const busPanel = document.getElementById('bus-panel');
       const subwayPanel = document.getElementById('subway-panel');
       subwayPanel.classList.remove('active');
       busPanel.classList.toggle('active');
       
-      // カレンダーが開いていた場合は閉じて、路線図の表示状態を再チェック
       if (document.getElementById('calendar-area').classList.contains('active')) {
         closeCalendar();
       }
@@ -523,7 +531,6 @@
       btn.className = 'btn';
       title.style.display = 'block';
       
-      // 💡 バス停選択（検索開始時）に路線図を非表示にする
       document.getElementById('home-maps').style.display = 'none';
 
       if (name === '三軒屋') {
@@ -548,7 +555,6 @@
       btn.className = 'btn subway-theme';
       title.style.display = 'block';
 
-      // 💡 地下鉄駅選択（検索開始時）に路線図を非表示にする
       document.getElementById('home-maps').style.display = 'none';
 
       if (name === '次郎丸駅') {
@@ -569,7 +575,6 @@
       document.getElementById('bus-panel').classList.remove('active');
       document.getElementById('subway-panel').classList.remove('active');
       
-      // 💡 ホーム画面へ戻ったら路線図を再表示する
       document.getElementById('home-maps').style.display = 'flex';
       
       const btn = document.getElementById('update-btn');
@@ -587,12 +592,10 @@
         const cal = document.getElementById('calendar-area');
         if (cal.classList.contains('active')) {
           cal.classList.remove('active');
-          // カレンダーを閉じたらホーム画面なので路線図を再表示
           document.getElementById('home-maps').style.display = 'flex';
         } else {
           renderCalendar();
           cal.classList.add('active');
-          // カレンダーを開いたときは路線図を非表示にする
           document.getElementById('home-maps').style.display = 'none';
         }
       } else {
@@ -602,7 +605,6 @@
 
     function closeCalendar() {
       document.getElementById('calendar-area').classList.remove('active');
-      // バス停や地下鉄が未選択の状態でカレンダーが閉じた場合は路線図を再表示
       if (!isStopSelected) {
         document.getElementById('home-maps').style.display = 'flex';
       }
