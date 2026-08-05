@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>MY TRANSIT 🚌 🚇</title>
+  <title>My Transit 🚌 🚇</title>
   <link rel="manifest" href="manifest.json">
+  <!-- Google Fonts: M PLUS Rounded 1c (wght: 700) 読み込み -->
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&display=swap" rel="stylesheet">
+
   <style>
     * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body { background-color: #ffffff; margin: 0; padding: 10px 20px; color: #333; display: flex; justify-content: center; min-height: 100vh; }
@@ -44,7 +47,8 @@
     }
 
     .title-text {
-      font-family: "Fredoka", "M PLUS Rounded 1c", "ヒラギノ丸ゴ ProN", "Arial Rounded MT Bold", sans-serif;
+      font-family: "M PLUS Rounded 1c", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 700;
       display: inline-flex;
       letter-spacing: 1px;
       filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.15));
@@ -290,7 +294,7 @@
       object-fit: contain;
       border-radius: 6px;
       background: #fff;
-      cursor: zoom-in; /* タップできるマークを表示 */
+      cursor: zoom-in;
     }
 
     .calendar-container {
@@ -407,9 +411,9 @@
       <div class="app-title">
         <img src="illust1772_thumb.gif" alt="バス" class="header-icon">
         <span class="title-text">
-          <span class="gc-blue">M</span><span class="gc-red">Y</span>
+          <span class="gc-blue">M</span><span class="gc-red">y</span>
           <span>&nbsp;</span>
-          <span class="gc-yellow">T</span><span class="gc-blue">R</span><span class="gc-green">A</span><span class="gc-red">N</span><span class="gc-yellow">S</span><span class="gc-blue">I</span><span class="gc-green">T</span>
+          <span class="gc-yellow">T</span><span class="gc-blue">r</span><span class="gc-green">a</span><span class="gc-red">n</span><span class="gc-yellow">s</span><span class="gc-blue">i</span><span class="gc-green">t</span>
         </span>
         <img src="illust3615_thumb.gif" alt="動物バス" class="header-icon">
       </div>
@@ -453,14 +457,12 @@
     <div class="home-maps-container" id="home-maps">
       <div class="map-card bus-map-card">
         <div class="map-title">🚌 西鉄バス路線図</div>
-        <!-- タップでバス路線図画像を拡大表示できるリンク -->
         <a href="bus-map.png" target="_blank" class="map-link">
           <img src="bus-map.png" alt="バス路線図" class="map-image">
         </a>
       </div>
       <div class="map-card subway-map-card">
         <div class="map-title">🚇 福岡市地下鉄 路線図</div>
-        <!-- タップで地下鉄路線図画像を拡大表示できるリンク -->
         <a href="subway-map.png" target="_blank" class="map-link">
           <img src="subway-map.png" alt="地下鉄路線図" class="map-image">
         </a>
