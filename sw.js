@@ -1,9 +1,9 @@
-const CACHE_NAME = 'my-transit-v9'; // ① キャッシュのバージョンを v9 に上げて古い記憶を強制リフレッシュ
+const CACHE_NAME = 'my-transit-v10'; // バージョンを v10 に上げます
 const urlsToCache = [
   './',
   './index.html',
   './manifest.json',
-  './icon-192.png', // 必要に応じてアイコンファイル名に合わせてください
+  './icon-192.png',
   './illust1772_thumb.gif',
   './illust3615_thumb.gif',
   './bus-map.png',
@@ -43,15 +43,22 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// ② フェッチの仕組み：まずはネットから最新ファイルを取りに行く（オフライン時のみキャッシュを使用）
+// フェッチの修正：ネットを優先しつつ、オフラインや失敗時は確実にキャッシュを返す
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     fetch(event.request)
-      .then((response) => {
-        return response;
-      })
       .catch(() => {
-        return caches.match(event.request);
+        // ネットワーク接続が失敗（オフライン）した場合の処理
+        return caches.match(event.request)
+          .then((cachedResponse) => {
+            if (cachedResponse) {
+              return cachedResponse;
+            }
+            // もし個別ファイルのキャッシュが見つからない場合、index.htmlを返す（PWAの基本）
+            if (event.request.mode === 'navigate') {
+              return caches.match('./index.html');
+            }
+          });
       })
   );
 });
