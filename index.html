@@ -6,74 +6,27 @@
   
   <title>My Transit 🚌 🚇</title>
   <link rel="manifest" href="manifest.json">
-  <!-- Google Fonts: M PLUS Rounded 1c (wght: 700) 読み込み -->
-  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&display=swap" rel="stylesheet">
 
   <style>
     * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body { background-color: #ffffff; margin: 0; padding: 10px 20px; color: #333; display: flex; justify-content: center; min-height: 100vh; }
     .container { max-width: 400px; width: 100%; display: flex; flex-direction: column; justify-content: flex-start; }
     
-    /* ヘッダー全体 */
+    /* ヘッダーエリア：1枚のバナー画像をピッタリ配置 */
     .app-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 4px 0 8px 0;
       width: 100%;
-    }
-
-    /* タイトルエリア：左右両端にアイコンをカッチリ配置 */
-    .app-title {
-      width: 100%;
+      margin: 4px 0 10px 0;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 2px;
+      justify-content: center;
     }
 
-    .app-subtitle {
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: #555555;
-      letter-spacing: 1px;
-      margin-top: 2px;
-      text-transform: uppercase;
-      border: 1.5px solid #d0d7de;
-      border-radius: 20px;
-      padding: 1px 12px;
-      background-color: #f8f9fa;
-      display: inline-block;
-    }
-
-    .title-text {
-      font-family: "M PLUS Rounded 1c", -apple-system, BlinkMacSystemFont, sans-serif;
-      font-weight: 700;
-      font-size: 1.6rem;
-      display: inline-flex;
-      letter-spacing: 1px;
-      filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.15));
-    }
-    .title-text span {
-      display: inline-block;
-      text-shadow: 
-        -1.5px -1.5px 0 #fff,  
-         1.5px -1.5px 0 #fff,
-        -1.5px  1.5px 0 #fff,
-         1.5px  1.5px 0 #fff,
-         0px 2px 3px rgba(0,0,0,0.2);
-    }
-    .gc-blue   { color: #4285F4; }
-    .gc-red    { color: #EA4335; }
-    .gc-yellow { color: #FBBC05; }
-    .gc-green  { color: #34A853; }
-
-    /* 両端のアイコン：サイズを一回り拡大（48px） */
-    .header-icon {
-      height: 48px;
-      width: auto;
+    .header-banner-img {
+      width: 100%;
+      height: auto;
+      max-height: 90px;
       object-fit: contain;
-      flex-shrink: 0;
+      display: block;
+      filter: drop-shadow(0px 2px 6px rgba(0,0,0,0.1));
     }
 
     .mode-select-container {
@@ -285,7 +238,6 @@
       margin-bottom: 4px;
     }
 
-    /* 路線図リンクと画像のスタイル */
     .map-link {
       display: block;
       width: 100%;
@@ -410,17 +362,9 @@
 <body>
 
   <div class="container">
+    <!-- 最上部タイトルバナー（1枚画像） -->
     <div class="app-header">
-      <div class="app-title">
-        <img src="illust1772_thumb.gif" alt="バス" class="header-icon">
-        <span class="title-text">
-          <span class="gc-blue">M</span><span class="gc-red">y</span>
-          <span>&nbsp;</span>
-          <span class="gc-yellow">T</span><span class="gc-blue">r</span><span class="gc-green">a</span><span class="gc-red">n</span><span class="gc-yellow">s</span><span class="gc-blue">i</span><span class="gc-green">t</span>
-        </span>
-        <img src="illust3615_thumb.gif" alt="動物バス" class="header-icon">
-      </div>
-      <div class="app-subtitle">Transportation app</div>
+      <img src="header-banner.png" alt="My Transit" class="header-banner-img">
     </div>
 
     <div class="mode-select-container">
