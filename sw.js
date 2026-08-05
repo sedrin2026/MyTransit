@@ -1,8 +1,9 @@
-const CACHE_NAME = 'my-transit-v8';
+const CACHE_NAME = 'my-transit-v9'; // ① キャッシュのバージョンを v9 に上げて古い記憶を強制リフレッシュ
 const urlsToCache = [
   './',
   './index.html',
   './manifest.json',
+  './icon-192.png', // 必要に応じてアイコンファイル名に合わせてください
   './illust1772_thumb.gif',
   './illust3615_thumb.gif',
   './bus-map.png',
@@ -42,16 +43,14 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// フェッチ（ネットワーク優先にして画像が確実に表示されるようにする）
+// ② フェッチの仕組み：まずはネットから最新ファイルを取りに行く（オフライン時のみキャッシュを使用）
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     fetch(event.request)
       .then((response) => {
-        // ネットワークから取得できたら、それを返す
         return response;
       })
       .catch(() => {
-        // オフラインのときはキャッシュから探す
         return caches.match(event.request);
       })
   );
