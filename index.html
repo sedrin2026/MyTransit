@@ -4,28 +4,69 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>My Transit 🚌 🚇</title>
+  <title>MY TRANSIT 🚌 🚇</title>
   <link rel="manifest" href="manifest.json">
-
   <style>
     * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body { background-color: #ffffff; margin: 0; padding: 10px 20px; color: #333; display: flex; justify-content: center; min-height: 100vh; }
     .container { max-width: 400px; width: 100%; display: flex; flex-direction: column; justify-content: flex-start; }
     
-    /* ヘッダーエリア：横幅100%いっぱいに拡大配置 */
     .app-header {
-      width: 100%;
-      margin: 4px 0 10px 0;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      margin: 4px 0 8px 0;
     }
 
-    .header-banner-img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 12px;
-      filter: drop-shadow(0px 2px 6px rgba(0,0,0,0.1));
+    .app-title {
+      font-size: 1.6rem;
+      font-weight: 900;
+      text-align: center;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .app-subtitle {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #555555;
+      letter-spacing: 1px;
+      margin-top: -2px;
+      text-transform: uppercase;
+      border: 1.5px solid #d0d7de;
+      border-radius: 20px;
+      padding: 1px 12px;
+      background-color: #f8f9fa;
+      display: inline-block;
+    }
+
+    .title-text {
+      font-family: "Fredoka", "M PLUS Rounded 1c", "ヒラギノ丸ゴ ProN", "Arial Rounded MT Bold", sans-serif;
+      display: inline-flex;
+      letter-spacing: 1px;
+      filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.15));
+    }
+    .title-text span {
+      display: inline-block;
+      text-shadow: 
+        -1.5px -1.5px 0 #fff,  
+         1.5px -1.5px 0 #fff,
+        -1.5px  1.5px 0 #fff,
+         1.5px  1.5px 0 #fff,
+         0px 2px 3px rgba(0,0,0,0.2);
+    }
+    .gc-blue   { color: #4285F4; }
+    .gc-red    { color: #EA4335; }
+    .gc-yellow { color: #FBBC05; }
+    .gc-green  { color: #34A853; }
+
+    .header-icon {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
     }
 
     .mode-select-container {
@@ -237,6 +278,7 @@
       margin-bottom: 4px;
     }
 
+    /* 路線図リンクと画像のスタイル */
     .map-link {
       display: block;
       width: 100%;
@@ -248,7 +290,7 @@
       object-fit: contain;
       border-radius: 6px;
       background: #fff;
-      cursor: zoom-in;
+      cursor: zoom-in; /* タップできるマークを表示 */
     }
 
     .calendar-container {
@@ -361,9 +403,17 @@
 <body>
 
   <div class="container">
-    <!-- 最上部タイトルバナー（1枚画像） -->
     <div class="app-header">
-      <img src="header-banner.png" alt="My Transit" class="header-banner-img">
+      <div class="app-title">
+        <img src="illust1772_thumb.gif" alt="バス" class="header-icon">
+        <span class="title-text">
+          <span class="gc-blue">M</span><span class="gc-red">Y</span>
+          <span>&nbsp;</span>
+          <span class="gc-yellow">T</span><span class="gc-blue">R</span><span class="gc-green">A</span><span class="gc-red">N</span><span class="gc-yellow">S</span><span class="gc-blue">I</span><span class="gc-green">T</span>
+        </span>
+        <img src="illust3615_thumb.gif" alt="動物バス" class="header-icon">
+      </div>
+      <div class="app-subtitle">Transportation app</div>
     </div>
 
     <div class="mode-select-container">
@@ -403,12 +453,14 @@
     <div class="home-maps-container" id="home-maps">
       <div class="map-card bus-map-card">
         <div class="map-title">🚌 西鉄バス路線図</div>
+        <!-- タップでバス路線図画像を拡大表示できるリンク -->
         <a href="bus-map.png" target="_blank" class="map-link">
           <img src="bus-map.png" alt="バス路線図" class="map-image">
         </a>
       </div>
       <div class="map-card subway-map-card">
         <div class="map-title">🚇 福岡市地下鉄 路線図</div>
+        <!-- タップで地下鉄路線図画像を拡大表示できるリンク -->
         <a href="subway-map.png" target="_blank" class="map-link">
           <img src="subway-map.png" alt="地下鉄路線図" class="map-image">
         </a>
@@ -697,7 +749,12 @@
           .filter(item => item.from === currentSelectedStop)
           .map(item => {
             const [h, m] = item.departure.split(':').map(Number);
-            const itemTotalMins = h * 60 + m;
+            let adjustedH = h;
+            // 夜間（20時以降）に翌日深夜便（4時未満）を正常にソート・カウントダウンするための処理
+            if (currentHours >= 20 && h < 4) {
+              adjustedH += 24;
+            }
+            const itemTotalMins = adjustedH * 60 + m;
             return { ...item, itemTotalMins };
           })
           .filter(item => item.itemTotalMins >= currentTotalMins)
@@ -733,8 +790,12 @@
           if (currentMode === 'bus') {
             badgeHtml = `<span class="route-badge">${item.route}</span> 行先: ${formattedDest}`;
           } else {
-            badgeHtml = `行先: ${formattedDest}行 (到着: ${item.arrival})`;
+            const arrivalText = item.arrival ? `(到着: ${item.arrival})` : '';
+            badgeHtml = `行先: ${formattedDest}行 ${arrivalText}`;
           }
+
+          // arrivalが存在する場合のみ矢印と到着時刻を表示
+          const arrivalSpan = item.arrival ? `<span class="arrow">➔ ${item.arrival}着</span>` : '';
 
           return `
             <div class="card">
@@ -743,7 +804,7 @@
                 <div class="time-box">
                   <span class="rank-mark mark-${index}"></span>
                   <span class="time">${item.departure}</span>
-                  ${currentMode === 'bus' ? `<span class="arrow">➔ ${item.arrival}着</span>` : ''}
+                  ${arrivalSpan}
                 </div>
                 <span class="mins badge-${index}">${timeText}</span>
               </div>
