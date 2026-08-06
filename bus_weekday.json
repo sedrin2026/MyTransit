@@ -117,19 +117,19 @@
     "destination": "次郎丸駅前"
   },
   {
-    "route": "306",
-    "type": "都市高",
-    "departure": "07:05",
-    "arrival": "07:11",
+    "route": "19",
+    "type": "普通",
+    "departure": "07:03",
+    "arrival": "07:09",
     "from": "三軒屋",
     "to": "次郎丸駅前",
     "destination": "次郎丸駅前"
   },
   {
-    "route": "19",
-    "type": "普通",
-    "departure": "07:03",
-    "arrival": "07:09",
+    "route": "306",
+    "type": "都市高",
+    "departure": "07:05",
+    "arrival": "07:11",
     "from": "三軒屋",
     "to": "次郎丸駅前",
     "destination": "次郎丸駅前"
@@ -315,19 +315,19 @@
     "destination": "次郎丸駅前"
   },
   {
-    "route": "201",
+    "route": "2",
     "type": "普通",
-    "departure": "09:10",
-    "arrival": "09:16",
+    "departure": "09:08",
+    "arrival": "09:14",
     "from": "三軒屋",
     "to": "次郎丸駅前",
     "destination": "次郎丸駅前"
   },
   {
-    "route": "2",
+    "route": "201",
     "type": "普通",
-    "departure": "09:08",
-    "arrival": "09:14",
+    "departure": "09:10",
+    "arrival": "09:16",
     "from": "三軒屋",
     "to": "次郎丸駅前",
     "destination": "次郎丸駅前"
@@ -819,19 +819,19 @@
     "destination": "次郎丸駅前"
   },
   {
-    "route": "19",
+    "route": "2",
     "type": "普通",
-    "departure": "17:43",
-    "arrival": "17:49",
+    "departure": "17:42",
+    "arrival": "17:48",
     "from": "三軒屋",
     "to": "次郎丸駅前",
     "destination": "次郎丸駅前"
   },
   {
-    "route": "2",
+    "route": "19",
     "type": "普通",
-    "departure": "17:42",
-    "arrival": "17:48",
+    "departure": "17:43",
+    "arrival": "17:49",
     "from": "三軒屋",
     "to": "次郎丸駅前",
     "destination": "次郎丸駅前"
@@ -990,6 +990,24 @@
     "destination": "三軒屋"
   },
   {
+    "route": "201",
+    "type": "普通",
+    "departure": "08:19",
+    "arrival": "08:25",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
+    "route": "201",
+    "type": "普通",
+    "departure": "08:39",
+    "arrival": "08:45",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
     "route": "2",
     "type": "普通",
     "departure": "08:55",
@@ -1008,19 +1026,10 @@
     "destination": "三軒屋"
   },
   {
-    "route": "201",
+    "route": "19",
     "type": "普通",
-    "departure": "08:19",
-    "arrival": "08:25",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "201",
-    "type": "普通",
-    "departure": "08:39",
-    "arrival": "08:45",
+    "departure": "09:24",
+    "arrival": "09:30",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
@@ -1073,62 +1082,8 @@
   {
     "route": "19",
     "type": "普通",
-    "departure": "09:24",
-    "arrival": "09:30",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "19",
-    "type": "普通",
     "departure": "09:41",
     "arrival": "09:47",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "2",
-    "type": "普通",
-    "departure": "10:32",
-    "arrival": "10:38",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "2",
-    "type": "普通",
-    "departure": "10:33",
-    "arrival": "10:39",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "19",
-    "type": "普通",
-    "departure": "10:13",
-    "arrival": "10:19",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "19",
-    "type": "普通",
-    "departure": "10:41",
-    "arrival": "10:47",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "19",
-    "type": "普通",
-    "departure": "10:53",
-    "arrival": "10:59",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
@@ -1152,6 +1107,33 @@
     "destination": "三軒屋"
   },
   {
+    "route": "19",
+    "type": "普通",
+    "departure": "10:13",
+    "arrival": "10:19",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
+    "route": "2",
+    "type": "普通",
+    "departure": "10:32",
+    "arrival": "10:38",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
+    "route": "2",
+    "type": "普通",
+    "departure": "10:33",
+    "arrival": "10:39",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
     "route": "201",
     "type": "普通",
     "departure": "10:36",
@@ -1170,10 +1152,19 @@
     "destination": "三軒屋"
   },
   {
-    "route": "306",
-    "type": "都市高",
-    "departure": "11:32",
-    "arrival": "11:38",
+    "route": "19",
+    "type": "普通",
+    "departure": "10:41",
+    "arrival": "10:47",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
+    "route": "19",
+    "type": "普通",
+    "departure": "10:53",
+    "arrival": "10:59",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
@@ -1188,10 +1179,55 @@
     "destination": "三軒屋"
   },
   {
+    "route": "19",
+    "type": "普通",
+    "departure": "11:10",
+    "arrival": "11:16",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
     "route": "2",
     "type": "普通",
     "departure": "11:11",
     "arrival": "11:17",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
+    "route": "19",
+    "type": "普通",
+    "departure": "11:25",
+    "arrival": "11:31",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
+    "route": "306",
+    "type": "都市高",
+    "departure": "11:32",
+    "arrival": "11:38",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
+    "route": "201",
+    "type": "普通",
+    "departure": "11:35",
+    "arrival": "11:41",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
+    "route": "19",
+    "type": "普通",
+    "departure": "11:44",
+    "arrival": "11:50",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
@@ -1208,44 +1244,8 @@
   {
     "route": "19",
     "type": "普通",
-    "departure": "11:10",
-    "arrival": "11:16",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "19",
-    "type": "普通",
-    "departure": "11:25",
-    "arrival": "11:31",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "19",
-    "type": "普通",
-    "departure": "11:44",
-    "arrival": "11:50",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "19",
-    "type": "普通",
     "departure": "11:52",
     "arrival": "11:58",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "201",
-    "type": "普通",
-    "departure": "11:35",
-    "arrival": "11:41",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
@@ -1260,24 +1260,6 @@
     "destination": "三軒屋"
   },
   {
-    "route": "2",
-    "type": "普通",
-    "departure": "12:12",
-    "arrival": "12:18",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "2",
-    "type": "普通",
-    "departure": "12:42",
-    "arrival": "12:48",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
     "route": "306",
     "type": "都市高",
     "departure": "12:10",
@@ -1287,10 +1269,28 @@
     "destination": "三軒屋"
   },
   {
+    "route": "2",
+    "type": "普通",
+    "departure": "12:12",
+    "arrival": "12:18",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
     "route": "306",
     "type": "都市高",
     "departure": "12:21",
     "arrival": "12:27",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
+    "route": "2",
+    "type": "普通",
+    "departure": "12:42",
+    "arrival": "12:48",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
@@ -1314,10 +1314,10 @@
     "destination": "三軒屋"
   },
   {
-    "route": "22",
+    "route": "201",
     "type": "普通",
-    "departure": "13:30",
-    "arrival": "13:36",
+    "departure": "13:05",
+    "arrival": "13:11",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
@@ -1332,15 +1332,6 @@
     "destination": "三軒屋"
   },
   {
-    "route": "2",
-    "type": "普通",
-    "departure": "13:42",
-    "arrival": "13:48",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
     "route": "19",
     "type": "普通",
     "departure": "13:31",
@@ -1350,10 +1341,19 @@
     "destination": "三軒屋"
   },
   {
-    "route": "201",
+    "route": "22",
     "type": "普通",
-    "departure": "13:05",
-    "arrival": "13:11",
+    "departure": "13:30",
+    "arrival": "13:36",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
+    "route": "2",
+    "type": "普通",
+    "departure": "13:42",
+    "arrival": "13:48",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
@@ -1368,19 +1368,19 @@
     "destination": "三軒屋"
   },
   {
-    "route": "2",
+    "route": "19",
     "type": "普通",
-    "departure": "14:29",
-    "arrival": "14:35",
+    "departure": "14:01",
+    "arrival": "14:07",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
   },
   {
-    "route": "19",
+    "route": "201",
     "type": "普通",
-    "departure": "14:01",
-    "arrival": "14:07",
+    "departure": "14:02",
+    "arrival": "14:08",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
@@ -1395,10 +1395,10 @@
     "destination": "三軒屋"
   },
   {
-    "route": "201",
+    "route": "2",
     "type": "普通",
-    "departure": "14:02",
-    "arrival": "14:08",
+    "departure": "14:29",
+    "arrival": "14:35",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
@@ -1440,10 +1440,28 @@
     "destination": "三軒屋"
   },
   {
+    "route": "19",
+    "type": "普通",
+    "departure": "15:21",
+    "arrival": "15:27",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
     "route": "2",
     "type": "普通",
     "departure": "15:22",
     "arrival": "15:28",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
+    "route": "19",
+    "type": "普通",
+    "departure": "15:35",
+    "arrival": "15:41",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
@@ -1469,33 +1487,6 @@
   {
     "route": "19",
     "type": "普通",
-    "departure": "15:21",
-    "arrival": "15:27",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "19",
-    "type": "普通",
-    "departure": "15:35",
-    "arrival": "15:41",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "201",
-    "type": "普通",
-    "departure": "16:36",
-    "arrival": "16:42",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "19",
-    "type": "普通",
     "departure": "16:01",
     "arrival": "16:07",
     "from": "次郎丸",
@@ -1512,15 +1503,6 @@
     "destination": "三軒屋"
   },
   {
-    "route": "19",
-    "type": "普通",
-    "departure": "16:41",
-    "arrival": "16:47",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
     "route": "2",
     "type": "普通",
     "departure": "16:22",
@@ -1530,10 +1512,19 @@
     "destination": "三軒屋"
   },
   {
-    "route": "17",
+    "route": "201",
     "type": "普通",
-    "departure": "17:44",
-    "arrival": "17:50",
+    "departure": "16:36",
+    "arrival": "16:42",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
+    "route": "19",
+    "type": "普通",
+    "departure": "16:41",
+    "arrival": "16:47",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
@@ -1543,24 +1534,6 @@
     "type": "都市高",
     "departure": "17:08",
     "arrival": "17:14",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "306",
-    "type": "都市高",
-    "departure": "17:28",
-    "arrival": "17:34",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "306",
-    "type": "都市高",
-    "departure": "17:38",
-    "arrival": "17:44",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
@@ -1584,6 +1557,33 @@
     "destination": "三軒屋"
   },
   {
+    "route": "306",
+    "type": "都市高",
+    "departure": "17:28",
+    "arrival": "17:34",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
+    "route": "306",
+    "type": "都市高",
+    "departure": "17:38",
+    "arrival": "17:44",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
+    "route": "17",
+    "type": "普通",
+    "departure": "17:44",
+    "arrival": "17:50",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
     "route": "201",
     "type": "普通",
     "departure": "17:59",
@@ -1602,10 +1602,10 @@
     "destination": "三軒屋"
   },
   {
-    "route": "2",
+    "route": "201",
     "type": "普通",
-    "departure": "18:45",
-    "arrival": "18:51",
+    "departure": "18:09",
+    "arrival": "18:15",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
@@ -1620,46 +1620,19 @@
     "destination": "三軒屋"
   },
   {
-    "route": "19",
-    "type": "普通",
-    "departure": "18:23",
-    "arrival": "18:29",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "19",
-    "type": "普通",
-    "departure": "18:35",
-    "arrival": "18:41",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "19",
-    "type": "普通",
-    "departure": "18:48",
-    "arrival": "18:54",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "201",
-    "type": "普通",
-    "departure": "18:09",
-    "arrival": "18:15",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
     "route": "201",
     "type": "普通",
     "departure": "18:15",
     "arrival": "18:21",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
+    "route": "19",
+    "type": "普通",
+    "departure": "18:23",
+    "arrival": "18:29",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
@@ -1674,46 +1647,28 @@
     "destination": "三軒屋"
   },
   {
-    "route": "306",
-    "type": "都市高",
-    "departure": "19:30",
-    "arrival": "19:36",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "306",
-    "type": "都市高",
-    "departure": "19:35",
-    "arrival": "19:41",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "306",
-    "type": "都市高",
-    "departure": "19:47",
-    "arrival": "19:53",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "306",
-    "type": "都市高",
-    "departure": "19:59",
-    "arrival": "20:05",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "201",
+    "route": "19",
     "type": "普通",
-    "departure": "19:40",
-    "arrival": "19:46",
+    "departure": "18:35",
+    "arrival": "18:41",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
+    "route": "2",
+    "type": "普通",
+    "departure": "18:45",
+    "arrival": "18:51",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
+    "route": "19",
+    "type": "普通",
+    "departure": "18:48",
+    "arrival": "18:54",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
@@ -1737,10 +1692,28 @@
     "destination": "三軒屋"
   },
   {
+    "route": "306",
+    "type": "都市高",
+    "departure": "19:30",
+    "arrival": "19:36",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
+    "route": "306",
+    "type": "都市高",
+    "departure": "19:35",
+    "arrival": "19:41",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
     "route": "201",
     "type": "普通",
-    "departure": "20:39",
-    "arrival": "20:45",
+    "departure": "19:40",
+    "arrival": "19:46",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
@@ -1748,8 +1721,8 @@
   {
     "route": "306",
     "type": "都市高",
-    "departure": "20:33",
-    "arrival": "20:39",
+    "departure": "19:47",
+    "arrival": "19:53",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
@@ -1757,8 +1730,8 @@
   {
     "route": "306",
     "type": "都市高",
-    "departure": "20:56",
-    "arrival": "21:02",
+    "departure": "19:59",
+    "arrival": "20:05",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
@@ -1782,6 +1755,33 @@
     "destination": "三軒屋"
   },
   {
+    "route": "306",
+    "type": "都市高",
+    "departure": "20:33",
+    "arrival": "20:39",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
+    "route": "201",
+    "type": "普通",
+    "departure": "20:39",
+    "arrival": "20:45",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
+    "route": "306",
+    "type": "都市高",
+    "departure": "20:56",
+    "arrival": "21:02",
+    "from": "次郎丸",
+    "to": "三軒屋",
+    "destination": "三軒屋"
+  },
+  {
     "route": "201",
     "type": "普通",
     "departure": "21:13",
@@ -1795,96 +1795,6 @@
     "type": "普通",
     "departure": "21:31",
     "arrival": "21:37",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "201",
-    "type": "普通",
-    "departure": "21:47",
-    "arrival": "21:53",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "19",
-    "type": "普通",
-    "departure": "21:10",
-    "arrival": "21:16",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "19",
-    "type": "普通",
-    "departure": "21:29",
-    "arrival": "21:35",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "22",
-    "type": "普通",
-    "departure": "22:04",
-    "arrival": "22:10",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "201",
-    "type": "普通",
-    "departure": "22:52",
-    "arrival": "22:58",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "19",
-    "type": "普通",
-    "departure": "22:48",
-    "arrival": "22:54",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "2",
-    "type": "普通",
-    "departure": "22:05",
-    "arrival": "22:11",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "19",
-    "type": "普通",
-    "departure": "23:16",
-    "arrival": "23:22",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "2",
-    "type": "普通",
-    "departure": "23:43",
-    "arrival": "23:49",
-    "from": "次郎丸",
-    "to": "三軒屋",
-    "destination": "三軒屋"
-  },
-  {
-    "route": "201",
-    "type": "普通",
-    "departure": "23:52",
-    "arrival": "23:58",
     "from": "次郎丸",
     "to": "三軒屋",
     "destination": "三軒屋"
