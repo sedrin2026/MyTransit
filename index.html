@@ -140,7 +140,7 @@
       border: 1px solid #7d9670;
       flex-wrap: wrap;
       gap: 8px;
-      justify-content: space-between;
+      justify-content: center;
     }
     .subway-stop-panel.active {
       display: flex;
@@ -435,13 +435,8 @@
       </label>
     </div>
 
+    <!-- 地下鉄パネル：橋本駅(博多方面)の1つだけに変更 -->
     <div class="subway-stop-panel" id="subway-panel">
-      <label class="radio-label">
-        <input type="radio" name="transitStop" value="次郎丸駅" onchange="changeSubwayStop('次郎丸駅')"> 次郎丸駅
-      </label>
-      <label class="radio-label">
-        <input type="radio" name="transitStop" value="橋本駅" onchange="changeSubwayStop('橋本駅')"> 橋本駅
-      </label>
       <label class="radio-label">
         <input type="radio" name="transitStop" value="橋本駅(博多方面)" onchange="changeSubwayStop('橋本駅(博多方面)')"> 橋本(博多方面)
       </label>
@@ -558,11 +553,7 @@
 
       document.getElementById('home-maps').style.display = 'none';
 
-      if (name === '次郎丸駅') {
-        text.innerText = '次郎丸駅 ➔ 橋本駅';
-      } else if (name === '橋本駅') {
-        text.innerText = '橋本駅 ➔ 次郎丸駅';
-      } else if (name === '橋本駅(博多方面)') {
+      if (name === '橋本駅(博多方面)') {
         text.innerText = '橋本駅 ➔ 博多方面';
       }
 
@@ -717,6 +708,7 @@
       }
     }
 
+    // 地下鉄のパス取得処理（新しい2ファイルのみに整理）
     function getSubwayJsonPath(now, selectedStop) {
       const dayOfWeek = now.getDay();
       const isWeekend = dayOfWeek === 0 || dayOfWeek === 6 || isJapaneseHoliday(now);
