@@ -719,19 +719,8 @@
 
     function getSubwayJsonPath(now, selectedStop) {
       const dayOfWeek = now.getDay();
-      const isWeekend = (dayOfWeek === 0 || dayOfWeek === 6 || isJapaneseHoliday(now));
-
-      // 橋本駅(博多方面)が選択された場合の新ファイル連携
-      if (selectedStop === '橋本駅(博多方面)') {
-        return isWeekend ? './subway_hashimoto_hakata_weekend.json' : './subway_hashimoto_hakata_weekday.json';
-      }
-
-      // 従来の地下鉄ルートの切り分け
-      if (isWeekend) {
-        return './subway_holiday.json'; // 必要に応じて土曜日・休日ファイルを分けることも可能
-      } else {
-        return './subway_weekday.json';
-      }
+      const isWeekend = dayOfWeek === 0 || dayOfWeek === 6 || isJapaneseHoliday(now);
+      return isWeekend ? './subway_hashimoto_hakata_weekend.json' : './subway_hashimoto_hakata_weekday.json';
     }
 
     async function updateSchedule() {
