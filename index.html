@@ -700,9 +700,14 @@
       if (dayOfWeek === 0 || isJapaneseHoliday(now)) {
         return './bus_holiday.json';
 
-      // 土曜日も従来通り
+      // 土曜日
       } else if (dayOfWeek === 6) {
-        return './bus_saturday.json';
+        // 土曜日かつ「次郎丸（次郎丸 → 三軒屋）」の場合に専用JSONを使用
+        if (selectedStop === '次郎丸') {
+          return './bus_saturday_jiroumaru_sankenya.json';
+        } else {
+          return './bus_saturday.json';
+        }
 
       // 平日の「次郎丸」だけ専用JSONを使用
       } else if (selectedStop === '次郎丸') {
