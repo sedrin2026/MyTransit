@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-transit-v11';
+const CACHE_NAME = 'my-transit-v12';
 
 const urlsToCache = [
   './',
@@ -13,6 +13,7 @@ const urlsToCache = [
   './bus_weekday.json',
   './bus_weekday_jiroumaru_sankenya.json',
   './bus_saturday.json',
+  './bus_saturday_jiroumaru_sankenya.json',
   './bus_holiday.json',
 
   './subway_weekday.json',
