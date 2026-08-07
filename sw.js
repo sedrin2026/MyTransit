@@ -1,5 +1,4 @@
-const CACHE_NAME = 'my-transit-v14';
-
+const CACHE_NAME = 'my-transit-v15';
 const urlsToCache = [
   './',
   './index.html',
@@ -9,16 +8,11 @@ const urlsToCache = [
   './illust3615_thumb.gif',
   './bus-map.png',
   './subway-map.png',
-
   './bus_weekday.json',
   './bus_weekday_jiroumaru_sankenya.json',
   './bus_saturday.json',
   './bus_saturday_jiroumaru_sankenya.json',
   './bus_holiday.json',
-
-  './subway_weekday.json',
-  './subway_saturday.json',
-  './subway_holiday.json',
   './subway_hashimoto_hakata_weekday.json',
   './subway_hashimoto_hakata_weekend.json'
 ];
