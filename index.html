@@ -354,47 +354,16 @@
       border: 1px solid #eee;
     }
 
-    .candidate-tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: bold;
-      padding: 2px 6px;
-      border-radius: 4px;
-      margin-bottom: 4px;
-    }
-    .cand-0 { background-color: #ffeef0; color: #dc3545; border: 1px solid #f5c6cb; }
-    .cand-1 { background-color: #eafaf1; color: #28a745; border: 1px solid #c3e6cb; }
-    .cand-2 { background-color: #edf5ff; color: #007bff; border: 1px solid #b8daff; }
-    .cand-3 { background-color: #fff9e6; color: #d97706; border: 1px solid #fde68a; }
-    .cand-4 { background-color: #f3e8ff; color: #7c3aed; border: 1px solid #ddd6fe; }
-
-    .card-header { display: flex; justify-content: space-between; align-items: center; }
-    .time-box { display: flex; align-items: center; gap: 8px; }
-    .rank-mark { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
-    .mark-0 { background: #dc3545; }
-    .mark-1 { background: #28a745; }
-    .mark-2 { background: #007bff; }
-    .mark-3 { background: #d97706; }
-    .mark-4 { background: #7c3aed; }
-
-    .time { font-size: 1.3rem; font-weight: bold; color: #111; }
-    .arrow { color: #888; font-size: 0.85rem; }
-    .mins { font-size: 0.8rem; font-weight: bold; padding: 3px 6px; border-radius: 6px; }
-    
-    .badge-0 { background: #f8d7da; color: #721c24; }
-    .badge-1 { background: #d4edda; color: #155724; }
-    .badge-2 { background: #cce5ff; color: #004085; }
-    .badge-3 { background: #fef3c7; color: #92400e; }
-    .badge-4 { background: #ede9fe; color: #5b21b6; }
-
-    .details { font-size: 0.8rem; color: #666; margin-top: 8px; }
-    
-    .route-badge { 
-      background: #ff8c32; 
-      padding: 2px 6px; 
-      border-radius: 4px; 
-      font-weight: bold; 
-      color: #ffffff; 
+    .debug-box {
+      background: #222;
+      color: #0f0;
+      padding: 10px;
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 0.75rem;
+      white-space: pre-wrap;
+      word-break: break-all;
+      margin-top: 10px;
     }
 
     .empty { text-align: center; color: #777; margin-top: 20px; font-size: 0.9rem; }
@@ -720,14 +689,12 @@
         dayOfWeek === 6 ||
         isJapaneseHoliday(now);
 
-      // 橋本駅 → 博多方面
       if (selectedStop === '橋本駅(博多方面)') {
         return isWeekend
           ? './subway_hashimoto_hakata_weekend.json'
           : './subway_hashimoto_hakata_weekday.json';
       }
 
-      // 次郎丸駅 → 橋本方面
       if (selectedStop === '次郎丸駅(橋本方面)') {
         return isWeekend
           ? './subway_jiroumaru_to_hashimoto_weekend.json'
@@ -766,14 +733,27 @@
           targetData = await response.json();
         }
 
-        // --- チャッピー教授の指示に基づく検索ストップ名の変換 ---
         const searchStop =
           currentSelectedStop === '次郎丸駅(橋本方面)'
             ? '次郎丸駅'
             : currentSelectedStop;
 
-        const upcoming = targetData
-          .filter(item => item.from === searchStop)
+        const filteredData = targetData.filter(
+          item => item.from === searchStop
+        );
+
+        // --- スマホ画面で確認するためのデバッグ表示ボックス作成 ---
+        const debugText = 
+          `【DEBUG REPORT】\n` +
+          `jsonPath: ${jsonPath}\n` +
+          `searchStop: ${searchStop}\n` +
+          `targetData length: ${targetData.length}\n` +
+          `from values: ${JSON.stringify(targetData.map(item => item.from).slice(0, 3))}...\n` +
+          `departure first/last: ${targetData[0]?.departure} / ${targetData[targetData.length - 1]?.departure}\n` +
+          `current time: ${currentHours}:${currentMins}\n` +
+          `filteredData length: ${filteredData.length}`;
+
+        const upcoming = filteredData
           .map(item => {
             const [h, m] = item.departure.split(':').map(Number);
             let adjustedH = h;
@@ -788,7 +768,10 @@
           .slice(0, 5);
 
         if (upcoming.length === 0) {
-          container.innerHTML = '<div class="empty">本日の該当便はすべて終了しました。</div>';
+          container.innerHTML = `
+            <div class="empty">本日の該当便はすべて終了しました。</div>
+            <div class="debug-box">${debugText}</div>
+          `;
           return;
         }
 
@@ -811,15 +794,6 @@
           }
 
           const formattedDest = formatDestination(item.destination);
-
-          let badgeHtml = '';
-          if (currentMode === 'bus') {
-            badgeHtml = `<span class="route-badge">${item.route}</span> 行先: ${formattedDest}`;
-          } else {
-            const arrivalText = item.arrival ? `(到着: ${item.arrival})` : '';
-            badgeHtml = `行先: ${formattedDest}行 ${arrivalText}`;
-          }
-
           const arrivalSpan = item.arrival ? `<span class="arrow">➔ ${item.arrival}着</span>` : '';
 
           return `
@@ -834,11 +808,11 @@
                 <span class="mins badge-${index}">${timeText}</span>
               </div>
               <div class="details">
-                ${badgeHtml}
+                行先: ${formattedDest}行
               </div>
             </div>
           `;
-        }).join('');
+        }).join('') + `<div class="debug-box">${debugText}</div>`;
 
       } catch (e) {
         console.error('Error fetching or processing schedule:', e);
@@ -855,7 +829,6 @@
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js')
           .then((reg) => {
-            console.log('サービスワーカー登録成功:', reg.scope);
             reg.update();
           })
           .catch((err) => { console.log('サービスワーカー登録失敗:', err); });
