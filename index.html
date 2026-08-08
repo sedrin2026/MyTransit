@@ -712,7 +712,6 @@
       }
     }
 
-    // 地下鉄のパス取得処理（正しいファイル名に修正済み）
     function getSubwayJsonPath(now, selectedStop) {
       const dayOfWeek = now.getDay();
 
@@ -755,16 +754,27 @@
         const currentTotalMins = currentHours * 60 + currentMins;
 
         let targetData = [];
+        let jsonPath = '';
 
         if (currentMode === 'bus') {
-          const jsonPath = getBusJsonPath(now, currentSelectedStop);
+          jsonPath = getBusJsonPath(now, currentSelectedStop);
           const response = await fetch(jsonPath);
           targetData = await response.json();
         } else if (currentMode === 'subway') {
-          const jsonPath = getSubwayJsonPath(now, currentSelectedStop);
+          jsonPath = getSubwayJsonPath(now, currentSelectedStop);
           const response = await fetch(jsonPath);
           targetData = await response.json();
         }
+
+        // --- 教授のご指示に基づくデバッグログ ---
+        console.log('selectedStop:', currentSelectedStop);
+        console.log('jsonPath:', jsonPath);
+        console.log('targetData:', targetData);
+        console.log('targetData length:', targetData.length);
+
+        console.log('currentSelectedStop:', currentSelectedStop);
+        console.log('JSON from values:', targetData.map(item => item.from));
+        // ----------------------------------------
 
         const upcoming = targetData
           .filter(item => item.from === currentSelectedStop)
@@ -835,6 +845,7 @@
         }).join('');
 
       } catch (e) {
+        console.error('Error fetching or processing schedule:', e);
         container.innerHTML = '<div class="empty">データの読み込みに失敗しました。</div>';
       }
     }
