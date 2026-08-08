@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-transit-v8';
+const CACHE_NAME = 'my-transit-v9';
 const urlsToCache = [
   './',
   './index.html',
