@@ -133,27 +133,26 @@
     .subway-stop-panel {
       display: none;
       background: #ffffff;
-      padding: 10px 12px;
+      padding: 10px 16px;
       border-radius: 10px;
       margin-bottom: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       border: 1px solid #7d9670;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
     }
     .subway-stop-panel.active {
       display: flex;
+      justify-content: space-around;
+      align-items: center;
     }
 
     .radio-label {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: bold;
       color: #2c3e50;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
     }
     .bus-stop-panel input[type="radio"] {
       accent-color: #ff8c32;
@@ -279,6 +278,7 @@
       margin-bottom: 4px;
     }
 
+    /* 路線図リンクと画像のスタイル */
     .map-link {
       display: block;
       width: 100%;
@@ -290,7 +290,7 @@
       object-fit: contain;
       border-radius: 6px;
       background: #fff;
-      cursor: zoom-in;
+      cursor: zoom-in; /* タップできるマークを表示 */
     }
 
     .calendar-container {
@@ -354,16 +354,47 @@
       border: 1px solid #eee;
     }
 
-    .debug-box {
-      background: #222;
-      color: #0f0;
-      padding: 10px;
-      border-radius: 8px;
-      font-family: monospace;
-      font-size: 0.75rem;
-      white-space: pre-wrap;
-      word-break: break-all;
-      margin-top: 10px;
+    .candidate-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+    }
+    .cand-0 { background-color: #ffeef0; color: #dc3545; border: 1px solid #f5c6cb; }
+    .cand-1 { background-color: #eafaf1; color: #28a745; border: 1px solid #c3e6cb; }
+    .cand-2 { background-color: #edf5ff; color: #007bff; border: 1px solid #b8daff; }
+    .cand-3 { background-color: #fff9e6; color: #d97706; border: 1px solid #fde68a; }
+    .cand-4 { background-color: #f3e8ff; color: #7c3aed; border: 1px solid #ddd6fe; }
+
+    .card-header { display: flex; justify-content: space-between; align-items: center; }
+    .time-box { display: flex; align-items: center; gap: 8px; }
+    .rank-mark { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
+    .mark-0 { background: #dc3545; }
+    .mark-1 { background: #28a745; }
+    .mark-2 { background: #007bff; }
+    .mark-3 { background: #d97706; }
+    .mark-4 { background: #7c3aed; }
+
+    .time { font-size: 1.3rem; font-weight: bold; color: #111; }
+    .arrow { color: #888; font-size: 0.85rem; }
+    .mins { font-size: 0.8rem; font-weight: bold; padding: 3px 6px; border-radius: 6px; }
+    
+    .badge-0 { background: #f8d7da; color: #721c24; }
+    .badge-1 { background: #d4edda; color: #155724; }
+    .badge-2 { background: #cce5ff; color: #004085; }
+    .badge-3 { background: #fef3c7; color: #92400e; }
+    .badge-4 { background: #ede9fe; color: #5b21b6; }
+
+    .details { font-size: 0.8rem; color: #666; margin-top: 8px; }
+    
+    .route-badge { 
+      background: #ff8c32; 
+      padding: 2px 6px; 
+      border-radius: 4px; 
+      font-weight: bold; 
+      color: #ffffff; 
     }
 
     .empty { text-align: center; color: #777; margin-top: 20px; font-size: 0.9rem; }
@@ -380,7 +411,6 @@
           <span>&nbsp;</span>
           <span class="gc-yellow">T</span><span class="gc-blue">R</span><span class="gc-green">A</span><span class="gc-red">N</span><span class="gc-yellow">S</span><span class="gc-blue">I</span><span class="gc-green">T</span>
         </span>
-        
         <img src="illust3615_thumb.gif" alt="動物バス" class="header-icon">
       </div>
       <div class="app-subtitle">Transportation app</div>
@@ -406,10 +436,10 @@
 
     <div class="subway-stop-panel" id="subway-panel">
       <label class="radio-label">
-        <input type="radio" name="transitStop" value="橋本駅(博多方面)" onchange="changeSubwayStop('橋本駅(博多方面)')"> 橋本(博多方面)
+        <input type="radio" name="transitStop" value="次郎丸駅" onchange="changeSubwayStop('次郎丸駅')"> 次郎丸駅
       </label>
       <label class="radio-label">
-        <input type="radio" name="transitStop" value="次郎丸駅(橋本方面)" onchange="changeSubwayStop('次郎丸駅(橋本方面)')"> 次郎丸(橋本方面)
+        <input type="radio" name="transitStop" value="橋本駅" onchange="changeSubwayStop('橋本駅')"> 橋本駅
       </label>
     </div>
 
@@ -423,12 +453,14 @@
     <div class="home-maps-container" id="home-maps">
       <div class="map-card bus-map-card">
         <div class="map-title">🚌 西鉄バス路線図</div>
+        <!-- タップでバス路線図画像を拡大表示できるリンク -->
         <a href="bus-map.png" target="_blank" class="map-link">
           <img src="bus-map.png" alt="バス路線図" class="map-image">
         </a>
       </div>
       <div class="map-card subway-map-card">
         <div class="map-title">🚇 福岡市地下鉄 路線図</div>
+        <!-- タップで地下鉄路線図画像を拡大表示できるリンク -->
         <a href="subway-map.png" target="_blank" class="map-link">
           <img src="subway-map.png" alt="地下鉄路線図" class="map-image">
         </a>
@@ -524,10 +556,10 @@
 
       document.getElementById('home-maps').style.display = 'none';
 
-      if (name === '橋本駅(博多方面)') {
-        text.innerText = '橋本駅 ➔ 博多方面';
-      } else if (name === '次郎丸駅(橋本方面)') {
-        text.innerText = '次郎丸駅 ➔ 橋本方面';
+      if (name === '次郎丸駅') {
+        text.innerText = '次郎丸駅 ➔ 橋本駅';
+      } else if (name === '橋本駅') {
+        text.innerText = '橋本駅 ➔ 次郎丸駅';
       }
 
       updateSchedule();
@@ -663,45 +695,26 @@
       return false;
     }
 
-    function getBusJsonPath(now, selectedStop) {
+    function getBusJsonPath(now) {
       const dayOfWeek = now.getDay();
-
       if (dayOfWeek === 0 || isJapaneseHoliday(now)) {
         return './bus_holiday.json';
       } else if (dayOfWeek === 6) {
-        if (selectedStop === '次郎丸') {
-          return './bus_saturday_jiroumaru_sankenya.json';
-        } else {
-          return './bus_saturday.json';
-        }
-      } else if (selectedStop === '次郎丸') {
-        return './bus_weekday_jiroumaru_sankenya.json';
+        return './bus_saturday.json';
       } else {
         return './bus_weekday.json';
       }
     }
 
-    function getSubwayJsonPath(now, selectedStop) {
+    function getSubwayJsonPath(now) {
       const dayOfWeek = now.getDay();
-
-      const isWeekend =
-        dayOfWeek === 0 ||
-        dayOfWeek === 6 ||
-        isJapaneseHoliday(now);
-
-      if (selectedStop === '橋本駅(博多方面)') {
-        return isWeekend
-          ? './subway_hashimoto_hakata_weekend.json'
-          : './subway_hashimoto_hakata_weekday.json';
+      if (dayOfWeek === 0 || isJapaneseHoliday(now)) {
+        return './subway_holiday.json';
+      } else if (dayOfWeek === 6) {
+        return './subway_saturday.json';
+      } else {
+        return './subway_weekday.json';
       }
-
-      if (selectedStop === '次郎丸駅(橋本方面)') {
-        return isWeekend
-          ? './subway_jiroumaru_to_hashimoto_weekend.json'
-          : './subway_jiroumaru_to_hashimoto_weekday.json';
-      }
-
-      return null;
     }
 
     async function updateSchedule() {
@@ -714,54 +727,29 @@
 
       const container = document.getElementById('results');
 
-      let jsonPath = '';
-      let targetData = [];
-      let searchStop = '';
-      let filteredData = [];
-
       try {
         const now = new Date();
         const currentHours = now.getHours();
         const currentMins = now.getMinutes();
         const currentTotalMins = currentHours * 60 + currentMins;
 
+        let targetData = [];
+
         if (currentMode === 'bus') {
-          jsonPath = getBusJsonPath(now, currentSelectedStop);
+          const jsonPath = getBusJsonPath(now);
           const response = await fetch(jsonPath);
           targetData = await response.json();
         } else if (currentMode === 'subway') {
-          jsonPath = getSubwayJsonPath(now, currentSelectedStop);
+          const jsonPath = getSubwayJsonPath(now);
           const response = await fetch(jsonPath);
           targetData = await response.json();
         }
 
-        searchStop =
-          currentSelectedStop === '次郎丸駅(橋本方面)'
-            ? '次郎丸駅'
-            : currentSelectedStop;
-
-        filteredData = targetData.filter(
-          item => item.from === searchStop
-        );
-
-        const debugText = 
-          `【DEBUG REPORT】\n` +
-          `jsonPath: ${jsonPath}\n` +
-          `searchStop: ${searchStop}\n` +
-          `targetData length: ${targetData.length}\n` +
-          `from values: ${JSON.stringify(targetData.map(item => item.from).slice(0, 3))}...\n` +
-          `departure first/last: ${targetData[0]?.departure} / ${targetData[targetData.length - 1]?.departure}\n` +
-          `current time: ${currentHours}:${currentMins}\n` +
-          `filteredData length: ${filteredData.length}`;
-
-        const upcoming = filteredData
+        const upcoming = targetData
+          .filter(item => item.from === currentSelectedStop)
           .map(item => {
             const [h, m] = item.departure.split(':').map(Number);
-            let adjustedH = h;
-            if (currentHours >= 20 && h < 4) {
-              adjustedH += 24;
-            }
-            const itemTotalMins = adjustedH * 60 + m;
+            const itemTotalMins = h * 60 + m;
             return { ...item, itemTotalMins };
           })
           .filter(item => item.itemTotalMins >= currentTotalMins)
@@ -769,10 +757,7 @@
           .slice(0, 5);
 
         if (upcoming.length === 0) {
-          container.innerHTML = `
-            <div class="empty">本日の該当便はすべて終了しました。</div>
-            <div class="debug-box">${debugText}</div>
-          `;
+          container.innerHTML = '<div class="empty">本日の該当便はすべて終了しました。</div>';
           return;
         }
 
@@ -795,7 +780,13 @@
           }
 
           const formattedDest = formatDestination(item.destination);
-          const arrivalSpan = item.arrival ? `<span class="arrow">➔ ${item.arrival}着</span>` : '';
+
+          let badgeHtml = '';
+          if (currentMode === 'bus') {
+            badgeHtml = `<span class="route-badge">${item.route}</span> 行先: ${formattedDest}`;
+          } else {
+            badgeHtml = `行先: ${formattedDest}行 (到着: ${item.arrival})`;
+          }
 
           return `
             <div class="card">
@@ -804,23 +795,19 @@
                 <div class="time-box">
                   <span class="rank-mark mark-${index}"></span>
                   <span class="time">${item.departure}</span>
-                  ${arrivalSpan}
+                  ${currentMode === 'bus' ? `<span class="arrow">➔ ${item.arrival}着</span>` : ''}
                 </div>
                 <span class="mins badge-${index}">${timeText}</span>
               </div>
               <div class="details">
-                行先: ${formattedDest}行
+                ${badgeHtml}
               </div>
             </div>
           `;
-        }).join('') + `<div class="debug-box">${debugText}</div>`;
+        }).join('');
 
       } catch (e) {
-        console.error('Error fetching or processing schedule:', e);
-        container.innerHTML = `
-          <div class="empty">データの読み込みに失敗しました。</div>
-          <div class="debug-box">【CATCH ERROR】\n${e.message}\njsonPath tried: ${jsonPath}</div>
-        `;
+        container.innerHTML = '<div class="empty">データの読み込みに失敗しました。</div>';
       }
     }
 
@@ -833,6 +820,7 @@
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js')
           .then((reg) => {
+            console.log('サービスワーカー登録成功:', reg.scope);
             reg.update();
           })
           .catch((err) => { console.log('サービスワーカー登録失敗:', err); });
