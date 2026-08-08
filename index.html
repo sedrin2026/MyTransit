@@ -766,18 +766,14 @@
           targetData = await response.json();
         }
 
-        // --- 教授のご指示に基づくデバッグログ ---
-        console.log('selectedStop:', currentSelectedStop);
-        console.log('jsonPath:', jsonPath);
-        console.log('targetData:', targetData);
-        console.log('targetData length:', targetData.length);
-
-        console.log('currentSelectedStop:', currentSelectedStop);
-        console.log('JSON from values:', targetData.map(item => item.from));
-        // ----------------------------------------
+        // --- チャッピー教授の指示に基づく検索ストップ名の変換 ---
+        const searchStop =
+          currentSelectedStop === '次郎丸駅(橋本方面)'
+            ? '次郎丸駅'
+            : currentSelectedStop;
 
         const upcoming = targetData
-          .filter(item => item.from === currentSelectedStop)
+          .filter(item => item.from === searchStop)
           .map(item => {
             const [h, m] = item.departure.split(':').map(Number);
             let adjustedH = h;
