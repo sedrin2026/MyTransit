@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-transit-v15';
+const CACHE_NAME = 'my-transit-v16';
 
 const urlsToCache = [
   './',
@@ -18,8 +18,8 @@ const urlsToCache = [
 
   './subway_hashimoto_hakata_weekday.json',
   './subway_hashimoto_hakata_weekend.json',
-  './subway_jiroumaru_hashimoto_weekday.json',
-  './subway_jiroumaru_hashimoto_weekend.json'
+  './subway_jiroumaru_to_hashimoto_weekday.json',
+  './subway_jiroumaru_to_hashimoto_weekend.json'
 ];
 
 // インストール処理
