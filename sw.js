@@ -1,41 +1,32 @@
-const CACHE_NAME = 'my-transit-v16';
-
+const CACHE_NAME = 'my-transit-v8';
 const urlsToCache = [
   './',
   './index.html',
   './manifest.json',
-  './icon-192.png',
   './illust1772_thumb.gif',
   './illust3615_thumb.gif',
   './bus-map.png',
   './subway-map.png',
-
   './bus_weekday.json',
-  './bus_weekday_jiroumaru_sankenya.json',
   './bus_saturday.json',
-  './bus_saturday_jiroumaru_sankenya.json',
   './bus_holiday.json',
-
-  './subway_hashimoto_hakata_weekday.json',
-  './subway_hashimoto_hakata_weekend.json',
-  './subway_jiroumaru_to_hashimoto_weekday.json',
-  './subway_jiroumaru_to_hashimoto_weekend.json'
+  './subway_weekday.json',
+  './subway_saturday.json',
+  './subway_holiday.json'
 ];
 
-// インストール処理
+// インストール時にキャッシュを作成
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
         return cache.addAll(urlsToCache);
       })
-      .then(() => {
-        return self.skipWaiting();
-      })
   );
+  self.skipWaiting();
 });
 
-// アクティベート処理（古いキャッシュの削除）
+// アクティベート時に古いキャッシュを完全消去
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -46,21 +37,22 @@ self.addEventListener('activate', (event) => {
           }
         })
       );
-    }).then(() => {
-      return self.clients.claim();
     })
   );
+  self.clients.claim();
 });
 
-// フェッチ処理（キャッシュ優先、ネットワークフォールバック）
+// フェッチ（ネットワーク優先にして画像が確実に表示されるようにする）
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request)
+    fetch(event.request)
       .then((response) => {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
+        // ネットワークから取得できたら、それを返す
+        return response;
+      })
+      .catch(() => {
+        // オフラインのときはキャッシュから探す
+        return caches.match(event.request);
       })
   );
 });
