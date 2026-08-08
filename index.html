@@ -714,14 +714,16 @@
 
       const container = document.getElementById('results');
 
+      let jsonPath = '';
+      let targetData = [];
+      let searchStop = '';
+      let filteredData = [];
+
       try {
         const now = new Date();
         const currentHours = now.getHours();
         const currentMins = now.getMinutes();
         const currentTotalMins = currentHours * 60 + currentMins;
-
-        let targetData = [];
-        let jsonPath = '';
 
         if (currentMode === 'bus') {
           jsonPath = getBusJsonPath(now, currentSelectedStop);
@@ -733,16 +735,15 @@
           targetData = await response.json();
         }
 
-        const searchStop =
+        searchStop =
           currentSelectedStop === '次郎丸駅(橋本方面)'
             ? '次郎丸駅'
             : currentSelectedStop;
 
-        const filteredData = targetData.filter(
+        filteredData = targetData.filter(
           item => item.from === searchStop
         );
 
-        // --- スマホ画面で確認するためのデバッグ表示ボックス作成 ---
         const debugText = 
           `【DEBUG REPORT】\n` +
           `jsonPath: ${jsonPath}\n` +
@@ -816,7 +817,10 @@
 
       } catch (e) {
         console.error('Error fetching or processing schedule:', e);
-        container.innerHTML = '<div class="empty">データの読み込みに失敗しました。</div>';
+        container.innerHTML = `
+          <div class="empty">データの読み込みに失敗しました。</div>
+          <div class="debug-box">【CATCH ERROR】\n${e.message}\njsonPath tried: ${jsonPath}</div>
+        `;
       }
     }
 
