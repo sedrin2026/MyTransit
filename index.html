@@ -435,10 +435,13 @@
       </label>
     </div>
 
-    <!-- 地下鉄パネル：橋本駅(博多方面)の1つだけに変更 -->
+    <!-- 地下鉄パネル：2つのラジオボタンに変更 -->
     <div class="subway-stop-panel" id="subway-panel">
       <label class="radio-label">
         <input type="radio" name="transitStop" value="橋本駅(博多方面)" onchange="changeSubwayStop('橋本駅(博多方面)')"> 橋本(博多方面)
+      </label>
+      <label class="radio-label">
+        <input type="radio" name="transitStop" value="次郎丸駅(橋本方面)" onchange="changeSubwayStop('次郎丸駅(橋本方面)')"> 次郎丸(橋本方面)
       </label>
     </div>
 
@@ -555,6 +558,8 @@
 
       if (name === '橋本駅(博多方面)') {
         text.innerText = '橋本駅 ➔ 博多方面';
+      } else if (name === '次郎丸駅(橋本方面)') {
+        text.innerText = '次郎丸駅 ➔ 橋本方面';
       }
 
       updateSchedule();
@@ -708,11 +713,34 @@
       }
     }
 
-    // 地下鉄のパス取得処理（新しい2ファイルのみに整理）
+    // 地下鉄のパス取得処理（4ファイル対応）
     function getSubwayJsonPath(now, selectedStop) {
       const dayOfWeek = now.getDay();
-      const isWeekend = dayOfWeek === 0 || dayOfWeek === 6 || isJapaneseHoliday(now);
-      return isWeekend ? './subway_hashimoto_hakata_weekend.json' : './subway_hashimoto_hakata_weekday.json';
+
+      const isWeekend =
+        dayOfWeek === 0 ||
+        dayOfWeek === 6 ||
+        isJapaneseHoliday(now);
+
+      // ========================================
+      // 橋本駅 → 博多方面
+      // ========================================
+      if (selectedStop === '橋本駅(博多方面)') {
+        return isWeekend
+          ? './subway_hashimoto_hakata_weekend.json'
+          : './subway_hashimoto_hakata_weekday.json';
+      }
+
+      // ========================================
+      // 次郎丸駅 → 橋本方面
+      // ========================================
+      if (selectedStop === '次郎丸駅(橋本方面)') {
+        return isWeekend
+          ? './subway_jiroumaru_hashimoto_weekend.json'
+          : './subway_jiroumaru_hashimoto_weekday.json';
+      }
+
+      return null;
     }
 
     async function updateSchedule() {
